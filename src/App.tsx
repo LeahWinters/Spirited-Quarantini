@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
-function App() {
+// import Login from './Login/Login';
+
+// class App extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       username: "",
+//       error: ""
+//     }
+//   }
+//   render() {
+//     <main>
+//       <Login />
+//     </main>
+//   };
+// }
+
+function App(): ReactElement {
+  const [username, setUsername] = useState<string>();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <main>
+      <Switch>
+        <Route path='/' />
+        <div>
+          {username}
+        </div>
+      </Switch>
+    </main>
+  )
 }
 
 export default App;
