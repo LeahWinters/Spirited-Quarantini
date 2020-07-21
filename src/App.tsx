@@ -1,23 +1,8 @@
 import React, { ReactElement, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Login from './Login/Login';
 import './App.css';
 
-// import Login from './Login/Login';
-
-// class App extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       username: "",
-//       error: ""
-//     }
-//   }
-//   render() {
-//     <main>
-//       <Login />
-//     </main>
-//   };
-// }
 
 function App(): ReactElement {
   const [username, setUsername] = useState<string>();
@@ -25,10 +10,13 @@ function App(): ReactElement {
   return (
     <main>
       <Switch>
-        <Route path='/' />
-        <div>
-          {username}
-        </div>
+        <Route 
+          path='/' 
+          render={() => (
+            <Login userName={username}/>
+          )}
+        />
+        
       </Switch>
     </main>
   )

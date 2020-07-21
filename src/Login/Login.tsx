@@ -1,22 +1,16 @@
-import * as React from 'react';
+import React, { ReactElement } from 'react';
+
 
 //form with one input that will take a string
 //2 buttons (of age, not of age)
 
-// export interface LoginPage {
-//   formInput: string;
-// }
+export interface Props {
+  userName: string;
+}
 
-// class Login extends React.Component {
-//   constructor() {
-//     super();
+const Login = (props: Props) => {
 
-//   }
-
-//   // render() {
-
-//   // }Hey Girl
-// }
+}
 
 
-// export default Login;
+export default Login;
