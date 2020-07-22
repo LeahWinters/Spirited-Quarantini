@@ -25,6 +25,15 @@ describe('Header', () => {
     );
 
     const searchBar = getByPlaceholderText('search cocktails...');
-    const 
+    const aboutBtn = getByText('About');
+    const cocktailsBtn = getByText('Cocktails');
+    const myCocktailsBtn = getByText('My Cocktails');
+    const logoutBtn = getByText('Logout');
+
+    expect(searchBar).toBeInTheDocument();
+    expect(aboutBtn).toBeInTheDocument();
+    expect(cocktailsBtn).toBeInTheDocument();
+    expect(myCocktailsBtn).toBeInTheDocument();
+    expect(logoutBtn).toBeInTheDocument();
   })
 })
