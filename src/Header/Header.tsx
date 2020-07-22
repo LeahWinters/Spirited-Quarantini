@@ -5,12 +5,14 @@ import './Header.scss';
 interface HeaderProps {
 	loggedIn: boolean;
 	setLoggedIn: any;
+	setUsername: Function
 }
 
 const Header: React.SFC<HeaderProps> = props => {
 
 	const logoutUser = () => {
 		props.setLoggedIn(false);
+		props.setUsername('')
 	}
 
 	return (
