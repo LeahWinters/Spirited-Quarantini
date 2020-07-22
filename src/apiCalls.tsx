@@ -8,7 +8,9 @@ const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 export const getRandomCocktail = async () => {
 	const response = await fetch(`${rootUrl}/random.php`);
 	const data = await response.json();
-  return data.drinks[0] 
+
+
+  return data.drinks[0];
   // if (response.ok) {
   //   return await response.json();
   // } else {
