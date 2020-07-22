@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import '@testing-library/jest-dom';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Header', () => {
@@ -43,5 +43,29 @@ describe('Header', () => {
     expect(cocktailsBtn).toBeInTheDocument();
     expect(myCocktailsBtn).toBeInTheDocument();
     expect(logoutBtn).toBeInTheDocument();
+  });
+
+
+  // Currently failing because we need to pass in the function that will be later called when clicking the search btn, that function will then be mocked instead of the mock fn I have written below
+  it.skip('User should be able to search cocktails when logged in', () => {
+    const mockSearch = jest.fn();
+
+    const { getByText, getByPlaceholderText } = render(
+      <MemoryRouter>
+        <Header 
+          loggedIn={true} 
+          setLoggedIn={true}
+          // passed in function that will be used to mock
+        />
+      </MemoryRouter>
+    );
+
+    const searchInput = getByPlaceholderText('search cocktails...')
+    const searchBtn = getByText('About');
+
+    fireEvent.change(searchInput);
+    fireEvent.click(searchBtn);
+
+    expect(mockSearch).toHaveBeenCalledTimes(1);
   });
 })
