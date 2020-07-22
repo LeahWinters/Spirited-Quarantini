@@ -4,9 +4,9 @@ import './Login.scss';
 
 export interface LoginProps {
 	username: string;
-	setUsername: any;
+	setUsername: Function;
 	loggedIn: boolean;
-	setLoggedIn: any;
+	setLoggedIn: Function;
 } //generic ready if we need to safe type any props passed in
 
 const Login: React.SFC<LoginProps> = (props) => {	
