@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getRandomCocktail } from '../apiCalls';
 
 export interface DashboardProps {
 
 }
 
+export interface Cocktail {
+	idDrink: string,
+	strDrink: string,
+	strInstructions: string
+	//api obj return -- safetype the properties
+}
+
 const Dashboard: React.SFC = () => {
+	const [randomCocktail, setRandomCocktail] = useState({})
+
+	const getCocktail = async () => {
+		try {
+			const data: any = await getRandomCocktail();
+			setRandomCocktail(data);
+			console.log('rando cocktail', randomCocktail);
+		} catch (error) {
+
+		}
+		let r = await fetch('');
+	}
+
+	useEffect(() => {getCocktail()}, [])
+
 	//api call for random cocktail
 
 	return (
-		<div>RANDOM COCKTAIL IMG HERE</div>
+		<div>RANDOM IMG</div>
 	)
 }
 
