@@ -16,12 +16,9 @@ const Login: React.SFC<LoginProps> = (props) => {
   };
 
   const denyUser = (event: any) => {
-    return (
-      <div>
-        <h3>Non-Alcoholic Drinks Coming Soon!</h3>
-        <img className="errorMsg">X</img>
-      </div>
-    );
+		return(
+			alert('Non-alcoholic drinks coming soon!')
+		)
   };
 
   const buttonsEnabled = props.username.trim() !== "";
