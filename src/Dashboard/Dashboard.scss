@@ -1,0 +1,44 @@
+.COTD-img {
+	height: 35vh;
+}
+
+.cocktail-OTD {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid grey;
+	padding: 15px;
+	justify-content: space-between;
+	background-color: black;
+	color: white;
+	width: 40%;
+	height: 51%;
+	margin: 0 auto;
+	h3 {
+		margin: 0;
+		margin-bottom: 10px;
+	}
+}
+
+.COTD-title {
+	text-align: center;
+	color: white;
+	font-size: 23px;
+	margin-top: 6%;
+	margin-bottom: 5%;
+	font-family: 'Playfair Display', serif;
+}
+
+.cocktail-OTD-wrapper {
+	width: 100vw;
+	height: 85vh;
+	opacity: 90%;
+	background-color: black;
+	margin-top: 14%;
+	font-family: sans-serif;
+}
+
+.welcome-msg {
+	color: white;
+	margin-left: 15px;
+}
