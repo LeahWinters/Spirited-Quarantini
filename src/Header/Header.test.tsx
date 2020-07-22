@@ -5,7 +5,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Header', () => {
-  it('Should display the title of the application', () => {
+  it('Should only display the title of the application when user is not logged in', () => {
     const { getByText } = render(
       <MemoryRouter>
         <Header 
@@ -20,7 +20,7 @@ describe('Header', () => {
     expect(title).toBeInTheDocument();
   });
 
-  it('Should have a search bar and multiple buttons, if logged in', () => {
+  it('Should display the title, a search bar, and multiple buttons when a user is logged in', () => {
     const { getByText, getByPlaceholderText } = render(
       <MemoryRouter>
         <Header 
@@ -30,12 +30,14 @@ describe('Header', () => {
       </MemoryRouter>
     );
 
+    const title = getByText('Spirited Quarantini');
     const searchBar = getByPlaceholderText('search cocktails...');
     const aboutBtn = getByText('About');
     const cocktailsBtn = getByText('Cocktails');
     const myCocktailsBtn = getByText('My Cocktails');
     const logoutBtn = getByText('Logout');
 
+    expect(title).toBeInTheDocument();
     expect(searchBar).toBeInTheDocument();
     expect(aboutBtn).toBeInTheDocument();
     expect(cocktailsBtn).toBeInTheDocument();
