@@ -37,7 +37,7 @@ describe('Login', () => {
           username={''}
           setUsername={Function}
           loggedIn={false}
-          setLoggedIn={Function}
+          setLoggedIn={mockVerifyUser}
         />
       </MemoryRouter>
     );
@@ -49,6 +49,27 @@ describe('Login', () => {
     expect(mockVerifyUser).toHaveBeenCalledTimes(0);
   });
 
-  it('User should be able to login if they fill out the input and click the over 21 button')
+  it('User should be able to login if they fill out the input and click the over 21 button', () => {
+    const mockVerifyUser = jest.fn();
+
+    const { getByLabelText, getByPlaceholderText } = render(
+      <MemoryRouter>
+        <Login
+          username={'Yahoo Serious'}
+          setUsername={Function}
+          loggedIn={false}
+          setLoggedIn={mockVerifyUser}
+        />
+      </MemoryRouter>
+    );
+    
+    const usernameInput = getByPlaceholderText('username');
+    const over21Button = getByLabelText('over-21-button');
+
+    fireEvent.change(usernameInput);
+    fireEvent.click(over21Button);
+
+    expect(mockVerifyUser).toHaveBeenCalledTimes(1);
+  });
 
 })
