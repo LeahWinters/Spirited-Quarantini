@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
-import './App.css';
+import './App.scss';
 
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState<string>('');
