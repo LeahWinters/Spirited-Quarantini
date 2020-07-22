@@ -10,9 +10,9 @@ describe('Login', () => {
       <MemoryRouter>
         <Login 
           username={'Temp Name'}
-          setUsername={'Temp Name'}
+          setUsername={Function}
           loggedIn={false}
-          setLoggedIn={false}
+          setLoggedIn={Function}
         />
       </MemoryRouter>
     );
@@ -28,15 +28,16 @@ describe('Login', () => {
     expect(under21Button).toBeInTheDocument();
   });
 
-  it('buttons should be disabled if input is empty', () => {
-    const mockVerifyUser = jest.fn()
+  it('Buttons should be disabled if input is empty', () => {
+    const mockVerifyUser = jest.fn();
+
     const { getByLabelText } = render(
       <MemoryRouter>
         <Login
           username={''}
-          setUsername={''}
+          setUsername={Function}
           loggedIn={false}
-          setLoggedIn={false}
+          setLoggedIn={Function}
         />
       </MemoryRouter>
     );
@@ -46,6 +47,8 @@ describe('Login', () => {
     fireEvent.click(over21Button);
 
     expect(mockVerifyUser).toHaveBeenCalledTimes(0);
-  })
+  });
+
+  it('User should be able to login if they fill out the input and click the over 21 button')
 
 })

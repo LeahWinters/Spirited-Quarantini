@@ -1,65 +1,75 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.scss';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Login.scss";
 
 export interface LoginProps {
-	username: string;
-	setUsername: any;
-	loggedIn: boolean;
-	setLoggedIn: any;
+  username: string;
+  setUsername: Function;
+  loggedIn: boolean;
+  setLoggedIn: Function;
 } //generic ready if we need to safe type any props passed in
 
-const Login: React.SFC<LoginProps> = (props) => {	
-	const verifyUser = () => {
-		props.setLoggedIn(!props.loggedIn);
-	};
+const Login: React.SFC<LoginProps> = (props) => {
+  const verifyUser = () => {
+    props.setUsername("");
+    props.setLoggedIn(!props.loggedIn);
+  };
 
-	const denyUser = (event: any) => {
-		alert('non-alcoholic drinks listing coming soon!')
-	};
+  const denyUser = (event: any) => {
+		return(
+			alert('Non-alcoholic drinks coming soon!')
+		)
+  };
 
-	return (
-		<section className='login-wrapper'>
-			<p className='subtitle'>Learn how to be your own bartender!</p>
-			<form className='login-form'>
-				<p className='login-msg'>You must be 21 or older to use this site. Please enter your name and continue if this applies.</p>
-				<section className="form-input">
-					<input
-						type="name"
-						aria-label="name-input"
-						className="input"
-						placeholder="username"
-						name="username"
-						value={props.username}
-						onChange={(event) => props.setUsername(event.target.value)}
-						required
-					/>
-				</section>
+  const buttonsEnabled = props.username.trim() !== "";
 
-				<section className='login-btns'>
-					<Link to="/dashboard">
-						<button 	
-							onClick={(event) => verifyUser()} 
-							className="submit-login-btn" 
-							aria-label="over-21-button"
-							type="button"
-						>
-							I'm 21+
-						</button>
-					</Link>
+  return (
+    <section className="login-wrapper">
+      <p className="subtitle">Learn how to be your own bartender!</p>
+      <form className="login-form">
+        <p className="login-msg">
+          You must be 21 or older to use this site. Please enter your name and
+          continue if this applies.
+        </p>
+        <section className="form-input">
+          <input
+            type="name"
+            aria-label="name-input"
+            className="input"
+            placeholder="username"
+            name="username"
+            value={props.username}
+            onChange={(event) => props.setUsername(event.target.value)}
+            required
+          />
+        </section>
 
-					<button 
-						onClick={(event) => denyUser(event)} 
-						className="submit-login-btn" 
-						aria-label="under-21-button"
-						type="button"
-						>
-						I'm under 21
-					</button>
-				</section>
-			</form>
-		</section>
-	);
+        <section className="login-btns">
+          <Link to="/dashboard">
+            <button
+              onClick={(event) => verifyUser()}
+              className="submit-login-btn"
+              aria-label="over-21-button"
+              type="button"
+              disabled={!buttonsEnabled}
+            >
+              I'm 21+
+            </button>
+          </Link>
+
+          <button
+            onClick={(event) => denyUser(event)}
+            className="submit-login-btn"
+            aria-label="under-21-button"
+            type="button"
+            disabled={!buttonsEnabled}
+          >
+            I'm under 21
+          </button>
+        </section>
+      </form>
+    </section>
+  );
 };
 
 export default Login;
