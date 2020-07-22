@@ -20,11 +20,9 @@ const Dashboard: React.SFC = () => {
 		try {
 			const data: any = await getRandomCocktail();
 			setRandomCocktail(data);
-			console.log('rando cocktail', randomCocktail);
 		} catch (error) {
-
+				// set up error handling
 		}
-		let r = await fetch('');
 	}
 
 	useEffect(() => {getCocktail()}, [])
