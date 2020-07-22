@@ -21,7 +21,7 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const getCocktail = async () => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
-			setRandomCocktail(data);
+			setRandomCocktail(removeNull(data));
 		} catch (error) {
 			setError(error.message);
 		}
@@ -29,7 +29,16 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 
 	useEffect(() => {getCocktail()}, [])
 
-	console.log(randomCocktail.strDrink, 'rando')
+	const removeNull = (info: {[index: string]: object}) => {
+  	let drinkDetails: {[index: string]: object} = {};
+    Object.keys(info).forEach((detail: string) => {
+      if (info[detail]!== null) { 
+        drinkDetails[detail] = info[detail]; 
+      }
+    });
+    return drinkDetails;
+  }
+
 	return (
 		<section className='cocktail-OTD-wrapper'>
 			<p className='welcome-msg'>Welcome {props.username}!</p>
