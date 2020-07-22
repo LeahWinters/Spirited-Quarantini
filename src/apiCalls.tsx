@@ -7,6 +7,7 @@ const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 
 export const getRandomCocktail = async () => {
 	const response = await fetch(`${rootUrl}/random.php`);
+<<<<<<< HEAD
   const data = await response.json();
   
   const removeNull = (info: {[index: string]: object}) => {
@@ -21,6 +22,12 @@ export const getRandomCocktail = async () => {
 
   return removeNull(data.drinks[0])
 
+=======
+	const data = await response.json();
+  const filteredData = data.drinks.filter((drink: string) => drink !== null);
+
+  return filteredData[0];
+>>>>>>> master
   // if (response.ok) {
   //   return await response.json();
   // } else {
