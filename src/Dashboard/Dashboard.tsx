@@ -10,26 +10,39 @@ export interface DashboardProps {
 export interface Cocktail {
 	idDrink: string,
 	strDrink: string,
-	strInstructions: string
+	strInstructions: string,
+	strDrinkThumb: string
 }
 
 const Dashboard: React.SFC = () => {
-	const [randomCocktail, setRandomCocktail] = useState({})
+	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
+	const [error, setError] = useState<string>('');
 
 
 	const getCocktail = async () => {
 		try {
-			const data: any = await getRandomCocktail();
+			const data: Cocktail = await getRandomCocktail();
 			setRandomCocktail(data);
 		} catch (error) {
-				// set up error handling
+			setError(error.message);
 		}
 	}
 
 	useEffect(() => {getCocktail()}, [])
 
+	console.log(randomCocktail.strDrink, 'rando')
 	return (
-		<div>Cocktail of the day</div>
+		<section className='cocktail-OTD-wrapper'>
+			<p className='COTD-title'>Cocktail of the Day</p>
+			{error && <div>{error}</div>}
+			<section className='cocktail-OTD'>
+				<h2>{randomCocktail.strDrink}</h2>
+				<img src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
+				
+			</section>
+		</section>
+
+
 	)
 }
 

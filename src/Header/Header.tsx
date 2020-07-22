@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import './Header.scss';
 
 interface HeaderProps {
-	loggedIn: boolean
+	loggedIn: boolean;
+	setLoggedIn: any;
 }
 
 const Header: React.SFC<HeaderProps> = props => {
+
+	const logoutUser = () => {
+		props.setLoggedIn(false);
+	}
 
 	return (
 		<header>
@@ -41,6 +46,13 @@ const Header: React.SFC<HeaderProps> = props => {
 					</Link>
 					<Link to='/my_cocktails'>
 						<h1>My Cocktails</h1>
+					</Link>
+					<Link to='/'>
+						<button
+							onClick={logoutUser}
+						>
+							Logout
+						</button>
 					</Link>
 				</div>
 			}

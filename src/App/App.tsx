@@ -8,13 +8,17 @@ import AllCocktails from '../AllCocktails/AllCocktails';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import './App.scss';
 
+
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState<string>('');
 	const [ loggedIn, setLoggedIn ] = useState<boolean>(false);
 
 	return (
 		<main>
-			<Header loggedIn={loggedIn} />
+			<Header 
+				loggedIn={loggedIn} 
+				setLoggedIn={setLoggedIn}
+			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
 				<Route path="/cocktails" render={() => <AllCocktails />} />
