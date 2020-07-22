@@ -16,6 +16,7 @@ export interface Cocktail {
 const Dashboard: React.SFC = () => {
 	const [randomCocktail, setRandomCocktail] = useState({})
 
+
 	const getCocktail = async () => {
 		try {
 			const data: any = await getRandomCocktail();
