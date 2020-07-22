@@ -10,12 +10,18 @@ const Header: React.SFC<HeaderProps> = props => {
 
 	return (
 		<header>
-			<Link to='/'>
-				<h1>Spirited Quarantini</h1>
-			</Link>
+			{!props.loggedIn && 
+				<Link to='/'>
+					<h1>Spirited Quarantini</h1>
+				</Link>
+			}
 
 			{props.loggedIn && 
 				<div className='userNavLinks'>
+					<Link to='/dashboard'>
+						<h1>Spirited Quarantini</h1>
+					</Link>
+
 					<form className='search-bar'>
 						<input
 							type="text"

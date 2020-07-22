@@ -35,13 +35,11 @@ const Dashboard: React.SFC = () => {
 			<p className='COTD-title'>Cocktail of the Day</p>
 			{error && <div>{error}</div>}
 			<section className='cocktail-OTD'>
-				<h2>{randomCocktail.strDrink}</h2>
-				<img src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
+				<h3>{randomCocktail.strDrink}</h3>
+				<img className='COTD-img' src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
 				
 			</section>
 		</section>
-
-
 	)
 }
 
