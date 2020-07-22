@@ -72,4 +72,29 @@ describe('Login', () => {
     expect(mockVerifyUser).toHaveBeenCalledTimes(1);
   });
 
+  // skipped to do tomorrow since the error message has changed and is no longer a window alert
+  it.skip('User should not be allowed to login if they are under 21', () => {
+    const mockDenyUser = jest.fn();
+
+    const { getByLabelText, getByPlaceholderText } = render(
+      <MemoryRouter>
+        <Login
+          username={'Yahoo Serious'}
+          setUsername={Function}
+          loggedIn={false}
+          setLoggedIn={mockVerifyUser}
+        />
+      </MemoryRouter>
+    );
+    
+    const usernameInput = getByPlaceholderText('username');
+    const under21Button = getByLabelText('over-21-button');
+
+    fireEvent.change(usernameInput);
+    fireEvent.click(under21Button);
+
+    expect(mockDenyUser).toHaveBeenCalledTimes(1);
+    // expect message to be in the doc as well
+  })
+
 })
