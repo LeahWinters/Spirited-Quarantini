@@ -7,7 +7,7 @@ export interface LoginProps {
 	setUsername: any;
 	loggedIn: boolean;
 	setLoggedIn: any;
-} //generic ready if we need to safe type any props passed in
+}
 
 const Login: React.SFC<LoginProps> = (props) => {	
 	const verifyUser = () => {
