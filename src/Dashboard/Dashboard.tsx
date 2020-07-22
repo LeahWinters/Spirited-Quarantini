@@ -18,6 +18,7 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
 
+
 	const getCocktail = async () => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
