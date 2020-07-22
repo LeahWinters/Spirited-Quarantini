@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export interface DashboardProps extends RouteComponentProps<any> {
+export interface DashboardProps {
 
 }
 
-const Dashboard: React.SFC<DashboardProps> = () => {
+const Dashboard: React.SFC = () => {
 	//api call for random cocktail
 
 	return (
