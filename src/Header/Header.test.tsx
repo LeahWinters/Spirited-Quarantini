@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header.tsx';
+import Header from './Header';
 import '@testing-library/jest-dom';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
@@ -8,7 +8,10 @@ describe('Header', () => {
   it('Should display the title of the application', () => {
     const { getByText } = render(
       <MemoryRouter>
-        <Header />
+        <Header 
+          loggedIn={false} 
+          setLoggedIn={false}
+        />
       </MemoryRouter>
     );
 
@@ -20,7 +23,10 @@ describe('Header', () => {
   it('Should have a search bar and multiple buttons, if logged in', () => {
     const { getByText, getByPlaceholderText } = render(
       <MemoryRouter>
-        <Header loggedIn={true} />
+        <Header 
+          loggedIn={true} 
+          setLoggedIn={true}
+        />
       </MemoryRouter>
     );
 
@@ -35,5 +41,5 @@ describe('Header', () => {
     expect(cocktailsBtn).toBeInTheDocument();
     expect(myCocktailsBtn).toBeInTheDocument();
     expect(logoutBtn).toBeInTheDocument();
-  })
+  });
 })
