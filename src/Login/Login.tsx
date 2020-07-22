@@ -7,18 +7,13 @@ export interface LoginProps {
   setUsername: Function;
   loggedIn: boolean;
   setLoggedIn: Function;
-} //generic ready if we need to safe type any props passed in
+}
 
 const Login: React.SFC<LoginProps> = (props) => {
-  const verifyUser = () => {
-    props.setUsername("");
-    props.setLoggedIn(!props.loggedIn);
-  };
+	const [is21, setIs21] = useState<boolean>(true);
 
-  const denyUser = (event: any) => {
-		return(
-			alert('Non-alcoholic drinks coming soon!')
-		)
+  const verifyUser = () => {
+    props.setLoggedIn(!props.loggedIn);
   };
 
   const buttonsEnabled = props.username.trim() !== "";
@@ -58,7 +53,7 @@ const Login: React.SFC<LoginProps> = (props) => {
           </Link>
 
           <button
-            onClick={(event) => denyUser(event)}
+            onClick={(event) => setIs21(false)}
             className="submit-login-btn"
             aria-label="submit-button"
             type="button"
@@ -67,6 +62,8 @@ const Login: React.SFC<LoginProps> = (props) => {
             I'm under 21
           </button>
         </section>
+
+				{!is21 && <div className='minor-msg'>Sorry, come back in a few years</div>}
       </form>
     </section>
   );
