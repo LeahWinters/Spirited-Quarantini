@@ -41,7 +41,7 @@ const Login: React.SFC<LoginProps> = (props) => {
 						<button 	
 							onClick={(event) => verifyUser()} 
 							className="submit-login-btn" 
-							aria-label="submit-button"
+							aria-label="over-21-button"
 							type="button"
 						>
 							I'm 21+
@@ -51,7 +51,7 @@ const Login: React.SFC<LoginProps> = (props) => {
 					<button 
 						onClick={(event) => denyUser(event)} 
 						className="submit-login-btn" 
-						aria-label="submit-button"
+						aria-label="under-21-button"
 						type="button"
 						>
 						I'm under 21
