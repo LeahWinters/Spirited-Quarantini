@@ -15,7 +15,7 @@ const Login: React.SFC<LoginProps> = (props) => {
 	};
 
 	const denyUser = (event: any) => {
-		//display message for minors
+		alert('non-alcoholic drinks listing coming soon!')
 	};
 
 	return (
