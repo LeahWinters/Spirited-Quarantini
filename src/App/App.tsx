@@ -14,6 +14,7 @@ const App: React.SFC<RouteComponentProps> = () => {
 			<Header />
       <Switch>
         <Route exact path='/' component={Login} />
+				{/* <Route exact path='/' render={() => <Login username={username}/>} /> */}
 				<Route path='/dashboard' component={Dashboard} />
       </Switch>
     </main>

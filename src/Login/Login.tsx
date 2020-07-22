@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 export interface LoginProps extends RouteComponentProps<any> {
-
+	// username: string
 } //generic ready if we need to safe type any props passed in
 
 const Login: React.SFC<LoginProps> = ({history}) => {
-	const [username, error] = useState<string>('');
+	const [username, setUsername] = useState<string>('');
 
 
 	const verifyUser = (event: any) => {
-		event.preventDefault();
-		console.log(history);
-		history.push(`/dashboard`);
+		// event.preventDefault();
+		// history.push(`/dashboard`);
 	}
 
 	const denyUser = (event: any) => {
@@ -28,19 +27,19 @@ const Login: React.SFC<LoginProps> = ({history}) => {
 					className="input"
 					placeholder="username"
 					name="username"
-					// value={this.state.password}
-					// onChange={(event) => this.handleChange(event)}
+					value={username}
+					onChange={(event) => setUsername(event.target.value)}
 					required
 				/>
 			</section>
 
-			<button
+			<Link to='/dashboard'><button
 				onClick={(event) => verifyUser(event)}
 				className="submit-login-btn"
 				aria-label="submit-button"
 			>
 				I'm 21+
-      </button>
+      </button></Link>
 
 			<button
 				onClick={(event) => denyUser(event)}

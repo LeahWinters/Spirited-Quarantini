@@ -12,6 +12,24 @@ const Header: React.SFC<HeaderProps> = props => {
 			<Link to='/'>
 				<h1>Spirited Quarantini</h1>
 			</Link>
+
+			<form className='search-bar'>
+				<input
+					type="text"
+					name="search"
+					placeholder="search..."
+					className="header-search"
+					// value={searchInput}
+					// onChange={(e) => updateSearchInput(e.target.value)}
+					aria-label="search"
+				/>
+				<Link to='/results'>
+					<button className="header-search-button">
+						Search
+					</button>
+				</Link>
+      </form>
+
 			<Link to='/about'>
 				<h1>About</h1>
 			</Link>
