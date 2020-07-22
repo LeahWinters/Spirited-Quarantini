@@ -11,12 +11,15 @@ export interface LoginProps {
 
 const Login: React.SFC<LoginProps> = (props) => {	
 	const verifyUser = () => {
+		props.setUsername('')
 		props.setLoggedIn(!props.loggedIn);
 	};
 
 	const denyUser = (event: any) => {
 		//display message for minors
 	};
+
+	const buttonsEnabled = props.username.trim() !== '';
 
 	return (
 		<section className='login-wrapper'>
@@ -43,6 +46,7 @@ const Login: React.SFC<LoginProps> = (props) => {
 							className="submit-login-btn" 
 							aria-label="submit-button"
 							type="button"
+							disabled={!buttonsEnabled}
 						>
 							I'm 21+
 						</button>
@@ -53,6 +57,7 @@ const Login: React.SFC<LoginProps> = (props) => {
 						className="submit-login-btn" 
 						aria-label="submit-button"
 						type="button"
+						disabled={!buttonsEnabled}
 						>
 						I'm under 21
 					</button>
