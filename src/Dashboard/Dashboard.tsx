@@ -37,7 +37,7 @@ const Dashboard: React.SFC = () => {
 			<section className='cocktail-OTD'>
 				<h3>{randomCocktail.strDrink}</h3>
 				<img className='COTD-img' src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
-				
+				<button className='details-btn'>More details</button>
 			</section>
 		</section>
 	)

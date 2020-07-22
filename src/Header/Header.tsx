@@ -17,14 +17,14 @@ const Header: React.SFC<HeaderProps> = props => {
 		<header>
 			{!props.loggedIn && 
 				<Link to='/'>
-					<h1>Spirited Quarantini</h1>
+					<h1 className='app-title'>Spirited Quarantini</h1>
 				</Link>
 			}
 
 			{props.loggedIn && 
-				<div className='userNavLinks'>
+				<div className='user-header'>
 					<Link to='/dashboard'>
-						<h1>Spirited Quarantini</h1>
+						<h1 className='app-title'>Spirited Quarantini</h1>
 					</Link>
 
 					<form className='search-bar'>
@@ -44,14 +44,15 @@ const Header: React.SFC<HeaderProps> = props => {
 						</Link>
 					</form>
 
+				<section className='navlinks'>
 					<Link to='/about'>
-						<h1>About</h1>
+						<h3 className='navlink-title'>About</h3>
 					</Link>
 					<Link to='/cocktails'>
-						<h1>Cocktails</h1>
+						<h3 className='navlink-title'>Cocktails</h3>
 					</Link>
 					<Link to='/my_cocktails'>
-						<h1>My Cocktails</h1>
+						<h3 className='navlink-title'>My Cocktails</h3>
 					</Link>
 					<Link to='/'>
 						<button
@@ -60,6 +61,7 @@ const Header: React.SFC<HeaderProps> = props => {
 							Logout
 						</button>
 					</Link>
+				</section>
 				</div>
 			}
 
