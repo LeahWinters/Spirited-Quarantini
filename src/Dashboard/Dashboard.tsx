@@ -28,7 +28,7 @@ const Dashboard: React.SFC = () => {
 	useEffect(() => {getCocktail()}, [])
 
 	return (
-		<div>RANDOM IMG</div>
+		<div>Cocktail of the day</div>
 	)
 }
 

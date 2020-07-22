@@ -25,6 +25,38 @@ main {
   }
 }
 
+main {
+	background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1949&q=80');
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	overflow: scroll;
+	height: 100vh;
+}
+
+button {
+	background: none;
+	color: white;
+	border: 1px solid red;
+	height: 2vh;
+	border-radius: 2px;
+	&:hover {
+		background: red;
+	}
+}
+
+input {
+	background: none;
+	border-style: none;
+	border: 1px solid grey;
+	color: grey;
+	height: 2vh;
+	width: 200px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

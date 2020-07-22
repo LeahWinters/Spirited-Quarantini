@@ -15,12 +15,12 @@ const Header: React.SFC<HeaderProps> = props => {
 			</Link>
 
 			{props.loggedIn && 
-				<div>
+				<div className='userNavLinks'>
 					<form className='search-bar'>
 						<input
 							type="text"
 							name="search"
-							placeholder="search..."
+							placeholder="search cocktails..."
 							className="header-search"
 							// value={searchInput}
 							// onChange={(e) => updateSearchInput(e.target.value)}

@@ -1,0 +1,35 @@
+.userNavLinks {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	width: 70vw;
+}
+
+header {
+	display: flex;
+	width: 100vw;
+	top: 0;
+	position: absolute;
+	background-color: black;
+	opacity: 80%;
+	height: 11vh;
+	align-items: center;
+}
+
+h1 {
+	margin-left: 15px;
+	margin-right: 25px;
+	color: white;
+	font-size: 23px;
+	&:hover {
+		color: grey;
+	}
+}
+
+.header-search{
+	background: none;
+	border-style: none;
+	border: 1px solid grey;
+	height: 2vh;
+	width: 200px;
+}
