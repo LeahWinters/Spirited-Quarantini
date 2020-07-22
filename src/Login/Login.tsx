@@ -19,40 +19,46 @@ const Login: React.SFC<LoginProps> = (props) => {
 	};
 
 	return (
-		<form>
-			<section className="form-input">
-				<input
-					type="name"
-					aria-label="name-input"
-					className="input"
-					placeholder="username"
-					name="username"
-					value={props.username}
-					onChange={(event) => props.setUsername(event.target.value)}
-					required
-				/>
-			</section>
+		<section className='login-wrapper'>
+			<p className='subtitle'>Learn how to be your own bartender!</p>
+			<form className='login-form'>
+				<p className='login-msg'>You must be 21 or older to use this site. Please enter your name and continue if this applies.</p>
+				<section className="form-input">
+					<input
+						type="name"
+						aria-label="name-input"
+						className="input"
+						placeholder="username"
+						name="username"
+						value={props.username}
+						onChange={(event) => props.setUsername(event.target.value)}
+						required
+					/>
+				</section>
 
-			<Link to="/dashboard">
-				<button 	
-					onClick={(event) => verifyUser()} 
-					className="submit-login-btn" 
-					aria-label="submit-button"
-					type="button"
-				>
-					I'm 21+
-				</button>
-			</Link>
+				<section className='login-btns'>
+					<Link to="/dashboard">
+						<button 	
+							onClick={(event) => verifyUser()} 
+							className="submit-login-btn" 
+							aria-label="submit-button"
+							type="button"
+						>
+							I'm 21+
+						</button>
+					</Link>
 
-			<button 
-				onClick={(event) => denyUser(event)} 
-				className="submit-login-btn" 
-				aria-label="submit-button"
-				type="button"
-				>
-				I'm under 21
-			</button>
-		</form>
+					<button 
+						onClick={(event) => denyUser(event)} 
+						className="submit-login-btn" 
+						aria-label="submit-button"
+						type="button"
+						>
+						I'm under 21
+					</button>
+				</section>
+			</form>
+		</section>
 	);
 };
 
