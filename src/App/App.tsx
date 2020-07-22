@@ -14,7 +14,10 @@ const App: React.SFC = () => {
 
 	return (
 		<main>
-			<Header loggedIn={loggedIn} />
+			<Header 
+				loggedIn={loggedIn} 
+				setLoggedIn={setLoggedIn}
+			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
 				<Route path="/cocktails" render={() => <AllCocktails />} />
