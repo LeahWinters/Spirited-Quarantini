@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import './App.scss';
 
+
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState<string>('');
 	const [ loggedIn, setLoggedIn ] = useState<boolean>(false);
