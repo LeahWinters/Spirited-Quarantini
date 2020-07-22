@@ -17,6 +17,7 @@ const App: React.SFC = () => {
 			<Header 
 				loggedIn={loggedIn} 
 				setLoggedIn={setLoggedIn}
+				setUsername={setUsername}
 			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
