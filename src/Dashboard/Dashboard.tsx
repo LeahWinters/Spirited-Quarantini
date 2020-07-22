@@ -4,7 +4,7 @@ import { getRandomCocktail } from '../apiCalls';
 import './Dashboard.scss';
 
 export interface DashboardProps {
-
+	username: string
 }
 
 export interface Cocktail {
@@ -14,7 +14,7 @@ export interface Cocktail {
 	strDrinkThumb: string
 }
 
-const Dashboard: React.SFC = () => {
+const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
 
@@ -32,6 +32,7 @@ const Dashboard: React.SFC = () => {
 	console.log(randomCocktail.strDrink, 'rando')
 	return (
 		<section className='cocktail-OTD-wrapper'>
+			<p className='welcome-msg'>Welcome {props.username}!</p>
 			<p className='COTD-title'>Cocktail of the Day</p>
 			{error && <div>{error}</div>}
 			<section className='cocktail-OTD'>

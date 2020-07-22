@@ -22,7 +22,11 @@ const App: React.SFC = () => {
 				<Route path="/about" render={() => <About />} />
 				<Route path="/cocktails" render={() => <AllCocktails />} />
 				<Route path="/my_cocktails" render={() => <MyCocktails />} />
-				<Route path="/dashboard" render={() => <Dashboard />} />
+				<Route path="/dashboard" render={() => 
+					<Dashboard 
+						username={username}
+					/>} 
+				/>
 				<Route
 					path="/"
 					render={() => (
