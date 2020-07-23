@@ -1,5 +1,5 @@
-const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 import { RandomCocktail } from './Definitions/RandomCocktail'
+const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 
 //random cocktail: https://www.thecocktaildb.com/api/json/v1/1/random.php
 

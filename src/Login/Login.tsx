@@ -16,15 +16,6 @@ const Login: React.SFC<LoginProps> = (props) => {
     props.setLoggedIn(!props.loggedIn);
   };
 
-<<<<<<< HEAD
-  const denyUser = ():void => {
-		return(
-			alert('Non-alcoholic drinks coming soon!')
-		)
-  };
-
-=======
->>>>>>> master
   const buttonsEnabled = props.username.trim() !== "";
 
   return (
