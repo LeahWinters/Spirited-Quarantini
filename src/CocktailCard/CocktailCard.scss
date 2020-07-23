@@ -1,0 +1,32 @@
+.cocktail-card {
+  align-self: center;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: row;
+  font-family: 'Playfair Display', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 45%;
+  justify-content: center;
+  margin: 2%;
+  width: 77%;
+}
+
+.card-title {
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: 1.8em;
+  margin-right: 25%;
+  max-width: 30%;
+}
+
+.CC-img {
+  border-left: solid 2px gray;
+  height: 85%;
+  margin-top: 0.5%;
+  padding: 0.5% 1%;
+  width: 13%;
+}
