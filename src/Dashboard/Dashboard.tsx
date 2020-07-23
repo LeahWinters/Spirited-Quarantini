@@ -13,7 +13,6 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const [randomCocktail, setRandomCocktail] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
 
-
 	const getCocktail = async ():Promise<any> => {
 		try {
 			const data: RandomCocktail = await getRandomCocktail();
@@ -43,7 +42,7 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 			<section className='cocktail-OTD'>
 				<h3>{randomCocktail.strDrink}</h3>
 				<img className='COTD-img' src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
-				<button className='details-btn'>More details</button>
+				<Link to={`/${randomCocktail.idDrink}/details`}><button className='details-btn'>More details</button></Link>
 			</section>
 		</section>
 	)
