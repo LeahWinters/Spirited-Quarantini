@@ -13,11 +13,26 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 	const getCocktail = async ():Promise<any> => {
 		try {
 			const data: RandomCocktail = await getCocktailDetails(props.id);
-			console.log(data);
-			setCocktailInfo(data);
+			setCocktailInfo(removeNulls(data));
 		} catch (error) {
 		setError(error.message);
 		}
+	}
+
+	const removeNulls = (info: RandomCocktail): RandomCocktail => {
+  	const drinkDetails: Partial<RandomCocktail> = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
+		(Object.keys(info) as Array<keyof RandomCocktail>).forEach((detail) => {
+      if (info[detail]!== null) { 
+        drinkDetails[detail] = info[detail]; 
+      }
+		});
+    return drinkDetails as RandomCocktail;
+	}
+	
+	const displayIngredients = () => {
+		const cocktailInfoKeys = Object.keys(cocktailInfo)
+		console.log(cocktailInfoKeys, 'display');
+		
 	}
 
 	useEffect(() => {getCocktail()}, []);
@@ -48,6 +63,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 					<p>{cocktailInfo.strIngredient13} {cocktailInfo.strMeasure13}</p>
 					<p>{cocktailInfo.strIngredient14} {cocktailInfo.strMeasure14}</p>
 					<p>{cocktailInfo.strIngredient15} {cocktailInfo.strMeasure15}</p>
+					{displayIngredients()}
 				</section>
 			</section>
 		</section>	
