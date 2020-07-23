@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 // window.MutationObserver = require("mutation-observer");
-import MutationObserver from '@sheerun/mutationobserver-shim';
-window.MutationObserver = MutationObserver ;
+// import MutationObserver from '@sheerun/mutationobserver-shim';
+// window.MutationObserver = MutationObserver ;
 
 describe('Login', () => {
   it("User should see a title, a username input, and two buttons when viewing the login page", () => {
@@ -76,7 +76,7 @@ describe('Login', () => {
   });
 
   // Skipped to complete in the morning
-  it('User should not be allowed to login if they are under 21', async () => {
+  it.skip('User should not be allowed to login if they are under 21', async () => {
     const mockDenyUser = jest.fn();
 
     const { getByLabelText, getByPlaceholderText, getByText } = render(
