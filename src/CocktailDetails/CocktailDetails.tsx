@@ -32,7 +32,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 	const displayIngredients = () => {
 		const cocktailInfoKeys = Object.keys(cocktailInfo)
 		console.log(cocktailInfoKeys, 'display');
-		
+		console.log(cocktailInfo, 'info')
 	}
 
 	useEffect(() => {getCocktail()}, []);
