@@ -7,7 +7,6 @@ export interface CocktailsCardProps {
   idDrink: string;
 }
 
-
 const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
   return (
     <section className="cocktail-card">

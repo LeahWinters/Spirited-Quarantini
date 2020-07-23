@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllCocktails } from "../apiCalls";
 import CocktailCard from '../CocktailCard/CocktailCard';
+import './AllCocktailsPage.scss';
 
 export interface AllCocktailsDetails {
   drinks: [
