@@ -2,27 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getRandomCocktail } from '../apiCalls';
 import './Dashboard.scss';
+import { RandomCocktail } from '../Definitions/RandomCocktail'
 
 export interface DashboardProps {
 	username: string
 }
 
-export interface Cocktail {
-	idDrink: string,
-	strDrink: string,
-	strInstructions: string,
-	strDrinkThumb: string
-}
 
 const Dashboard: React.SFC<DashboardProps> = (props) => {
-	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
+	const [randomCocktail, setRandomCocktail] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
 
 
-	const getCocktail = async () => {
+	const getCocktail = async ():Promise<any> => {
 		try {
-			const data: Cocktail = await getRandomCocktail();
-			setRandomCocktail(removeNull(data));
+			const data: RandomCocktail = await getRandomCocktail();
+			setRandomCocktail(data);
 		} catch (error) {
 			setError(error.message);
 		}
@@ -30,15 +25,15 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 
 	useEffect(() => {getCocktail()}, [])
 
-	const removeNull = (info: {[index: string]: object}) => {
-  	let drinkDetails: {[index: string]: object} = {};
-    Object.keys(info).forEach((detail: string) => {
-      if (info[detail]!== null) { 
-        drinkDetails[detail] = info[detail]; 
-      }
-    });
-    return drinkDetails;
-  }
+	// const removeNulls = (info: RandomCocktail): RandomCocktail => {
+  // 	const drinkDetails = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
+  //   Object.keys(info).forEach((detail: any) => {
+  //     if (info[detail]!== null) { 
+  //       drinkDetails[detail] = info[detail]; 
+  //     }
+  //   });
+  //   return drinkDetails;
+  // }
 
 	return (
 		<section className='cocktail-OTD-wrapper'>

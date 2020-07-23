@@ -15,7 +15,7 @@ const Login: React.SFC<LoginProps> = (props) => {
     props.setLoggedIn(!props.loggedIn);
   };
 
-  const denyUser = (event: any) => {
+  const denyUser = () => {
 		return(
 			alert('Non-alcoholic drinks coming soon!')
 		)
@@ -47,7 +47,7 @@ const Login: React.SFC<LoginProps> = (props) => {
         <section className="login-btns">
           <Link to="/dashboard">
             <button
-              onClick={(event) => verifyUser()}
+              onClick={() => verifyUser()}
               className="submit-login-btn"
               aria-label="submit-button"
               type="button"
@@ -58,7 +58,7 @@ const Login: React.SFC<LoginProps> = (props) => {
           </Link>
 
           <button
-            onClick={(event) => denyUser(event)}
+            onClick={() => denyUser()}
             className="submit-login-btn"
             aria-label="submit-button"
             type="button"
