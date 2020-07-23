@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { getAllCocktails } from '../apiCalls'
+import { getAllCocktails } from "../apiCalls";
 
-
-export interface AllCocktails {
-  strDrink: string;
-  strDrinkThumb: string;
-  idDrink: string;
+export interface AllCocktailsDetails {
+  drinks: [
+    {
+      strDrink: string;
+      strDrinkThumb: string;
+      idDrink: string;
+    }
+  ];
 }
 
 const AllCocktailsPage: React.SFC = () => {
-  const [allCocktails, setAllCocktails] = useState<AllCocktails>({
-    strDrink: "",
-    strDrinkThumb: "",
-    idDrink: "",
-	});
-	const [ error, setError ]= useState<string>('')
+  const [allCocktails, setAllCocktails] = useState<AllCocktailsDetails>({
+    drinks: [{
+			strDrink: 'string',
+      strDrinkThumb: 'string',
+      idDrink: 'string'
+		}]
+  });
+  const [error, setError] = useState<string>("");
 
-	const displayAllCocktails = async ():Promise<any> => {
-		try {
-			const data: AllCocktails = await getAllCocktails();
-			setAllCocktails(data)
-		} catch (error) {
-			setError(error.message)
-		}
-	}
+  const displayAllCocktails = async (): Promise<any> => {
+    try {
+      const data: AllCocktailsDetails = await getAllCocktails();
+      setAllCocktails(data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-	useEffect(() => {getAllCocktails()}, [])
+  useEffect(() => {
+    displayAllCocktails();
+  }, []);
 
   return <div>ALL COCKTAILS PAGE</div>;
 };
