@@ -6,6 +6,7 @@ import Dashboard from '../Dashboard/Dashboard';
 import About from '../About/About';
 import AllCocktails from '../AllCocktails/AllCocktails';
 import MyCocktails from '../MyCocktails/MyCocktails';
+import CocktailDetails from '../CocktailDetails/CocktailDetails';
 import './App.scss';
 
 const App: React.SFC = () => {
@@ -23,6 +24,13 @@ const App: React.SFC = () => {
 				<Route path="/about" render={() => <About />} />
 				<Route path="/cocktails" render={() => <AllCocktails />} />
 				<Route path="/my_cocktails" render={() => <MyCocktails />} />
+				<Route 
+					path="/:id/details" 
+					render={({ match }) => {
+						const { id } = match.params;
+						return <CocktailDetails id={id} />} 
+					}
+				/>
 				<Route path="/dashboard" render={() => 
 					<Dashboard 
 						username={username}
