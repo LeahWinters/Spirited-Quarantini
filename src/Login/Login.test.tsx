@@ -1,8 +1,11 @@
 import React from 'react';
 import Login from './Login';
 import '@testing-library/jest-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+// window.MutationObserver = require("mutation-observer");
+// import MutationObserver from '@sheerun/mutationobserver-shim';
+// window.MutationObserver = MutationObserver ;
 
 describe('Login', () => {
   it("User should see a title, a username input, and two buttons when viewing the login page", () => {
@@ -72,29 +75,37 @@ describe('Login', () => {
     expect(mockVerifyUser).toHaveBeenCalledTimes(1);
   });
 
-  // skipped to do tomorrow since the error message has changed and is no longer a window alert
-  it.skip('User should not be allowed to login if they are under 21', () => {
+  // Skipped to complete in the morning
+  it.skip('User should not be allowed to login if they are under 21', async () => {
     const mockDenyUser = jest.fn();
 
-    const { getByLabelText, getByPlaceholderText } = render(
+    const { getByLabelText, getByPlaceholderText, getByText } = render(
       <MemoryRouter>
         <Login
           username={'Yahoo Serious'}
           setUsername={Function}
           loggedIn={false}
-          setLoggedIn={mockVerifyUser}
+          setLoggedIn={mockDenyUser}
         />
       </MemoryRouter>
     );
     
     const usernameInput = getByPlaceholderText('username');
     const under21Button = getByLabelText('over-21-button');
+    
 
     fireEvent.change(usernameInput);
     fireEvent.click(under21Button);
 
+    // await waitFor(() => {
+    //   const errorMsg = getByText('Sorry, come back in a few years');
+    //   expect(errorMsg).toBeInTheDocument();
+    // })
+
+    const errorMsg = await waitFor(() => getByText('Sorry, come back in a few years'));
+
     expect(mockDenyUser).toHaveBeenCalledTimes(1);
-    // expect message to be in the doc as well
+    expect(errorMsg).toBeInTheDocument();
   })
 
 })
