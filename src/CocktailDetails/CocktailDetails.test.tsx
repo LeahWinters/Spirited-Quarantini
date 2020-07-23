@@ -4,7 +4,6 @@ import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { getCocktailDetails } from "../apiCalls";
-
 jest.mock('../apiCalls');
 
 describe('CocktailDetails', () => {
