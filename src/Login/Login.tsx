@@ -42,7 +42,7 @@ const Login: React.SFC<LoginProps> = (props) => {
         <section className="login-btns">
           <Link to="/dashboard">
             <button
-              onClick={(event) => verifyUser()}
+              onClick={() => verifyUser()}
               className="submit-login-btn"
               aria-label="submit-button"
               type="button"

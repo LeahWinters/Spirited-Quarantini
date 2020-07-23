@@ -1,3 +1,4 @@
+import { RandomCocktail } from './Definitions/RandomCocktail'
 const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 
 //random cocktail: https://www.thecocktaildb.com/api/json/v1/1/random.php
@@ -5,19 +6,14 @@ const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 //lookup by id: https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
 
 
-export const getRandomCocktail = async () => {
+export const getRandomCocktail = async ():Promise<RandomCocktail> => {
 	const response = await fetch(`${rootUrl}/random.php`);
-	const data = await response.json();
-  const filteredData = data.drinks.filter((drink: string) => drink !== null);
+  const data = await response.json();
 
-  return filteredData[0];
-  // if (response.ok) {
-  //   return await response.json();
-  // } else {
-  //   throw new Error({...response})
-  // }
+  return data.drinks[0]
 }
 
+//Add AlcoholicCocktail[] to definitions 
 export const getAllCocktails = async () => {
   const response = await fetch(`${rootUrl}/filter.php?a=Alcoholic`);
   const data = await response.json();
