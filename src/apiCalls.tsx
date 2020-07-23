@@ -25,5 +25,6 @@ export const getCocktailDetails = async (givenID: string) => {
 	console.log('tried')
 	const response = await fetch(`${rootUrl}/lookup.php?i=${parseInt(givenID)}`);
 	const data = await response.json();
+	console.log(data.drinks[0]);
 	return data.drinks[0];
 }
