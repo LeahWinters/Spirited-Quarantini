@@ -44,7 +44,7 @@ const Login: React.SFC<LoginProps> = (props) => {
             <button
               onClick={() => verifyUser()}
               className="submit-login-btn"
-              aria-label="submit-button"
+              aria-label="over-21-button"
               type="button"
               disabled={!buttonsEnabled}
             >
@@ -55,7 +55,7 @@ const Login: React.SFC<LoginProps> = (props) => {
           <button
             onClick={(event) => setIs21(false)}
             className="submit-login-btn"
-            aria-label="submit-button"
+            aria-label="under-21-button"
             type="button"
             disabled={!buttonsEnabled}
           >
