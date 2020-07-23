@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getCocktailDetails } from '../apiCalls';
 import { RandomCocktail } from '../Definitions/RandomCocktail'
-import './CocktailsDetails.scss';
+import './CocktailDetails.scss';
 export interface CocktailDetailsProps {
 	id: string;
 }

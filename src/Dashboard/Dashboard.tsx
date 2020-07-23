@@ -43,7 +43,7 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 			<section className='cocktail-OTD'>
 				<h3>{randomCocktail.strDrink}</h3>
 				<img className='COTD-img' src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
-				<Link to={`/${randomCocktail.idDrink}/details`}><button className='details-btn'>More details</button></Link>
+				<Link to={`/${randomCocktail.idDrink}/details`}><button className='details-btn' aria-label='details-button'>More details</button></Link>
 			</section>
 		</section>
 	)
