@@ -29,11 +29,11 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
     return drinkDetails as RandomCocktail;
 	}
 	
-	const displayIngredients = () => {
+	const displayIngredients = (): Array<string> => {
 		const cocktailInfoKeys = Object.keys(cocktailInfo)
-		console.log(cocktailInfoKeys, 'display');
-		console.log(cocktailInfo, 'info')
-	}
+    const cocktailIngredients = cocktailInfoKeys.filter(keys => keys.slice(0, 13) === 'strIngredient')
+		return cocktailIngredients.map(key => (cocktailInfo[key]))
+  }
 
 	useEffect(() => {getCocktail()}, []);
 
@@ -63,7 +63,6 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 					<p>{cocktailInfo.strIngredient13} {cocktailInfo.strMeasure13}</p>
 					<p>{cocktailInfo.strIngredient14} {cocktailInfo.strMeasure14}</p>
 					<p>{cocktailInfo.strIngredient15} {cocktailInfo.strMeasure15}</p>
-					{displayIngredients()}
 				</section>
 			</section>
 		</section>	
