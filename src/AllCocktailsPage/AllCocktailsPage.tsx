@@ -28,13 +28,17 @@ const AllCocktailsPage: React.SFC = () => {
     } catch (error) {
       setError(error.message);
     }
-  };
+	};
 
   useEffect(() => {
     displayAllCocktails();
-  }, []);
+	}, []);
 
-  return <div>ALL COCKTAILS PAGE</div>;
+	return <section className="all-cocktails-container">
+		
+		</section>;
+	
+
 };
 
 export default AllCocktailsPage;
