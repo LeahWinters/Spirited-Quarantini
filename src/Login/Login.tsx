@@ -15,7 +15,7 @@ const Login: React.SFC<LoginProps> = (props) => {
     props.setLoggedIn(!props.loggedIn);
   };
 
-  const denyUser = () => {
+  const denyUser = ():void => {
 		return(
 			alert('Non-alcoholic drinks coming soon!')
 		)
