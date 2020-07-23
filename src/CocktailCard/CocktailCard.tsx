@@ -12,6 +12,7 @@ const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
     <section className="cocktail-card">
       <h3 className="card-title">{props.strDrink}</h3>
       <img className='CC-img' src={props.strDrinkThumb} alt={props.strDrink} />
+      <button className='cc-button'>Make Me!</button>
     </section>
   )
 }
