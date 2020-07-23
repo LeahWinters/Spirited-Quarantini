@@ -4,7 +4,7 @@ import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Dashboard from '../Dashboard/Dashboard';
 import About from '../About/About';
-import AllCocktails from '../AllCocktails/AllCocktails';
+import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import './App.scss';
 
@@ -21,7 +21,7 @@ const App: React.SFC = () => {
 			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
-				<Route path="/cocktails" render={() => <AllCocktails />} />
+				<Route path="/cocktails" render={() => <AllCocktailsPage />} />
 				<Route path="/my_cocktails" render={() => <MyCocktails />} />
 				<Route path="/dashboard" render={() => 
 					<Dashboard 
