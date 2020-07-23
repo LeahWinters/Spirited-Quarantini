@@ -11,6 +11,7 @@ describe('Header', () => {
         <Header 
           loggedIn={false} 
           setLoggedIn={false}
+          setUsername={''}
         />
       </MemoryRouter>
     );
@@ -26,6 +27,7 @@ describe('Header', () => {
         <Header 
           loggedIn={true} 
           setLoggedIn={Function}
+          setUsername={''}
         />
       </MemoryRouter>
     );
@@ -55,6 +57,7 @@ describe('Header', () => {
         <Header 
           loggedIn={true} 
           setLoggedIn={Function}
+          setUsername={''}
           // passed in function that will be used to mock
         />
       </MemoryRouter>
