@@ -1,5 +1,5 @@
 import React from 'react';
-import 'CocktailCard.scss';
+import './CocktailCard.scss';
 
 export interface CocktailsCardProps {
   strDrink: string;
@@ -12,7 +12,7 @@ const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
   return (
     <section className="cocktail-card">
       <h3 className="card-title">{props.strDrink}</h3>
-      <img className='CC-img' src={`${props.strDrinkThumb}`} alt={`${props.strDrink}`} />
+      <img className='CC-img' src={props.strDrinkThumb} alt={props.strDrink} />
     </section>
   )
 }

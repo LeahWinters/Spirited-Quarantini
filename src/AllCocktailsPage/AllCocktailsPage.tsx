@@ -20,12 +20,13 @@ const AllCocktailsPage: React.SFC = () => {
       idDrink: 'string'
 		}]
   });
+
   const [error, setError] = useState<string>("");
 
   const displayAllCocktails = async (): Promise<any> => {
     try {
       const data: AllCocktailsDetails = await getAllCocktails();
-      setAllCocktails(data);
+      return setAllCocktails(data);
     } catch (error) {
       setError(error.message);
     }
@@ -33,20 +34,27 @@ const AllCocktailsPage: React.SFC = () => {
 
   useEffect(() => {
     displayAllCocktails();
-	}, []);
+  }, []);
+
+  const cocktailsArray = Object.values(allCocktails.drinks);
+
+  console.log('array', cocktailsArray);
+  
+  const cocktailCards = cocktailsArray.map(cocktail => {
+    return (
+      <CocktailCard 
+        strDrink={cocktail.strDrink}
+        strDrinkThumb={cocktail.strDrinkThumb}
+        idDrink={cocktail.idDrink}
+      />
+    );
+  });
 
 	return <section className="all-cocktails-container">
-		
+      {cocktailCards}
 		</section>;
 	
 
 };
 
 export default AllCocktailsPage;
-
-// "drinks": [
-// 	{
-// 		"strDrink": "'57 Chevy with a White License Plate",
-// 		"strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/qyyvtu1468878544.jpg",
-// 		"idDrink": "14029"
-// }
