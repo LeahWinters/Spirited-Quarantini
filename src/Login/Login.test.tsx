@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 // window.MutationObserver = require("mutation-observer");
-// import MutationObserver from '@sheerun/mutationobserver-shim';
-// window.MutationObserver = MutationObserver ;
+import MutationObserver from '@sheerun/mutationobserver-shim';
+window.MutationObserver = MutationObserver ;
 
 describe('Login', () => {
   it("User should see a title, a username input, and two buttons when viewing the login page", () => {
@@ -69,14 +69,14 @@ describe('Login', () => {
     const usernameInput = getByPlaceholderText('username');
     const over21Button = getByLabelText('over-21-button');
 
-    fireEvent.change(usernameInput);
+    fireEvent.change(usernameInput, {target: {value: 'Yahoo Serious'}});
     fireEvent.click(over21Button);
 
     expect(mockVerifyUser).toHaveBeenCalledTimes(1);
   });
 
   // Skipped to complete in the morning
-  it.skip('User should not be allowed to login if they are under 21', async () => {
+  it('User should not be allowed to login if they are under 21', async () => {
     const mockDenyUser = jest.fn();
 
     const { getByLabelText, getByPlaceholderText, getByText } = render(
@@ -93,19 +93,13 @@ describe('Login', () => {
     const usernameInput = getByPlaceholderText('username');
     const under21Button = getByLabelText('over-21-button');
     
-
-    fireEvent.change(usernameInput);
+    fireEvent.change(usernameInput, {target: {value: 'Yahoo Serious'}});
     fireEvent.click(under21Button);
-
-    // await waitFor(() => {
-    //   const errorMsg = getByText('Sorry, come back in a few years');
-    //   expect(errorMsg).toBeInTheDocument();
-    // })
 
     const errorMsg = await waitFor(() => getByText('Sorry, come back in a few years'));
 
     expect(mockDenyUser).toHaveBeenCalledTimes(1);
     expect(errorMsg).toBeInTheDocument();
-  })
+  });
 
-})
+});
