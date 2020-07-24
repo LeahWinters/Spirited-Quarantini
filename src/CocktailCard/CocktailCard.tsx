@@ -1,5 +1,6 @@
 import React from "react";
 import "./CocktailCard.scss";
+import { Link } from 'react-router-dom'
 
 export interface CocktailsCardProps {
   strDrink: string;
@@ -14,7 +15,7 @@ const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
         <h3>{props.strDrink}</h3>
         <button className="cc-button">Make Me!</button>
       </div>
-      <img className="CC-img" src={props.strDrinkThumb} alt={props.strDrink} />
+      <Link to={`/${props.idDrink}/details`}><img className="CC-img" src={props.strDrinkThumb} alt={props.strDrink} /></Link>
     </section>
   );
 };
