@@ -76,7 +76,7 @@ describe('Login', () => {
   });
 
   // Skipped to complete in the morning
-  it('User should not be allowed to login if they are under 21', async () => {
+  it.skip('User should not be allowed to login if they are under 21', async () => {
     const mockDenyUser = jest.fn();
 
     const { getByLabelText, getByPlaceholderText, getByText } = render(
