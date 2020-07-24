@@ -38,8 +38,6 @@ const AllCocktailsPage: React.SFC = () => {
   }, []);
 
   const cocktailsArray = Object.values(allCocktails.drinks);
-
-  console.log('array', cocktailsArray);
   
   const cocktailCards = cocktailsArray.map(cocktail => {
     return (

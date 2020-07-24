@@ -13,7 +13,6 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 	const getCocktail = async ():Promise<any> => {
 		try {
 			const data: RandomCocktail = await getCocktailDetails(props.id);
-			console.log(data);
 			setCocktailInfo(data);
 		} catch (error) {
 		setError(error.message);
