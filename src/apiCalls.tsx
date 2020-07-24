@@ -14,7 +14,7 @@ export const getAllCocktails = async (): Promise<AllCocktailsDetails> => {
   return data;
 };
 
-export const getRandomCocktail = async ():Promise< { [key: string]: string }> => {
+export const getRandomCocktail = async ():Promise<RandomCocktail> => {
 	const response = await fetch(`${rootUrl}/random.php`);
   const data = await response.json();
   return data.drinks[0]
