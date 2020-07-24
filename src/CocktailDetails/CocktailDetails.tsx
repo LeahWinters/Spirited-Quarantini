@@ -36,7 +36,8 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
   }
 
 	useEffect(() => {getCocktail()}, []);
-
+	//modify lint file?
+	
 	return (
 		<section className='cocktail-details-wrapper'>
 			<section className='cocktail-details-card'>

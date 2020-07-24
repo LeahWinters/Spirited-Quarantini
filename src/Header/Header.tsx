@@ -9,7 +9,8 @@ interface HeaderProps {
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-
+	//state w/ input value
+	
 	const logoutUser = () => {
 		props.setLoggedIn(false);
 		props.setUsername('')
