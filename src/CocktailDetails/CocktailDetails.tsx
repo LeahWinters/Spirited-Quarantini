@@ -22,17 +22,17 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 	const removeNulls = (info: RandomCocktail): RandomCocktail => {
   	const drinkDetails: Partial<RandomCocktail> = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
 		(Object.keys(info) as Array<keyof RandomCocktail>).forEach((detail) => {
-      if (info[detail]!== null) { 
+      if (info[detail] !== null) { 
         drinkDetails[detail] = info[detail]; 
       }
 		});
     return drinkDetails as RandomCocktail;
 	}
 	
-	const displayIngredients = (): Array<string> => {
-		const cocktailInfoKeys = Object.keys(cocktailInfo)
-    const cocktailIngredients = cocktailInfoKeys.filter(keys => keys.slice(0, 13) === 'strIngredient')
-		return cocktailIngredients.map(key => (cocktailInfo[key]))
+	const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
+		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof RandomCocktail>)
+			.filter(keys => keys.slice(0, endingIndex) === givenKey);
+		return cocktailIngredients.map(i => cocktailInfo[i] as string);
   }
 
 	useEffect(() => {getCocktail()}, []);
@@ -47,22 +47,15 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 				<h4>Glass:<div>{cocktailInfo.strGlass}</div></h4>
 				<h4>Instructions:</h4>
 					<p>{cocktailInfo.strInstructions}</p>
-				<h4>Ingredients:</h4>
-					<p>{cocktailInfo.strIngredient1} {cocktailInfo.strMeasure1}</p>
-					<p>{cocktailInfo.strIngredient2} {cocktailInfo.strMeasure2}</p>
-					<p>{cocktailInfo.strIngredient3} {cocktailInfo.strMeasure3}</p>
-					<p>{cocktailInfo.strIngredient4} {cocktailInfo.strMeasure4}</p>
-					<p>{cocktailInfo.strIngredient5} {cocktailInfo.strMeasure5}</p>
-					<p>{cocktailInfo.strIngredient6} {cocktailInfo.strMeasure6}</p>
-					<p>{cocktailInfo.strIngredient7} {cocktailInfo.strMeasure7}</p>
-					<p>{cocktailInfo.strIngredient8} {cocktailInfo.strMeasure8}</p>
-					<p>{cocktailInfo.strIngredient9} {cocktailInfo.strMeasure9}</p>
-					<p>{cocktailInfo.strIngredient10} {cocktailInfo.strMeasure10}</p>
-					<p>{cocktailInfo.strIngredient11} {cocktailInfo.strMeasure11}</p>
-					<p>{cocktailInfo.strIngredient12} {cocktailInfo.strMeasure12}</p>
-					<p>{cocktailInfo.strIngredient13} {cocktailInfo.strMeasure13}</p>
-					<p>{cocktailInfo.strIngredient14} {cocktailInfo.strMeasure14}</p>
-					<p>{cocktailInfo.strIngredient15} {cocktailInfo.strMeasure15}</p>
+				Ingredients:
+				<section className='ingredient-container'>
+					<ul>
+						{displayIngredients(13, 'strIngredient').map(item => <li>{item}</li>)}
+					</ul>
+					<ul className='ingr-measure-list'>
+						{displayIngredients(10, 'strMeasure').map(item => <li>{item}</li>)}
+					</ul>
+				</section>
 				</section>
 			</section>
 		</section>	
