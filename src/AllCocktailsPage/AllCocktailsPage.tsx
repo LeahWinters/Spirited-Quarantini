@@ -46,7 +46,8 @@ const AllCocktailsPage: React.SFC = () => {
       <CocktailCard 
         strDrink={cocktail.strDrink}
         strDrinkThumb={cocktail.strDrinkThumb}
-        idDrink={cocktail.idDrink}
+				idDrink={cocktail.idDrink}
+				key={cocktail.idDrink}
       />
     );
   });
