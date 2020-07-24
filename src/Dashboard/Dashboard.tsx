@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { getRandomCocktail } from '../apiCalls';
 import './Dashboard.scss';
 import { RandomCocktail } from '../Definitions/RandomCocktail'
+import {RouteComponentProps, withRouter} from "react-router-dom"
 
 export interface DashboardProps {
 	username: string
 }
 
 
-const Dashboard: React.SFC<DashboardProps> = (props) => {
+const Dashboard: React.SFC<DashboardProps> = (props, {history}: RouteComponentProps) => {
 	const [randomCocktail, setRandomCocktail] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
 
@@ -17,7 +18,8 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const getCocktail = async ():Promise<any> => {
 		try {
 			const data: RandomCocktail = await getRandomCocktail();
-			setRandomCocktail(data);
+			setRandomCocktail(data)
+			history.push('/');
 		} catch (error) {
 			setError(error.message);
 		}
@@ -49,4 +51,4 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	)
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
