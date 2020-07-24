@@ -10,6 +10,10 @@
   justify-content: center;
   margin: 2%;
   width: 77%;
+  h3 {
+    margin: 0;
+		margin-bottom: 10px;
+  }
 }
 
 .card-title {
@@ -29,4 +33,13 @@
   margin-top: 0.5%;
   padding: 0.5% 1%;
   width: 13%;
+}
+
+.cc-button {
+  background: none;
+  color: white;
+  border: 1px solid red;
+  border-radius: 2px;
+  height: 6vh;
+  margin-left: 20px;
 }
