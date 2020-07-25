@@ -11,7 +11,7 @@ export interface CocktailDetailsProps {
 	madeCocktails: string[];
 }
 
-const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails }) => {
+const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails, madeCocktails }) => {
   const [cocktailInfo, setCocktailInfo] = useState<Cocktail>({
     idDrink: "",
     strDrink: "",
@@ -21,7 +21,8 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
   const [error, setError] = useState("");
   const [isFavorite, setIsFavorite] = useState<boolean>(
     favCocktails.includes(id)
-  );
+	);
+	const [isMade, setIsMade] = useState<boolean>(madeCocktails.includes(id))
 
   const getCocktail = async (): Promise<any> => {
     try {
@@ -47,10 +48,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
     return drinkDetails as Cocktail;
   };
 
-  const displayIngredients = (
-    endingIndex: number,
-    givenKey: string
-  ): string[] => {
+  const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
     const cocktailIngredients = (Object.keys(cocktailInfo) as Array<
       keyof Cocktail
     >).filter((keys) => keys.slice(0, endingIndex) === givenKey);
@@ -112,10 +110,28 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
           {isFavorite && (
             <button
               type="button"
-              aria-label="add-to-favorites"
+              aria-label="remove-from-favorites"
               onClick={() => clickHandler()}
             >
               Remove from Favorites
+            </button>
+          )}
+					{!isMade && (
+            <button
+              type="button"
+              aria-label="add-to-made"
+              onClick={() => clickHandler()}
+            >
+              Add to My Cocktails
+            </button>
+          )}
+          {isMade && (
+            <button
+              type="button"
+              aria-label="remove-from-made"
+              onClick={() => clickHandler()}
+            >
+              Remove from My Cocktails
             </button>
           )}
         </section>
