@@ -7,16 +7,39 @@ import About from '../About/About';
 import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
+import { getAllCocktails } from "../apiCalls";
 import './App.scss';
+
+export interface AllCocktailsDetails {
+		strDrink: string,
+		strDrinkThumb: string,
+		idDrink: string
+}
 
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
 	const [ loggedIn, setLoggedIn ] = useState(false);
-	//store favorite in app
-	//do all fetch calls & store info (look into useMemo)
-	//b/c child components will unmount & remount continuously but App never unmounts
+	const [ allCocktails, setAllCocktails ] = useState<AllCocktailsDetails[]>([{strDrink: '',
+		strDrinkThumb: '',
+		idDrink: ''}]);
+  const [error, setError] = useState('');
 
+	//store favorite in app
 	//fn that will filter searched input
+
+	const fetchAllCocktails = async (): Promise<any> => {
+    try {
+      const data: AllCocktailsDetails[] = await getAllCocktails();
+      return setAllCocktails(data);
+    } catch (error) {
+      setError(error.message);
+    }
+	};
+
+	useEffect(() => {fetchAllCocktails()}, []);
+
+	//add to favorites (id);
+	// .push ()
 
 	return (
 		<main>
@@ -27,7 +50,13 @@ const App: React.SFC = () => {
 			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
-				<Route path="/cocktails" render={() => <AllCocktailsPage />} />
+				<Route 
+					path="/cocktails" 
+					render={() => (
+						<AllCocktailsPage 
+							allCocktails={allCocktails} 
+						/>)} 
+				/>
 				<Route path="/my_cocktails" render={() => <MyCocktails />} />
 				<Route 
 					path="/:id/details" 
