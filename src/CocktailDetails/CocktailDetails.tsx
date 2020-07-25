@@ -44,11 +44,11 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 				<h3>{cocktailInfo.strDrink}</h3>
 				<img className='COTD-img' src={`${cocktailInfo.strDrinkThumb}`} alt={`${cocktailInfo.strDrink}`} /> 
 				<section className='info-wrapper'>
-				<h4>Type:<div>{cocktailInfo.strCategory}, {cocktailInfo.strAlcoholic}</div></h4>
-				<h4>Glass:<div>{cocktailInfo.strGlass}</div></h4>
+				<p className='detail-paragraph'><div className='sub-heading'>Type:  </div> {cocktailInfo.strCategory}, {cocktailInfo.strAlcoholic}</p>
+				<p className='detail-paragraph'><div className='sub-heading'>Glass:  </div>{cocktailInfo.strGlass}</p>
 				<h4>Instructions:</h4>
 					<p>{cocktailInfo.strInstructions}</p>
-				Ingredients:
+				<div className='sub-heading'>Ingredients:</div>
 				<section className='ingredient-container'>
 					<ul>
 						{displayIngredients(13, 'strIngredient').map((item, i) => <li key={i}>{item}</li>)}

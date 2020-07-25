@@ -11,11 +11,11 @@ export interface CocktailsCardProps {
 const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
   return (
     <section className="cocktail-card">
-      <div className='card-title'>
-        <h3>{props.strDrink}</h3>
+      <h3 className='card-title'>{props.strDrink}</h3>
+			<section className='img-container'>
 				<Link to={`/${props.idDrink}/details`}><button className="cc-button">Make Me!</button></Link>
-      </div>
-      <img className="CC-img" src={props.strDrinkThumb} alt={props.strDrink} />
+				<img className="CC-img" src={props.strDrinkThumb} alt={props.strDrink} />
+			</section>
     </section>
   );
 };

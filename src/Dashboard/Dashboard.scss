@@ -12,7 +12,9 @@
 	background-color: black;
 	color: white;
 	width: 40%;
-	height: 51%;
+	height: 55%;
+	min-height: 400px;
+	min-width: 250px;
 	margin: 0 auto;
 	h3 {
 		margin: 0;
@@ -30,15 +32,22 @@
 }
 
 .cocktail-OTD-wrapper {
+	position: absolute;
+	bottom: 0;
 	width: 100vw;
-	height: 85vh;
+	height: 76vh;
 	opacity: 90%;
 	background-color: black;
-	margin-top: 14%;
 	font-family: sans-serif;
 }
 
 .welcome-msg {
 	color: white;
 	margin-left: 15px;
+}
+
+.details-btn {
+	min-height: 20px;
+	margin-top: 6px;
+	margin-bottom: 3px;
 }

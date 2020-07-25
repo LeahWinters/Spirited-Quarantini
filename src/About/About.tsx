@@ -1,4 +1,5 @@
 import React from 'react';
+import './About.scss';
 
 interface AboutProps {
 }
@@ -6,7 +7,7 @@ interface AboutProps {
 const About: React.SFC<AboutProps> = () => {
 
 	return (
-		<div>ABOUT PAGE</div>
+		<section className='about-wrapper'>ABOUT PAGE</section>
 	)
 }
 

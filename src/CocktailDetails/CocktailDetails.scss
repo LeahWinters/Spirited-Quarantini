@@ -1,10 +1,12 @@
 .cocktail-details-wrapper {
-	height: 100vh;
+	position: absolute;
+	bottom: 0;
+	height: 76vh;
 	width: 100vw;
-	margin-top: 24%;
 	color: white;
 	background-color: black;
 	opacity: 90%;
+	overflow: scroll;
 }
 
 .cocktail-details-card {
@@ -29,4 +31,13 @@
 
 .ingr-measure-list {
 	list-style-type: none;
+}
+
+.detail-paragraph {
+	display: flex;
+}
+
+.sub-heading {
+	font-weight: bold;
+	margin-right: 6px;
 }

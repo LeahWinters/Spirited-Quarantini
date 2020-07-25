@@ -60,6 +60,7 @@ const Header: React.SFC<HeaderProps> = props => {
 					<Link to='/'>
 						<button
 							onClick={logoutUser}
+							className='logout-btn'
 						>
 							Logout
 						</button>
