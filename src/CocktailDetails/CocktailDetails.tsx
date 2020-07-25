@@ -57,6 +57,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 						{displayIngredients(10, 'strMeasure').map((item, i) => <li key={i}>{item}</li>)}
 					</ul>
 				</section>
+					<button type="button" aria-label="add-to-favorites" onClick={props.toggleFavorites}>Add to Favorites </button>
 				</section>
 			</section>
 		</section>	
