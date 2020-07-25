@@ -40,7 +40,7 @@ describe("Dashboard", () => {
   });
 
   it("should display a drink card", async () => {
-    const { getByText, getByRole, getByAltText, container } = render(
+    const { getByText, getByRole, getByAltText } = render(
       <MemoryRouter>
         <Dashboard username={"Temp Name"} />
       </MemoryRouter>
@@ -48,7 +48,8 @@ describe("Dashboard", () => {
 
     const drinkName = await waitFor(() => getByText('Margarita'))
     const drinkImg = await waitFor(() => getByAltText('Margarita'))
-    const button = await waitFor(() => getByRole('button', {name: 'More details'}))
+    // const button = await waitFor(() => getByRole('button', {name: 'More details'}))
+    const button = await waitFor(() => getByText('More details'))
     
     expect(drinkName).toBeInTheDocument();
     expect(drinkImg).toBeInTheDocument();
