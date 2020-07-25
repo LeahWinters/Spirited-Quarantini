@@ -33,27 +33,27 @@
 }
 
 .cocktail-OTD-wrapper {
-	position: absolute;
+	background-color: black;
 	bottom: 0;
-	width: 100vw;
+	font-family: sans-serif;
 	height: 76vh;
 	opacity: 90%;
-	background-color: black;
-	font-family: sans-serif;
 	overflow: scroll;
+	position: absolute;
+	width: 100vw;
 }
 
 .welcome-msg {
 	color: white;
-	margin-left: 15px;
 	font-family: 'Recursive', sans-serif;
+	margin-left: 15px;
 }
 
 .details-btn {
+	cursor: pointer;
+	font-family: 'Recursive', sans-serif;
+	margin-bottom: 3px;
+	margin-top: 6px;
 	min-height: 29px;
   width: 90px;
-	margin-top: 6px;
-	margin-bottom: 3px;
-	font-family: 'Recursive', sans-serif;
-	cursor: pointer;
 }
