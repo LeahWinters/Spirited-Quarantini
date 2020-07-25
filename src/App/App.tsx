@@ -22,7 +22,8 @@ const App: React.SFC = () => {
   const [allCocktails, setAllCocktails] = useState<AllCocktailsDetails[]>([
     { strDrink: "", strDrinkThumb: "", idDrink: "" },
   ]);
-  const [favCocktails, setFavCocktails] = useState<string[]>([]);
+	const [favCocktails, setFavCocktails] = useState<string[]>([]);
+	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
   const [error, setError] = useState("");
 
   //fn that will filter searched input
@@ -48,9 +49,15 @@ const App: React.SFC = () => {
      setFavCocktails([...favCocktails, drinkID]);
     } else
     setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
-  };
-
-  
+	};
+	
+	const toggleMadeCocktails = (drinkID: string): any => {
+		if (!madeCocktails.includes(drinkID)) {
+			setMadeCocktails([...madeCocktails, drinkID]);
+		} else {
+			setMadeCocktails(madeCocktails.filter(cocktail => cocktail !== drinkID))
+		}
+	}
 
   return (
     <main>
@@ -71,7 +78,13 @@ const App: React.SFC = () => {
           render={({ match }) => {
             const { id } = match.params;
             return (
-              <CocktailDetails id={id} toggleFavorites={toggleFavorites} favCocktails={favCocktails}/>
+							<CocktailDetails 
+								id={id} 
+								toggleFavorites={toggleFavorites} 
+								favCocktails={favCocktails} 
+								toggleMadeCocktails={toggleMadeCocktails} 
+								madeCocktails={madeCocktails}
+							/>
             );
           }}
         />

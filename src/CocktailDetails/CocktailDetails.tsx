@@ -6,7 +6,9 @@ import "./CocktailDetails.scss";
 export interface CocktailDetailsProps {
   id: string;
   toggleFavorites: (id: string) => any;
-  favCocktails: string[];
+	favCocktails: string[];
+	toggleMadeCocktails: (id: string) => any;
+	madeCocktails: string[];
 }
 
 const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails }) => {
