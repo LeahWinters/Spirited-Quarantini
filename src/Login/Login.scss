@@ -3,59 +3,75 @@ displayNone {
 }
 
 .login-wrapper {
-	width: 100vw;
+	color: white;
 	height: 80vh;
 	margin-top: 20%;
-	color: white;
 	overflow: scroll;
+	width: 100vw;
 }
 
 .login-form {
-	height: 400px;
+	align-items: center;
 	background: black;
-	opacity: 80%;
-	width: 500px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	font-family: 'Recursive', sans-serif;
+	font-size: 13px;
+	height: 400px;
 	justify-content: center;
 	margin: 0 auto;
-	padding: 15px;
-	font-size: 13px;
 	margin-bottom: 15%;
+	opacity: 80%;
+	padding: 15px;
+	width: 500px;
+}
+
+.login-msg {
+	font-size: 1.3em;
+  height: 13%;
+	width: 82%;
 }
 
 .login-btns {
 	display: flex;
+	height: 10%;
 	justify-content: space-evenly;
-	width: 50%;
 	margin-top: 20px;
+	width: 50%;
 }
 
 .subtitle {
+	color: black;
+	font-family: 'Recursive', sans-serif;
+	font-size: 25px;
 	font-style: italic;
-	margin-bottom: 50px!important;
-	width: 298px;
+	font-weight: bolder;
 	margin: 0 auto;
-	font-size: 17px;
+	margin-bottom: 43px!important;
+	width: 470px;
 }
 
 .minor-msg {
+	color: red;
 	margin-top: 300px;
 	position: absolute;
-	color: red;
 }
 
 .submit-login-btn {
-	min-height: 23px;
+	cursor: pointer;
+	font-family: 'Recursive', sans-serif;
+	font-size: 16px;
+	min-height: 25px;
 }
 
 .input {
 	color: white;
 	background: none;
-	border-style: none;
 	border: 1px solid grey;
-	height: 2vh;
-	width: 200px;
+	font-size: 1.3em;
+	font-family: 'Recursive', sans-serif;
+	height: 3.5vh;
 	min-height: 26px;
+	padding-left: 3%;
+	width: 250px;
 }
