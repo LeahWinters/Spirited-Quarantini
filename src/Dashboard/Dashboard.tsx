@@ -15,7 +15,7 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	return (
 		<section className='cocktail-OTD-wrapper'>
 			<p className='welcome-msg'>Welcome {props.username}!</p>
-			<p className='COTD-title'>Random Cocktail</p>
+			<p className='COTD-title'>Cocktail of the Day</p>
 			{error && <div>{error}</div>}
 			<section className='cocktail-OTD'>
 				<h3>{randomCocktail.strDrink}</h3>

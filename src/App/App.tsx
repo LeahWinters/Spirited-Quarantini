@@ -79,6 +79,8 @@ const App: React.SFC = () => {
           render={() => <AllCocktailsPage allCocktails={allCocktails} />}
         />
         <Route path="/my_cocktails" render={() => <MyCocktails />} />
+        <Route path="/my_cocktails/favorites" render={() => <MyCocktails />} />
+        <Route path="/my_cocktails/logged" render={() => <MyCocktails />} />
         <Route
           path="/:id/details"
           render={({ match }) => {
