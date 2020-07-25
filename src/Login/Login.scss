@@ -7,6 +7,7 @@ displayNone {
 	height: 80vh;
 	margin-top: 20%;
 	color: white;
+	overflow: scroll;
 }
 
 .login-form {
@@ -21,6 +22,7 @@ displayNone {
 	margin: 0 auto;
 	padding: 15px;
 	font-size: 13px;
+	margin-bottom: 15%;
 }
 
 .login-btns {
