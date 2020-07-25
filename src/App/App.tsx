@@ -36,7 +36,7 @@ const App: React.SFC = () => {
 						return <CocktailDetails id={id} />} 
 					}
 				/>
-				<Route path="/dashboard" render={() => 
+				<Route path="/random_cocktail" render={() => 
 					<Dashboard 
 						username={username}
 					/>} 

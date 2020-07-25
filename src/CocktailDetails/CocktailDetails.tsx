@@ -1,36 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { getCocktailDetails } from '../apiCalls';
-import { RandomCocktail } from '../Definitions/RandomCocktail'
+import { Cocktail } from '../Definitions/RandomCocktail'
 import './CocktailDetails.scss';
 export interface CocktailDetailsProps {
 	id: string;
 }
 
 const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
-	const [cocktailInfo, setCocktailInfo] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''})
+	const [cocktailInfo, setCocktailInfo] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''})
 	const [error, setError] = useState('');
 
 	const getCocktail = async ():Promise<any> => {
 		try {
-			const data: RandomCocktail = await getCocktailDetails(props.id);
+			const data: Cocktail = await getCocktailDetails(props.id);
 			setCocktailInfo(removeNulls(data));
 		} catch (error) {
 		setError(error.message);
 		}
 	}
 
-	const removeNulls = (info: RandomCocktail): RandomCocktail => {
-  	const drinkDetails: Partial<RandomCocktail> = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
-		(Object.keys(info) as Array<keyof RandomCocktail>).forEach((detail) => {
+	const removeNulls = (info: Cocktail): Cocktail => {
+  	const drinkDetails: Partial<Cocktail> = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
+		(Object.keys(info) as Array<keyof Cocktail>).forEach((detail) => {
       if (info[detail] !== null) { 
         drinkDetails[detail] = info[detail]; 
       }
 		});
-    return drinkDetails as RandomCocktail;
+    return drinkDetails as Cocktail;
 	}
 	
 	const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
-		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof RandomCocktail>)
+		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof Cocktail>)
 			.filter(keys => keys.slice(0, endingIndex) === givenKey);
 		return cocktailIngredients.map(i => cocktailInfo[i] as string);
   }

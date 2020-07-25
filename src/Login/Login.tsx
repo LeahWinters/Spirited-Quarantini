@@ -40,7 +40,7 @@ const Login: React.SFC<LoginProps> = (props) => {
         </section>
 
         <section className="login-btns">
-          <Link to="/dashboard">
+          <Link to="/cocktails">
             <button
               onClick={() => verifyUser()}
               className="submit-login-btn"

@@ -26,7 +26,7 @@ const Header: React.SFC<HeaderProps> = props => {
 
 			{props.loggedIn && 
 				<div className='user-header'>
-					<Link to='/dashboard'>
+					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
 					</Link>
 
@@ -51,8 +51,8 @@ const Header: React.SFC<HeaderProps> = props => {
 					<Link to='/about'>
 						<h3 className='navlink-title'>About</h3>
 					</Link>
-					<Link to='/cocktails'>
-						<h3 className='navlink-title'>Cocktails</h3>
+					<Link to='/random_cocktail'>
+						<h3 className='navlink-title'>Random Cocktail</h3>
 					</Link>
 					<Link to='/my_cocktails'>
 						<h3 className='navlink-title'>My Cocktails</h3>

@@ -1,4 +1,4 @@
-import { RandomCocktail } from "./Definitions/RandomCocktail";
+import { Cocktail } from "./Definitions/RandomCocktail";
 import { AllCocktailsDetails } from "./AllCocktailsPage/AllCocktailsPage";
 
 const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
@@ -14,7 +14,7 @@ export const getAllCocktails = async (): Promise<AllCocktailsDetails> => {
   }
 };
 
-export const getRandomCocktail = async ():Promise<RandomCocktail> => {
+export const getRandomCocktail = async ():Promise<Cocktail> => {
   const response = await fetch(`${rootUrl}/random.php`);
   
   if(response.ok) {

@@ -13,7 +13,7 @@ const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
     <section className="cocktail-card">
       <h3 className='card-title'>{props.strDrink}</h3>
 			<section className='img-container'>
-				<Link to={`/${props.idDrink}/details`}><button className="cc-button">Make Me!</button></Link>
+				<Link to={`/${props.idDrink}/details`}><button className="cc-button">Make Me</button></Link>
 				<img className="CC-img" src={props.strDrinkThumb} alt={props.strDrink} />
 			</section>
     </section>
