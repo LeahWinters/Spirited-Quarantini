@@ -66,12 +66,14 @@ header {
 }
 
 .header-search-button {
+	cursor: pointer;
 	margin-left: 7px;
 	min-height: 30px;
 	font-family: 'Recursive', sans-serif;
 }
 
 .logout-btn {
+	cursor: pointer;
 	min-height: 21px;
 	margin-bottom: 4px;
 	font-family: 'Recursive', sans-serif;
