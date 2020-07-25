@@ -8,7 +8,7 @@ export interface CocktailDetailsProps {
 
 const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 	const [cocktailInfo, setCocktailInfo] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''})
-	const [error, setError] = useState<string>('');
+	const [error, setError] = useState('');
 
 	const getCocktail = async ():Promise<any> => {
 		try {
@@ -51,10 +51,10 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 				Ingredients:
 				<section className='ingredient-container'>
 					<ul>
-						{displayIngredients(13, 'strIngredient').map(item => <li>{item}</li>)}
+						{displayIngredients(13, 'strIngredient').map((item, i) => <li key={i}>{item}</li>)}
 					</ul>
 					<ul className='ingr-measure-list'>
-						{displayIngredients(10, 'strMeasure').map(item => <li>{item}</li>)}
+						{displayIngredients(10, 'strMeasure').map((item, i) => <li key={i}>{item}</li>)}
 					</ul>
 				</section>
 				</section>
