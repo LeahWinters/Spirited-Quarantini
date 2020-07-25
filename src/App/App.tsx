@@ -9,10 +9,20 @@ import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
 import './App.scss';
 
+export interface AppProps {
+  favoriteCocktails: [
+    {
+    idDrink: string;
+    }
+  ]
+}
+	
+
+
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
   const [ loggedIn, setLoggedIn ] = useState(false);
-  const [ favoriteCocktails, setFavoriteCocktails ] = useState([])
+  const [ favoriteCocktails, setFavoriteCocktails ] = useState()
 	//store favorite in app
 	//do all fetch calls & store info (look into useMemo)
 	//b/c child components will unmount & remount continuously but App never unmounts
@@ -28,7 +38,7 @@ const App: React.SFC = () => {
 			/>
 			<Switch>
 				<Route path="/about" render={() => <About />} />
-				<Route path="/cocktails" render={() => <AllCocktailsPage />} />
+				<Route path="/cocktails" render={() => <AllCocktailsPage favoriteCocktails={favoriteCocktails}/>} />
 				<Route path="/my_cocktails" render={() => <MyCocktails />} />
 				<Route 
 					path="/:id/details" 
