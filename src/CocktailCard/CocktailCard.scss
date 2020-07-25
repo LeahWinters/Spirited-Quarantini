@@ -1,24 +1,24 @@
 .cocktail-card {
 	align-items: center;
-	opacity: 100%;
 	border: 2px solid grey;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Recursive', sans-serif;
 	justify-content: center;
-	max-height: 55%;
-	min-height: 55%;
 	margin: 2%;
+	max-height: 55%;
 	max-width: 25%;
+	min-height: 55%;
 	min-width: 20%;
+	opacity: 100%;
 }
 
 .card-title {
+  color: white;
 	display: flex;
+	font-size: 18px;
 	justify-content: center;
 	margin: 0;
-  color: white;
-	font-size: 18px;
 }
 
 .CC-img {
