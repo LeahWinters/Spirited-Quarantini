@@ -1,18 +1,16 @@
 .cocktail-card {
 	align-items: center;
-	// background-color: black;
-	// opacity: 100%;
+	opacity: 100%;
 	border: 2px solid grey;
-	// border-image: url('https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png') 50% 50% stretch;
 	display: flex;
 	flex-direction: column;
-  // font-family: 'Playfair Display', serif;
-	// -webkit-font-smoothing: antialiased;
 	font-family: 'Recursive', sans-serif;
 	justify-content: center;
-  height: 55%;
+	max-height: 55%;
+	min-height: 55%;
 	margin: 2%;
-	width: 25%;
+	max-width: 25%;
+	min-width: 20%;
 }
 
 .card-title {

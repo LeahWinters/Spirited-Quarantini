@@ -34,7 +34,6 @@ displayNone {
 
 .login-btns {
 	display: flex;
-
 	justify-content: space-evenly;
 	width: 50%;
 	margin-top: 20px;
@@ -43,10 +42,12 @@ displayNone {
 
 .subtitle {
 	font-style: italic;
+	color: black;
+	font-weight: bolder;
 	margin-bottom: 43px!important;
-	width: 449px;
+	width: 470px;
 	margin: 0 auto;
-	font-size: 23px;
+	font-size: 25px;
 	font-family: 'Recursive', sans-serif;
 }
 
