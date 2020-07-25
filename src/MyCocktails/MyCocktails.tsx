@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllCocktails } from '../apiCalls';
-// import './MyCocktails.scss';
-
+import './MyCocktails.scss';
 
 interface MyCocktailsProps {
 }
@@ -20,7 +19,7 @@ const MyCocktails: React.SFC<MyCocktailsProps> = () => {
 	// }
 
 	return (
-		<div>MY COCKTAILS PAGE</div>
+		<section className='my-cocktails-container'>MY COCKTAILS PAGE</section>
 	)
 }
 

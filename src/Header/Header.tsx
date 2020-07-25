@@ -9,7 +9,8 @@ interface HeaderProps {
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-
+	//state w/ input value
+	
 	const logoutUser = () => {
 		props.setLoggedIn(false);
 		props.setUsername('')
@@ -59,6 +60,7 @@ const Header: React.SFC<HeaderProps> = props => {
 					<Link to='/'>
 						<button
 							onClick={logoutUser}
+							className='logout-btn'
 						>
 							Logout
 						</button>

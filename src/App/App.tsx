@@ -10,8 +10,13 @@ import CocktailDetails from '../CocktailDetails/CocktailDetails';
 import './App.scss';
 
 const App: React.SFC = () => {
-	const [ username, setUsername ] = useState<string>('');
-	const [ loggedIn, setLoggedIn ] = useState<boolean>(false);
+	const [ username, setUsername ] = useState('');
+	const [ loggedIn, setLoggedIn ] = useState(false);
+	//store favorite in app
+	//do all fetch calls & store info (look into useMemo)
+	//b/c child components will unmount & remount continuously but App never unmounts
+
+	//fn that will filter searched input
 
 	return (
 		<main>

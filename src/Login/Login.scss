@@ -7,6 +7,7 @@ displayNone {
 	height: 80vh;
 	margin-top: 20%;
 	color: white;
+	overflow: scroll;
 }
 
 .login-form {
@@ -21,6 +22,7 @@ displayNone {
 	margin: 0 auto;
 	padding: 15px;
 	font-size: 13px;
+	margin-bottom: 15%;
 }
 
 .login-btns {
@@ -42,4 +44,18 @@ displayNone {
 	margin-top: 300px;
 	position: absolute;
 	color: red;
+}
+
+.submit-login-btn {
+	min-height: 23px;
+}
+
+.input {
+	color: white;
+	background: none;
+	border-style: none;
+	border: 1px solid grey;
+	height: 2vh;
+	width: 200px;
+	min-height: 26px;
 }

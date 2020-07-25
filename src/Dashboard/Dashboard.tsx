@@ -8,11 +8,9 @@ export interface DashboardProps {
 	username: string
 }
 
-
 const Dashboard: React.SFC<DashboardProps> = (props) => {
 	const [randomCocktail, setRandomCocktail] = useState<RandomCocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
 	const [error, setError] = useState<string>('');
-
 
 	const getCocktail = async ():Promise<any> => {
 		try {
@@ -24,16 +22,6 @@ const Dashboard: React.SFC<DashboardProps> = (props) => {
 	}
 
 	useEffect(() => {getCocktail()}, [])
-
-	// const removeNulls = (info: RandomCocktail): RandomCocktail => {
-  // 	const drinkDetails = {idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''};
-  //   Object.keys(info).forEach((detail: any) => {
-  //     if (info[detail]!== null) { 
-  //       drinkDetails[detail] = info[detail]; 
-  //     }
-  //   });
-  //   return drinkDetails;
-  // }
 
 	return (
 		<section className='cocktail-OTD-wrapper'>
