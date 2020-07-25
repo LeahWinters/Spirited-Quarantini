@@ -1,45 +1,37 @@
 .cocktail-card {
-	align-self: center;
-  border: 1px solid grey;
+	align-items: center;
+	// background-color: black;
+	// opacity: 100%;
+	border: 2px solid grey;
+	// border-image: url('https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png') 50% 50% stretch;
 	display: flex;
-	justify-content: space-evenly;
-  font-family: 'Playfair Display', serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  height: 45%;
+	flex-direction: column;
+  // font-family: 'Playfair Display', serif;
+	// -webkit-font-smoothing: antialiased;
+	font-family: 'Recursive', sans-serif;
+	justify-content: center;
+  height: 55%;
 	margin: 2%;
-	width: 63%;
+	width: 25%;
 }
 
 .card-title {
-  color: white;
-	font-size: 2vh;
-	margin-left: 25px;
-	margin-top: 25px;
-	width: 100%;
-}
-
-.img-container {
-	margin-left: auto;
 	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+	justify-content: center;
+	margin: 0;
+  color: white;
+	font-size: 18px;
 }
 
 .CC-img {
-	border-left: solid 2px gray;
-	margin-top: 0.5%;
-	margin-bottom: 6px;
-	margin-left: 2%;
-	margin-right: 2%;
-  padding: 0.5% 1%;
-	min-width: 150px;
-	width: 10%;
+	margin: 4% 0;
+	max-width: 65%;
 	object-fit: cover;
 }
 
 .cc-button {
+	cursor: pointer;
 	height: 3vh;
-	margin-right: 14px;
-	min-height: 22px;
+	font-size: 18px;
+	font-family: 'Recursive', sans-serif;
 }

@@ -22,22 +22,32 @@ displayNone {
 	margin: 0 auto;
 	padding: 15px;
 	font-size: 13px;
+	font-family: 'Recursive', sans-serif;
 	margin-bottom: 15%;
+}
+
+.login-msg {
+	font-size: 1.3em;
+	width: 82%;
+  height: 13%;
 }
 
 .login-btns {
 	display: flex;
+
 	justify-content: space-evenly;
 	width: 50%;
 	margin-top: 20px;
+	height: 10%;
 }
 
 .subtitle {
 	font-style: italic;
-	margin-bottom: 50px!important;
-	width: 298px;
+	margin-bottom: 43px!important;
+	width: 449px;
 	margin: 0 auto;
-	font-size: 17px;
+	font-size: 23px;
+	font-family: 'Recursive', sans-serif;
 }
 
 .minor-msg {
@@ -47,7 +57,10 @@ displayNone {
 }
 
 .submit-login-btn {
-	min-height: 23px;
+	min-height: 25px;
+	cursor: pointer;
+	font-family: 'Recursive', sans-serif;
+	font-size: 16px;
 }
 
 .input {
@@ -55,7 +68,10 @@ displayNone {
 	background: none;
 	border-style: none;
 	border: 1px solid grey;
-	height: 2vh;
-	width: 200px;
+	font-size: 1.3em;
+	font-family: 'Recursive', sans-serif;
+	height: 3.5vh;
+	width: 250px;
 	min-height: 26px;
+	padding-left: 3%;
 }
