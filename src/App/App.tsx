@@ -12,9 +12,9 @@ import { Cocktail } from '../Definitions/RandomCocktail'
 import './App.scss';
 
 export interface AllCocktailsDetails {
-		strDrink: string,
-		strDrinkThumb: string,
-		idDrink: string
+  strDrink: string;
+  strDrinkThumb: string;
+  idDrink: string;
 }
 
 const App: React.SFC = () => {
@@ -27,20 +27,21 @@ const App: React.SFC = () => {
 			idDrink: ''
 		}
 	]);
-	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
-	const [error, setError] = useState('');
+	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
+  const [favCocktails, setFavCocktails] = useState<string[]>([]);
+  const [error, setError] = useState("");
 
-	//store favorite in app
-	//fn that will filter searched input
+  //fn that will filter searched input
 
-	const fetchAllCocktails = async (): Promise<any> => {
+  // API Calls
+  const fetchAllCocktails = async (): Promise<any> => {
     try {
       const data: AllCocktailsDetails[] = await getAllCocktails();
       return setAllCocktails(data);
     } catch (error) {
       setError(error.message);
     }
-	};
+  };
 
 	const getCocktail = async ():Promise<any> => {
 		try {
@@ -54,53 +55,57 @@ const App: React.SFC = () => {
 	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
 
-	//add to favorites (id);
-	// .push ()
+  // Functions
+  
+  const toggleFavorites = (drinkID: string): any => {
+    if (!favCocktails.includes(drinkID)) {
+     setFavCocktails([...favCocktails, drinkID]);
+    } else
+    setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
+  };
+  
 
-	return (
-		<main>
-			<Header 
-				loggedIn={loggedIn} 
-				setLoggedIn={setLoggedIn}
-				setUsername={setUsername}
-			/>
-			<Switch>
-				<Route path="/about" render={() => <About />} />
-				<Route 
-					path="/cocktails" 
-					render={() => (
-						<AllCocktailsPage 
-							allCocktails={allCocktails} 
-						/>)} 
-				/>
-				<Route path="/my_cocktails" render={() => <MyCocktails />} />
-				<Route 
-					path="/:id/details" 
-					render={({ match }) => {
-						const { id } = match.params;
-						return <CocktailDetails id={id} />} 
-					}
-				/>
-				<Route path="/random_cocktail" render={() => 
-					<Dashboard 
-						username={username}
-						randomCocktail={randomCocktail}
-					/>} 
-				/>
-				<Route
-					path="/"
-					render={() => (
-						<Login
-							username={username}
-							setUsername={setUsername}
-							loggedIn={loggedIn}
-							setLoggedIn={setLoggedIn}
-						/>
-					)}
-				/>
-			</Switch>
-		</main>
-	);
+  return (
+    <main>
+      <Header
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        setUsername={setUsername}
+      />
+      <Switch>
+        <Route path="/about" render={() => <About />} />
+        <Route
+          path="/cocktails"
+          render={() => <AllCocktailsPage allCocktails={allCocktails} />}
+        />
+        <Route path="/my_cocktails" render={() => <MyCocktails />} />
+        <Route
+          path="/:id/details"
+          render={({ match }) => {
+            const { id } = match.params;
+            return (
+              <CocktailDetails id={id} toggleFavorites={toggleFavorites} favCocktails={favCocktails}/>
+            );
+          }}
+        />
+        <Route
+          path="/random_cocktail"
+          render={() => <Dashboard username={username} randomCocktail={randomCocktail} />}
+        />
+        <Route
+          path="/"
+          render={() => (
+            <Login
+              username={username}
+              setUsername={setUsername}
+              loggedIn={loggedIn}
+              setLoggedIn={setLoggedIn}
+            />
+          )}
+        />
+      </Switch>
+    </main>
+  );
 };
 
 export default App;
