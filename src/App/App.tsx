@@ -7,7 +7,8 @@ import About from '../About/About';
 import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
-import { getAllCocktails } from "../apiCalls";
+import { getAllCocktails, getRandomCocktail } from "../apiCalls";
+import { Cocktail } from '../Definitions/RandomCocktail'
 import './App.scss';
 
 export interface AllCocktailsDetails {
@@ -19,10 +20,15 @@ export interface AllCocktailsDetails {
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
 	const [ loggedIn, setLoggedIn ] = useState(false);
-	const [ allCocktails, setAllCocktails ] = useState<AllCocktailsDetails[]>([{strDrink: '',
-		strDrinkThumb: '',
-		idDrink: ''}]);
-  const [error, setError] = useState('');
+	const [ allCocktails, setAllCocktails ] = useState<AllCocktailsDetails[]>([
+		{
+			strDrink: '',
+			strDrinkThumb: '',
+			idDrink: ''
+		}
+	]);
+	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});
+	const [error, setError] = useState('');
 
 	//store favorite in app
 	//fn that will filter searched input
@@ -36,6 +42,16 @@ const App: React.SFC = () => {
     }
 	};
 
+	const getCocktail = async ():Promise<any> => {
+		try {
+			const data: Cocktail = await getRandomCocktail();
+			setRandomCocktail(data);
+		} catch (error) {
+			setError(error.message);
+		}
+	};
+
+	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
 
 	//add to favorites (id);
@@ -68,6 +84,7 @@ const App: React.SFC = () => {
 				<Route path="/random_cocktail" render={() => 
 					<Dashboard 
 						username={username}
+						randomCocktail={randomCocktail}
 					/>} 
 				/>
 				<Route

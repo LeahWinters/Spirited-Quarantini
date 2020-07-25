@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { AllCocktailsDetails } from '../App/App';
-import { getAllCocktails } from "../apiCalls";
 import CocktailCard from '../CocktailCard/CocktailCard';
 import './AllCocktailsPage.scss';
 
