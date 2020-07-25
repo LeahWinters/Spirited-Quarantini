@@ -1,28 +1,28 @@
 .cocktail-details-wrapper {
-	position: absolute;
-	bottom: 0;
-	height: 76vh;
-	width: 100vw;
-	color: white;
 	background-color: black;
+	bottom: 0;
+	color: white;
+	height: 76vh;
 	opacity: 90%;
 	overflow: scroll;
+	position: absolute;
+	width: 100vw;
 }
 
 .cocktail-details-card {
-	width: 80vw;
 	align-items: center;
-	text-align: center;
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
 	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+	width: 80vw;
 }
 
 .info-wrapper {
-	text-align: left;
 	margin-left: 90px;
 	margin-right: 80px;
+	text-align: left;
 }
 
 .ingredient-container {

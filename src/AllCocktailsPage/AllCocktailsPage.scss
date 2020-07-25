@@ -1,13 +1,14 @@
 .all-cocktails-container {
-  align-items: center;
   background-color: black;
-  display: flex;
-  flex-direction: column;
-  font-family: sans-serif;
-	position: absolute;
-	height: 76vh;
 	bottom: 0;
-  opacity: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-family: sans-serif;
+	height: 76vh;
+  justify-content: center;
+  opacity: 95%;
   overflow: scroll;
+	position: absolute;
   width: 100vw;
 }
