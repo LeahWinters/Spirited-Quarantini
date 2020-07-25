@@ -2,17 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { getCocktailDetails } from '../apiCalls';
 import { Cocktail } from '../Definitions/RandomCocktail'
 import './CocktailDetails.scss';
+
 export interface CocktailDetailsProps {
 	id: string;
+	toggleFavorites: (id: string) => any
 }
 
-const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
+const CocktailDetails: React.FC<CocktailDetailsProps> = ({id, toggleFavorites}) => {
 	const [cocktailInfo, setCocktailInfo] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''})
 	const [error, setError] = useState('');
 
 	const getCocktail = async ():Promise<any> => {
 		try {
-			const data: Cocktail = await getCocktailDetails(props.id);
+			const data: Cocktail = await getCocktailDetails(id);
 			setCocktailInfo(removeNulls(data));
 		} catch (error) {
 		setError(error.message);
@@ -57,7 +59,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = (props) => {
 						{displayIngredients(10, 'strMeasure').map((item, i) => <li key={i}>{item}</li>)}
 					</ul>
 				</section>
-					<button type="button" aria-label="add-to-favorites" onClick={props.toggleFavorites}>Add to Favorites </button>
+					<button type="button" aria-label="add-to-favorites" onClick={() => toggleFavorites(id)}>Add to Favorites</button>
 				</section>
 			</section>
 		</section>	

@@ -42,11 +42,16 @@ const App: React.SFC = () => {
   }, []);
 
   // Functions
-  const toggleFavorites = (drinkID: string): void => {
+  
+  const toggleFavorites = (drinkID: string): any => {
     if (!favCocktails.includes(drinkID)) {
-      setFavCocktails([...favCocktails, drinkID]);
-    } else setFavCocktails(favCocktails.filter(cocktail => cocktail !== drinkID))
-  }
+     setFavCocktails([...favCocktails, drinkID]);
+    } else
+    setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
+  };
+
+  
+
   return (
     <main>
       <Header
@@ -65,7 +70,9 @@ const App: React.SFC = () => {
           path="/:id/details"
           render={({ match }) => {
             const { id } = match.params;
-            return <CocktailDetails id={id} />;
+            return (
+              <CocktailDetails id={id} toggleFavorites={toggleFavorites} />
+            );
           }}
         />
         <Route
