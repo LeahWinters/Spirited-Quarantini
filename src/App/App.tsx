@@ -71,7 +71,7 @@ const App: React.SFC = () => {
           render={({ match }) => {
             const { id } = match.params;
             return (
-              <CocktailDetails id={id} toggleFavorites={toggleFavorites} />
+              <CocktailDetails id={id} toggleFavorites={toggleFavorites} favCocktails={favCocktails}/>
             );
           }}
         />
