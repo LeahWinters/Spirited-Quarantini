@@ -66,19 +66,18 @@ const App: React.SFC = () => {
 	// Functions
 	
 	const findResults = (searchValue: string) => {
-		let searchResults = ([
-			{
-				strDrink: '',
-				strDrinkThumb: '',
-				idDrink: ''
-			}
-		]);
+		let searchResults: any = [{
+			strDrink: "",
+			strDrinkThumb: "",
+			idDrink: "",
+		}];
 		allCocktails.forEach(cocktail => {
 			if (cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
 				searchResults.push(cocktail);
 			}
 		});
-		setFilteredResults(searchResults);
+		// console.log(searchResults.splice(0, 1));
+		setFilteredResults(searchResults.splice(1));
 	}
   
 	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {

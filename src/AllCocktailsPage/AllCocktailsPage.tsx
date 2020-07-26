@@ -16,7 +16,6 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 	}, [props]);
 
   const cocktailCards = Object.values(givenCocktails).map(cocktail => {
-		console.log(cocktail)
     return (
       <CocktailCard 
         strDrink={cocktail.strDrink}
