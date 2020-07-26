@@ -28,7 +28,8 @@ const App: React.SFC = () => {
 		}
 	]);
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
-  const [favCocktails, setFavCocktails] = useState<string[]>([]);
+	const [favCocktails, setFavCocktails] = useState<string[]>([]);
+	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
   const [error, setError] = useState("");
 
   //fn that will filter searched input
@@ -56,14 +57,16 @@ const App: React.SFC = () => {
 	useEffect(() => {fetchAllCocktails()}, []);
 
   // Functions
-  const toggleFavorites = (drinkID: string): any => {
-    if (!favCocktails.includes(drinkID)) {
-     setFavCocktails([...favCocktails, drinkID]);
-    } else
-    setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
-	};
+  
+	const toggleUserInteraction = (idList: string[], drinkId: string, setTheSate: Function): any => {
+			if (!idList.includes(drinkId)) {
+				setTheSate([...idList, drinkId]);
+			} else {
+				setTheSate(idList.filter(cocktail => cocktail !== drinkId))
+			}
+		}
 	
-	const findCocktailObj = (givenArray: string[]) => {
+	const findCocktailObj = (givenArray: string[]) => { 
 		return givenArray.map((c) => {
 			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
 		}) as AllCocktailsDetails[];
@@ -107,7 +110,7 @@ const App: React.SFC = () => {
 					path="/my_cocktails/logged" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(favCocktails)} 
+							givenCocktails={findCocktailObj(madeCocktails)} 
 							//change argument to logged cocktails when complete
 						/>
 					)} 
@@ -119,8 +122,11 @@ const App: React.SFC = () => {
             return (
 							<CocktailDetails 
 								id={id} 
-								toggleFavorites={toggleFavorites} 
-								favCocktails={favCocktails}
+								favCocktails={favCocktails} 
+								setFavCocktails={setFavCocktails}
+								toggleUserInteraction={toggleUserInteraction}
+								madeCocktails={madeCocktails}
+								setMadeCocktails={setMadeCocktails}
 							/>
             );
           }}
