@@ -104,6 +104,7 @@ const App: React.SFC = () => {
       />
 
       <Switch>
+
 				<Route 
 					path="/about" 
 					render={() => <About />} 
@@ -163,6 +164,14 @@ const App: React.SFC = () => {
 						/>
 					)}
         />
+				<Route 
+					path="/results"
+					render={() => (
+						<AllCocktailsPage 
+							givenCocktails={filteredResults}
+						/>
+					)}
+				/>
         <Route
           path="/"
           render={() => (
