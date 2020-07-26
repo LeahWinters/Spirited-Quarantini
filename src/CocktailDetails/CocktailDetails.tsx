@@ -11,7 +11,7 @@ export interface CocktailDetailsProps {
 	madeCocktails: string[];
 }
 
-const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails, madeCocktails }) => {
+const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails, madeCocktails, toggleMadeCocktails }) => {
   const [cocktailInfo, setCocktailInfo] = useState<Cocktail>({
     idDrink: "",
     strDrink: "",
@@ -64,6 +64,12 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
 		setIsFavorite(!isFavorite)
 		toggleFavorites(id)
 	}
+
+	const clickMadeHandler = () => {
+		setIsMade(!isMade)
+		toggleMadeCocktails(id)
+	}
+
 
   return (
     <section className="cocktail-details-wrapper">
@@ -120,7 +126,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="add-to-made"
-              onClick={() => clickHandler()}
+              onClick={() => clickMadeHandler()}
             >
               Add to My Cocktails
             </button>
@@ -129,7 +135,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="remove-from-made"
-              onClick={() => clickHandler()}
+              onClick={() => clickMadeHandler()}
             >
               Remove from My Cocktails
             </button>
