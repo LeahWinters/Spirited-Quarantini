@@ -7,7 +7,15 @@
   opacity: 90%;
   overflow: scroll;
 	width: 100vw;
+}
+
+.btn-container {
+	margin-top: 10%;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
+	width: 100vw;
+}
+
+.my-c-button {
+	height: 3vh;
 }

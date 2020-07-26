@@ -50,21 +50,21 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
   };
 
   const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
-    const cocktailIngredients = (Object.keys(cocktailInfo) as Array<
-      keyof Cocktail
-    >).filter((keys) => keys.slice(0, endingIndex) === givenKey);
+		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof Cocktail>)
+			.filter((keys) => keys.slice(0, endingIndex) === givenKey);
     return cocktailIngredients.map((i) => cocktailInfo[i] as string);
   };
 
-  useEffect(() => {
-    getCocktail();
-  }, []);
+  useEffect(() => {getCocktail()}, []);
 	//modify lint file?
 	
 	const clickHandler = (setTheState: Function, theState: boolean, idList: string[], updateProps: Function) => {
 		setTheState(!theState);
 		toggleUserInteraction(idList, id, updateProps);
-	}
+	// const clickHandler = () => {
+	// 	setIsFavorite(!isFavorite);
+	// 	toggleFavorites(id);
+	// }
 
 
   return (
@@ -78,16 +78,16 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
         />
         <section className="info-wrapper">
           <p className="detail-paragraph">
-            <div className="sub-heading">Type: </div> {cocktailInfo.strCategory}
+            <span className="sub-heading">Type: </span> {cocktailInfo.strCategory}
             , {cocktailInfo.strAlcoholic}
           </p>
           <p className="detail-paragraph">
-            <div className="sub-heading">Glass: </div>
+            <span className="sub-heading">Glass: </span>
             {cocktailInfo.strGlass}
           </p>
           <h4>Instructions:</h4>
           <p>{cocktailInfo.strInstructions}</p>
-          <div className="sub-heading">Ingredients:</div>
+          <span className="sub-heading">Ingredients:</span>
           <section className="ingredient-container">
             <ul>
               {displayIngredients(13, "strIngredient").map((item, i) => (
