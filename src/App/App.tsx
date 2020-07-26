@@ -65,7 +65,7 @@ const App: React.SFC = () => {
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
         setUsername={setUsername}
-      />
+      />drinkId
       <Switch>
         <Route path="/about" render={() => <About />} />
         <Route

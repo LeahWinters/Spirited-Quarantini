@@ -11,7 +11,7 @@ export interface CocktailDetailsProps {
 	madeCocktails: string[];
 }
 
-const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails, madeCocktails, toggleMadeCocktails }) => {
+const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, favCocktails,toggleMadeCocktails, madeCocktails }) => {
   const [cocktailInfo, setCocktailInfo] = useState<Cocktail>({
     idDrink: "",
     strDrink: "",
@@ -19,9 +19,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
     strDrinkThumb: "",
   });
   const [error, setError] = useState("");
-  const [isFavorite, setIsFavorite] = useState<boolean>(
-    favCocktails.includes(id)
-	);
+  const [isFavorite, setIsFavorite] = useState<boolean>(favCocktails.includes(id));
 	const [isMade, setIsMade] = useState<boolean>(madeCocktails.includes(id))
 
   const getCocktail = async (): Promise<any> => {
@@ -60,15 +58,21 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
   }, []);
 	//modify lint file?
 	
-	const clickHandler = () => {
-		setIsFavorite(!isFavorite)
-		toggleFavorites(id)
+	// const clickHandler = () => {
+	// 	setIsFavorite(!isFavorite)
+	// 	toggleFavorites(id)
+	// }
+
+	// const clickMadeHandler = () => {
+	// 	setIsMade(!isMade)
+	// 	toggleMadeCocktails(id)
+	// }
+
+	const clickHandler = (theSetState: Function, theState: boolean, toggleFunc: Function) => {
+		theSetState(!theState);
+		toggleFunc(id);
 	}
 
-	const clickMadeHandler = () => {
-		setIsMade(!isMade)
-		toggleMadeCocktails(id)
-	}
 
 
   return (
@@ -108,7 +112,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="add-to-favorites"
-              onClick={() => clickHandler()}
+              onClick={() => clickHandler(setIsFavorite, isFavorite, toggleFavorites)}
             >
               Add to Favorites
             </button>
@@ -117,7 +121,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="remove-from-favorites"
-              onClick={() => clickHandler()}
+              onClick={() => clickHandler(setIsFavorite, isFavorite, toggleFavorites)}
             >
               Remove from Favorites
             </button>
@@ -126,7 +130,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="add-to-made"
-              onClick={() => clickMadeHandler()}
+              onClick={() => clickHandler(setIsMade, isMade, toggleMadeCocktails)}
             >
               Add to My Cocktails
             </button>
@@ -135,7 +139,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, toggleFavorites, 
             <button
               type="button"
               aria-label="remove-from-made"
-              onClick={() => clickMadeHandler()}
+              onClick={() => clickHandler(setIsMade, isMade, toggleMadeCocktails)}
             >
               Remove from My Cocktails
             </button>
