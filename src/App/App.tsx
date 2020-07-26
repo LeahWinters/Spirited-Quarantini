@@ -56,14 +56,18 @@ const App: React.SFC = () => {
 	useEffect(() => {fetchAllCocktails()}, []);
 
   // Functions
-  
   const toggleFavorites = (drinkID: string): any => {
     if (!favCocktails.includes(drinkID)) {
      setFavCocktails([...favCocktails, drinkID]);
     } else
     setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
-  };
-  
+	};
+	
+	const findCocktailObj = (givenArray: string[]) => {
+		return givenArray.map(c => {
+			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
+		}) as AllCocktailsDetails[];
+	};
 
   return (
     <main>
@@ -72,27 +76,63 @@ const App: React.SFC = () => {
         setLoggedIn={setLoggedIn}
         setUsername={setUsername}
       />
+
       <Switch>
-        <Route path="/about" render={() => <About />} />
+				<Route 
+					path="/about" 
+					render={() => <About />} 
+				/>
         <Route
           path="/cocktails"
-          render={() => <AllCocktailsPage allCocktails={allCocktails} />}
+          render={() => (
+						<AllCocktailsPage 
+							givenCocktails={allCocktails} 
+						/>
+					)}
         />
-        <Route path="/my_cocktails" render={() => <MyCocktails />} />
-        <Route path="/my_cocktails/favorites" render={() => <MyCocktails />} />
-        <Route path="/my_cocktails/logged" render={() => <MyCocktails />} />
+				<Route 
+					exact 
+					path="/my_cocktails" 
+					render={() => <MyCocktails />} 
+				/>
+				<Route 
+					path="/my_cocktails/favorites" 
+					render={() => (
+						<AllCocktailsPage 
+							givenCocktails={findCocktailObj(favCocktails)} 
+						/>
+					)} 
+				/>
+				<Route 
+					path="/my_cocktails/logged" 
+					render={() => (
+						<AllCocktailsPage 
+							givenCocktails={findCocktailObj(favCocktails)} 
+							//change argument to logged cocktails when complete
+						/>
+					)} 
+				/>
         <Route
           path="/:id/details"
           render={({ match }) => {
             const { id } = match.params;
             return (
-              <CocktailDetails id={id} toggleFavorites={toggleFavorites} favCocktails={favCocktails}/>
+							<CocktailDetails 
+								id={id} 
+								toggleFavorites={toggleFavorites} 
+								favCocktails={favCocktails}
+							/>
             );
           }}
         />
         <Route
           path="/random_cocktail"
-          render={() => <Dashboard username={username} randomCocktail={randomCocktail} />}
+          render={() => (
+						<Dashboard 
+							username={username} 
+							randomCocktail={randomCocktail} 
+						/>
+					)}
         />
         <Route
           path="/"
@@ -106,6 +146,7 @@ const App: React.SFC = () => {
           )}
         />
       </Switch>
+
     </main>
   );
 };

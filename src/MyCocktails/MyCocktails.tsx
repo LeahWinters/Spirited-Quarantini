@@ -13,8 +13,8 @@ const MyCocktails: React.SFC<MyCocktailsProps> = () => {
 	return (
 		<section className='my-cocktails-container'>
 			<section className='btn-container'>
-				<Link to='my_cocktails/favorites'><button className='my-c-button'>My Favorites</button></Link>
-				<Link to='my_cocktails/logged'><button className='my-c-button'>Logged Drinks</button></Link>
+				<Link to='/my_cocktails/favorites'><button className='my-c-button'>My Favorites</button></Link>
+				<Link to='/my_cocktails/logged'><button className='my-c-button'>Logged Drinks</button></Link>
 			</section>
 		</section>
 	)
