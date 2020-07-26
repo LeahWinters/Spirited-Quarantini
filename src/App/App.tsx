@@ -44,20 +44,13 @@ const App: React.SFC = () => {
 
   // Functions
   
-  const toggleFavorites = (drinkID: string): any => {
-    if (!favCocktails.includes(drinkID)) {
-     setFavCocktails([...favCocktails, drinkID]);
-    } else
-    setFavCocktails(favCocktails.filter((cocktail) => cocktail !== drinkID));
-	};
-	
-	const toggleMadeCocktails = (drinkID: string): any => {
-		if (!madeCocktails.includes(drinkID)) {
-			setMadeCocktails([...madeCocktails, drinkID]);
-		} else {
-			setMadeCocktails(madeCocktails.filter(cocktail => cocktail !== drinkID))
+	const toggleUserInteraction = (idList: string[], drinkId: string, setTheSate: Function): any => {
+			if (!idList.includes(drinkId)) {
+				setTheSate([...idList, drinkId]);
+			} else {
+				setTheSate(idList.filter(cocktail => cocktail !== drinkId))
+			}
 		}
-	}
 
   return (
     <main>
@@ -80,10 +73,11 @@ const App: React.SFC = () => {
             return (
 							<CocktailDetails 
 								id={id} 
-								toggleFavorites={toggleFavorites} 
 								favCocktails={favCocktails} 
-								toggleMadeCocktails={toggleMadeCocktails} 
+								setFavCocktails={setFavCocktails}
+								toggleUserInteraction={toggleUserInteraction}
 								madeCocktails={madeCocktails}
+								setMadeCocktails={setMadeCocktails}
 							/>
             );
           }}
