@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AllCocktailsDetails } from '../App/App';
-import { getAllCocktails } from "../apiCalls";
 import CocktailCard from '../CocktailCard/CocktailCard';
 import './AllCocktailsPage.scss';
 
 export interface AllCocktailsProps {
-  allCocktails: AllCocktailsDetails[];
+	givenCocktails: AllCocktailsDetails[];
 }
 
 const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
-  const [allCocktails, setAllCocktails] = useState(props.allCocktails);
-
+  const [givenCocktails, setGivenCocktails] = useState(props.givenCocktails);
   const [error, setError] = useState<string>("");
 
-  const cocktailsArray = Object.values(allCocktails);
-  
-  const cocktailCards = cocktailsArray.map(cocktail => {
+	useEffect(() => {
+		setGivenCocktails(props.givenCocktails)
+	}, [props]);
+
+  const cocktailCards = Object.values(givenCocktails).map(cocktail => {
+		console.log(cocktail)
     return (
       <CocktailCard 
         strDrink={cocktail.strDrink}
