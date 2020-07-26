@@ -30,6 +30,13 @@ const App: React.SFC = () => {
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
 	const [favCocktails, setFavCocktails] = useState<string[]>([]);
 	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
+	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
+		{
+			strDrink: '',
+			strDrinkThumb: '',
+			idDrink: ''
+		}
+	]);
   const [error, setError] = useState("");
 
   //fn that will filter searched input
@@ -56,13 +63,29 @@ const App: React.SFC = () => {
 	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
 
-  // Functions
+	// Functions
+	
+	const findResults = (searchValue: string) => {
+		let searchResults = ([
+			{
+				strDrink: '',
+				strDrinkThumb: '',
+				idDrink: ''
+			}
+		]);
+		allCocktails.forEach(cocktail => {
+			if (cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
+				searchResults.push(cocktail);
+			}
+		});
+		setFilteredResults(searchResults);
+	}
   
-	const toggleUserInteraction = (idList: string[], drinkId: string, setTheSate: Function): any => {
+	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
 			if (!idList.includes(drinkId)) {
-				setTheSate([...idList, drinkId]);
+				setTheState([...idList, drinkId]);
 			} else {
-				setTheSate(idList.filter(cocktail => cocktail !== drinkId))
+				setTheState(idList.filter(cocktail => cocktail !== drinkId))
 			}
 		}
 	
@@ -77,7 +100,8 @@ const App: React.SFC = () => {
       <Header
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
-        setUsername={setUsername}
+				setUsername={setUsername}
+				findResults={findResults}
       />
 
       <Switch>
