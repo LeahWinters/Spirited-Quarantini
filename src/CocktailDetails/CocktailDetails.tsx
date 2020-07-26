@@ -9,8 +9,8 @@ export interface CocktailDetailsProps {
 	favCocktails: string[];
 	// toggleMadeCocktails: (id: string) => any;
 	madeCocktails: string[];
-	setFavCocktails: Function
-	setMadeCocktails: Function
+	setFavCocktails: Function;
+	setMadeCocktails: Function;
 	toggleUserInteraction: (idList: string[], drinkId: string, setTheSate: Function) => any
 }
 
@@ -60,12 +60,8 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
 	
 	const clickHandler = (setTheState: Function, theState: boolean, idList: string[], updateProps: Function) => {
 		setTheState(!theState);
-		toggleUserInteraction(idList, id, updateProps);
-	// const clickHandler = () => {
-	// 	setIsFavorite(!isFavorite);
-	// 	toggleFavorites(id);
-	// }
-
+    toggleUserInteraction(idList, id, updateProps);
+  }
 
   return (
     <section className="cocktail-details-wrapper">
