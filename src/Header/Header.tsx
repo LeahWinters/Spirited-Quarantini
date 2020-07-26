@@ -5,11 +5,13 @@ import './Header.scss';
 interface HeaderProps {
 	loggedIn: boolean;
 	setLoggedIn: any;
-	setUsername: Function
+	setUsername: Function;
+	findResults: Function
 }
 
 const Header: React.SFC<HeaderProps> = props => {
 	//state w/ input value
+	const [searchInput, setSearchInput] = useState('');
 	
 	const logoutUser = () => {
 		props.setLoggedIn(false);
@@ -36,12 +38,16 @@ const Header: React.SFC<HeaderProps> = props => {
 							name="search"
 							placeholder="search cocktails..."
 							className="header-search"
-							// value={searchInput}
-							// onChange={(e) => updateSearchInput(e.target.value)}
+							value={searchInput}
+							onChange={(e) => setSearchInput(e.target.value)}
 							aria-label="search"
 						/>
 						<Link to='/results'>
-							<button className="header-search-button">
+							<button 
+								className="header-search-button" 
+								onClick={() => props.findResults(searchInput)}
+								type="button"
+							>
 								Search
 							</button>
 						</Link>

@@ -16,7 +16,6 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 	}, [props]);
 
   const cocktailCards = Object.values(givenCocktails).map(cocktail => {
-		console.log(cocktail)
     return (
       <CocktailCard 
         strDrink={cocktail.strDrink}
@@ -30,6 +29,7 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 	return (
 		<section className="all-cocktails-container">
       {cocktailCards}
+      {!cocktailCards.length && <h3 className="no-found-cocktails">Sorry! No cocktails found.</h3>}
 		</section>
 	)
 };
