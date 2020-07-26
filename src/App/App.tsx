@@ -64,7 +64,7 @@ const App: React.SFC = () => {
 	};
 	
 	const findCocktailObj = (givenArray: string[]) => {
-		return givenArray.map(c => {
+		return givenArray.map((c) => {
 			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
 		}) as AllCocktailsDetails[];
 	};

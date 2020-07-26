@@ -29,7 +29,6 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 
 	return (
 		<section className="all-cocktails-container">
-			card
       {cocktailCards}
 		</section>
 	)
