@@ -74,7 +74,7 @@ const App: React.SFC = () => {
 		allCocktails.forEach(cocktail => {
 			if (cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
 				searchResults.push(cocktail);
-			}
+			} 
 		});
 		// console.log(searchResults.splice(0, 1));
 		setFilteredResults(searchResults.splice(1));

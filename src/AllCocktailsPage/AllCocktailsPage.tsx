@@ -29,6 +29,7 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 	return (
 		<section className="all-cocktails-container">
       {cocktailCards}
+      {!cocktailCards.length && <h3 className="no-found-cocktails">Sorry! No cocktails found.</h3>}
 		</section>
 	)
 };
