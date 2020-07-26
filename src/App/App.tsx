@@ -110,7 +110,7 @@ const App: React.SFC = () => {
 					path="/my_cocktails/logged" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(favCocktails)} 
+							givenCocktails={findCocktailObj(madeCocktails)} 
 							//change argument to logged cocktails when complete
 						/>
 					)} 

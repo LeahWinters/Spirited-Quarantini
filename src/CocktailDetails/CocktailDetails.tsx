@@ -120,7 +120,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
               aria-label="add-to-made"
               onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
             >
-              Add to My Cocktails
+              Mark as Made
             </button>
           )}
           {isMade && (
@@ -129,7 +129,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
               aria-label="remove-from-made"
               onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
             >
-              Remove from My Cocktails
+              Remove from Made
             </button>
           )}
         </section>
