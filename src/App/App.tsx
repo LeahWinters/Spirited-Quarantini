@@ -27,7 +27,9 @@ const App: React.SFC = () => {
 			idDrink: ''
 		}
 	]);
+	const [ allCError, setAllCError ] = useState('');
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
+	const [randomCError, setRandomCError] = useState('');
 	const [favCocktails, setFavCocktails] = useState<string[]>([]);
 	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
 	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
@@ -37,7 +39,7 @@ const App: React.SFC = () => {
 			idDrink: ''
 		}
 	]);
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
@@ -45,7 +47,7 @@ const App: React.SFC = () => {
       const data: AllCocktailsDetails[] = await getAllCocktails();
       return setAllCocktails(data);
     } catch (error) {
-      setError(error.message);
+      setAllCError(error.toString());
     }
   };
 
@@ -54,7 +56,7 @@ const App: React.SFC = () => {
 			const data: Cocktail = await getRandomCocktail();
 			setRandomCocktail(data);
 		} catch (error) {
-			setError(error.message);
+			setRandomCError(error.toString());
 		}
 	};
 
@@ -62,7 +64,6 @@ const App: React.SFC = () => {
 	useEffect(() => {fetchAllCocktails()});
 
 	// Functions
-	
 	const findResults = (searchValue: string) => {
 		let searchResults: any = [{
 			strDrink: "",
@@ -127,6 +128,7 @@ const App: React.SFC = () => {
           render={() => (
 						<AllCocktailsPage 
 							givenCocktails={allCocktails} 
+							error={allCError}
 						/>
 					)}
         />
@@ -140,6 +142,7 @@ const App: React.SFC = () => {
 					render={() => (
 						<AllCocktailsPage 
 							givenCocktails={findCocktailObj(favCocktails)} 
+							error={allCError}
 						/>
 					)} 
 				/>
@@ -148,7 +151,7 @@ const App: React.SFC = () => {
 					render={() => (
 						<AllCocktailsPage 
 							givenCocktails={findCocktailObj(madeCocktails)} 
-							//change argument to logged cocktails when complete
+							error={allCError}
 						/>
 					)} 
 				/>
@@ -156,8 +159,8 @@ const App: React.SFC = () => {
           path="/random_cocktail"
           render={() => (
 						<Dashboard 
-							username={username} 
 							randomCocktail={randomCocktail} 
+							error={randomCError}
 						/>
 					)}
         />
@@ -165,7 +168,8 @@ const App: React.SFC = () => {
 					path="/results"
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={filteredResults}
+							givenCocktails={filteredResults} 
+							error={allCError}
 						/>
 					)}
 				/>
