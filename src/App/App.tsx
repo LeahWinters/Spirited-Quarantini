@@ -39,7 +39,8 @@ const App: React.SFC = () => {
 			idDrink: ''
 		}
 	]);
-  // const [error, setError] = useState("");
+	const [error, setError] = useState('');
+	//reuse same prop error
 
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
@@ -102,7 +103,6 @@ const App: React.SFC = () => {
       />
 
       <Switch>
-
 				<Route
 					path="/cocktails/:id"
 					render={({ match }) => {
