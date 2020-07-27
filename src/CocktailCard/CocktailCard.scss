@@ -17,7 +17,7 @@
 .card-title {
   color: white;
 	display: flex;
-	font-size: 18px;
+	font-size: 14px;
 	justify-content: center;
 	margin: 0;
 	width: 200px;
@@ -25,13 +25,13 @@
 
 .CC-img {
 	margin: 2% 0;
-	max-width: 81%;
+	max-width: 76%;
 	object-fit: cover;
 }
 
 .cc-button {
 	cursor: pointer;
-	height: 3vh;
+	height: 2vh;
 	font-size: 14px;
 	font-family: 'Recursive', sans-serif;
 }
