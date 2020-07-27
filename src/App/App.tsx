@@ -87,9 +87,9 @@ const App: React.SFC = () => {
 
 	const findResults = (searchValue: string) => {
 		const byName = searchByName(searchValue);
-		// const byIngredient = searchByIngred(searchValue);
-		// const searchedResults = byName.concat(byIngredient);
-		setFilteredResults([...byName]);
+		const byIngredient = searchByIngred(searchValue);
+		const searchedResults = byName.concat(byIngredient);
+		setFilteredResults([...searchedResults]);
 	}
 
 	const searchByName = (keyword: string) => {
@@ -103,6 +103,29 @@ const App: React.SFC = () => {
 		//map over the array to bundle all ingred's together (w/ .splice)
 		//then filter over that array
 		//newArr.filter(c => c.ingredients.includes(keyword))
+
+		const foundCs = allCocktails.filter(cocktail => {
+			debugger;
+			const bundledIngreds = [
+				cocktail.strIngredient1, cocktail.strIngredient2, cocktail.strIngredient3, 
+				cocktail.strIngredient4, cocktail.strIngredient5, cocktail.strIngredient6, 
+				cocktail.strIngredient7, cocktail.strIngredient8, cocktail.strIngredient9, 
+				cocktail.strIngredient10, cocktail.strIngredient11, cocktail.strIngredient12, 
+				cocktail.strIngredient13, cocktail.strIngredient14, cocktail.strIngredient15
+			];
+			let found = [] as Object[];
+			console.log(typeof bundledIngreds[0])
+			bundledIngreds.forEach(ingred => {
+				if (ingred !== null && ingred !== undefined) {
+					if (ingred.toLowerCase() === keyword.toLowerCase()) {
+						found.push(cocktail);
+					}
+				}
+			});
+			return found;
+		})
+
+		return foundCs;
 	}
   
 	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
