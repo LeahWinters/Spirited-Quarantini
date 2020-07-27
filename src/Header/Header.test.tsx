@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from './Header';
 import '@testing-library/jest-dom';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, queryAllByPlaceholderText } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Header', () => {
   it('Should only display the title of the application when user is not logged in', () => {
-    const { getByText, queryByText } = render(
+    const { getByText, queryByText, queryByPlaceholderText } = render(
       <MemoryRouter>
         <Header 
           loggedIn={false} 
@@ -21,10 +21,12 @@ describe('Header', () => {
     const title = getByText('Spirited Quarantini');
     const about = queryByText('About');
     const welcomeMsg = queryByText('Welcome, Alex');
+    const search = queryByPlaceholderText('Welcome, Alex');
 
     expect(title).toBeInTheDocument();
     expect(about).not.toBeInTheDocument();
     expect(welcomeMsg).not.toBeInTheDocument();
+    expect(search).not.toBeInTheDocument();
   });
 
   it('Should display the title, welocome message, a search bar, and multiple buttons when a user is logged in', () => {
@@ -57,11 +59,30 @@ describe('Header', () => {
     expect(logoutBtn).toBeInTheDocument();
   });
 
+  it('User should be able to input a drink into the search when logged in', () => {
+    const { getByPlaceholderText } = render(
+      <MemoryRouter>
+        <Header 
+          loggedIn={true} 
+          setLoggedIn={Function}
+          setUsername={Function}
+          findResults={Function}
+          username={'Alex'}
+        />
+      </MemoryRouter>
+    );
+
+    const searchInput = getByPlaceholderText('search cocktails...')
+    // const searchBtn = getByText('Search');
+
+    fireEvent.change(searchInput, {target: {value: 'margarita'}});
+    expect(searchInput.value).toEqual('margarita');
+  });
 
   it('User should be able to search cocktails when logged in', () => {
     const mockSearch = jest.fn();
 
-    const { getByText, getByPlaceholderText } = render(
+    const { getByText, getByPlaceholderText, debug } = render(
       <MemoryRouter>
         <Header 
           loggedIn={true} 
@@ -75,10 +96,8 @@ describe('Header', () => {
 
     const searchInput = getByPlaceholderText('search cocktails...')
     const searchBtn = getByText('Search');
-
-    fireEvent.change(searchInput);
+    fireEvent.change(searchInput, {target: {value: 'margarita'}});
     fireEvent.click(searchBtn);
-
     expect(mockSearch).toHaveBeenCalledTimes(1);
   });
 })

@@ -19,6 +19,9 @@ const Header: React.SFC<HeaderProps> = props => {
 		props.setUsername('')
 	}
 
+  const buttonsEnabled = searchInput.trim() !== "";
+
+
 	return (
 		<header>
 			{!props.loggedIn && 
@@ -48,6 +51,7 @@ const Header: React.SFC<HeaderProps> = props => {
 								className="header-search-button" 
 								onClick={() => props.findResults(searchInput)}
 								type="button"
+								disabled={!buttonsEnabled}
 							>
 								Search
 							</button>
