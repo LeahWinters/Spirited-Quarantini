@@ -9,7 +9,7 @@ export interface DashboardProps {
 }
 
 const Dashboard: React.SFC<DashboardProps> = (props) => {
-	const [randomCocktail, setRandomCocktail] = useState<Cocktail>(props.randomCocktail);
+	const [randomCocktail] = useState<Cocktail>(props.randomCocktail);
 	const [error, setError] = useState<string>('');
 
 	return (

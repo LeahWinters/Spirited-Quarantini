@@ -7,7 +7,7 @@ import About from '../About/About';
 import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
-import { getAllCocktails, getRandomCocktail } from "../apiCalls";
+import { getAllCocktails, getRandomCocktail, getCocktailDetails } from "../apiCalls";
 import { Cocktail } from '../Definitions/RandomCocktail'
 import './App.scss';
 
@@ -20,7 +20,7 @@ export interface AllCocktailsDetails {
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
 	const [ loggedIn, setLoggedIn ] = useState(false);
-	const [ allCocktails, setAllCocktails ] = useState<AllCocktailsDetails[]>([
+	const [ allCocktails, setAllCocktails ] = useState<Cocktail[]>([
 		{
 			strDrink: '',
 			strDrinkThumb: '',
@@ -39,8 +39,6 @@ const App: React.SFC = () => {
 	]);
   const [error, setError] = useState("");
 
-  //fn that will filter searched input
-
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
@@ -51,7 +49,7 @@ const App: React.SFC = () => {
     }
   };
 
-	const getCocktail = async ():Promise<any> => {
+	const getCocktail = async ():Promise<void> => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
 			setRandomCocktail(data);
@@ -60,24 +58,46 @@ const App: React.SFC = () => {
 		}
 	};
 
+	const updateAllCocktails = (): void => {
+		const newCocktails = Promise.all(
+			allCocktails.map(async c => await getCocktailDetails(c.idDrink))
+		);
+
+		setAllCocktails(newCocktails);
+	}
+
 	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
+	useEffect(() => {updateAllCocktails()}, []);
 
 	// Functions
 	
+	// const findResults = (searchValue: string) => {
+	// 	let searchResults = allCocktails.filter(cocktail => {
+	// 		return cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())
+	// 	});
+
+	// 	setFilteredResults(searchResults);
+	// }
+
 	const findResults = (searchValue: string) => {
-		let searchResults: any = [{
-			strDrink: "",
-			strDrinkThumb: "",
-			idDrink: "",
-		}];
-		allCocktails.forEach(cocktail => {
-			if (cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
-				searchResults.push(cocktail);
-			} 
+		const byName = searchByName(searchValue);
+		// const byIngredient = searchByIngred(searchValue);
+		// const searchedResults = byName.concat(byIngredient);
+		setFilteredResults([...byName]);
+	}
+
+	const searchByName = (keyword: string) => {
+		return allCocktails.filter(cocktail => {
+			return cocktail.strDrink.toLowerCase().includes(keyword.toLowerCase())
 		});
-		// console.log(searchResults.splice(0, 1));
-		setFilteredResults(searchResults.splice(1));
+	}
+
+	const searchByIngred = (keyword: string) => {
+		//get array of all cocktails w/ ingred's
+		//map over the array to bundle all ingred's together (w/ .splice)
+		//then filter over that array
+		//newArr.filter(c => c.ingredients.includes(keyword))
 	}
   
 	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
