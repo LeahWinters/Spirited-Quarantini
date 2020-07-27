@@ -10,33 +10,38 @@ describe('Header', () => {
       <MemoryRouter>
         <Header 
           loggedIn={false} 
-          setLoggedIn={false}
+          setLoggedIn={Function}
           setUsername={Function}
-				  findResults={Function}
+          findResults={Function}
+          username={''}
         />
       </MemoryRouter>
     );
 
     const title = getByText('Spirited Quarantini');
     const about = queryByText('About');
+    const welcomeMsg = queryByText('Welcome, Alex');
 
     expect(title).toBeInTheDocument();
     expect(about).not.toBeInTheDocument();
+    expect(welcomeMsg).not.toBeInTheDocument();
   });
 
-  it('Should display the title, a search bar, and multiple buttons when a user is logged in', () => {
+  it('Should display the title, welocome message, a search bar, and multiple buttons when a user is logged in', () => {
     const { getByText, getByPlaceholderText } = render(
       <MemoryRouter>
         <Header 
           loggedIn={true} 
           setLoggedIn={Function}
           setUsername={Function}
-				  findResults={Function}
+          findResults={Function}
+          username={'Alex'}
         />
       </MemoryRouter>
     );
 
     const title = getByText('Spirited Quarantini');
+    const welcomeMsg = getByText('Welcome, Alex');
     const searchBar = getByPlaceholderText('search cocktails...');
     const aboutBtn = getByText('About');
     const cocktailOfTheDayBtn = getByText('Cocktail of the Day');
@@ -44,6 +49,7 @@ describe('Header', () => {
     const logoutBtn = getByText('Logout');
 
     expect(title).toBeInTheDocument();
+    expect(welcomeMsg).toBeInTheDocument();
     expect(searchBar).toBeInTheDocument();
     expect(aboutBtn).toBeInTheDocument();
     expect(cocktailOfTheDayBtn).toBeInTheDocument();
@@ -61,7 +67,8 @@ describe('Header', () => {
           loggedIn={true} 
           setLoggedIn={Function}
           setUsername={Function}
-				  findResults={mockSearch}
+          findResults={mockSearch}
+          username={'Alex'}
         />
       </MemoryRouter>
     );
