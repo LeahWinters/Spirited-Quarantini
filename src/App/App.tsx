@@ -39,6 +39,10 @@ const App: React.SFC = () => {
 	]);
   const [error, setError] = useState("");
 
+	useEffect(() => {getCocktail()});
+	useEffect(() => {fetchAllCocktails()}, []);
+	useEffect(() => {updateAllCocktails()}, []);
+
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
@@ -58,17 +62,14 @@ const App: React.SFC = () => {
 		}
 	};
 
-	const updateAllCocktails = (): void => {
-		const newCocktails = Promise.all(
+	const updateAllCocktails = async ():Promise<void> => {
+		const newCocktails = await Promise.all(
 			allCocktails.map(async c => await getCocktailDetails(c.idDrink))
 		);
-
+		debugger;
+		console.log(newCocktails);
 		setAllCocktails(newCocktails);
 	}
-
-	useEffect(() => {getCocktail()}, []);
-	useEffect(() => {fetchAllCocktails()}, []);
-	useEffect(() => {updateAllCocktails()}, []);
 
 	// Functions
 	
