@@ -1,21 +1,23 @@
 .COTD-img {
-	height: 35vh;
+	width: 77%;
 }
 
 .cocktail-OTD {
+	background-image: url('https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid grey;
 	padding: 15px;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	background-color: black;
 	color: white;
-	width: 40%;
-	height: 55%;
+	max-height: 518px;
+	min-height: 518px;
 	font-family: 'Recursive', sans-serif;
-	min-height: 400px;
-	min-width: 250px;
+	max-width: 451px;
+	min-width: 451px;
 	margin: 0 auto;
 	h3 {
 		margin: 0;
