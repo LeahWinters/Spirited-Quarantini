@@ -4,9 +4,10 @@ import './Header.scss';
 
 interface HeaderProps {
 	loggedIn: boolean;
-	setLoggedIn: any;
+	setLoggedIn: Function;
 	setUsername: Function;
 	findResults: Function
+	username: string;
 }
 
 const Header: React.SFC<HeaderProps> = props => {
@@ -30,6 +31,7 @@ const Header: React.SFC<HeaderProps> = props => {
 				<div className='user-header'>
 					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
+						<h3>Welcome, {props.username}</h3>
 					</Link>
 
 					<form className='search-bar'>

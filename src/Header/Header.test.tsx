@@ -52,7 +52,6 @@ describe('Header', () => {
   });
 
 
-  // Currently failing because we need to pass in the function that will be later called when clicking the search btn, that function will then be mocked instead of the mock fn I have written below
   it('User should be able to search cocktails when logged in', () => {
     const mockSearch = jest.fn();
 
@@ -63,7 +62,6 @@ describe('Header', () => {
           setLoggedIn={Function}
           setUsername={Function}
 				  findResults={mockSearch}
-          // passed in function that will be used to mock
         />
       </MemoryRouter>
     );

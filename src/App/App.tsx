@@ -98,6 +98,7 @@ const App: React.SFC = () => {
         setLoggedIn={setLoggedIn}
 				setUsername={setUsername}
 				findResults={findResults}
+				username={username}
       />
 
       <Switch>
