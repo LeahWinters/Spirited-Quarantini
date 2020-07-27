@@ -6,7 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('Header', () => {
   it('Should only display the title of the application when user is not logged in', () => {
-    const { getByText } = render(
+    const { getByText, queryByText } = render(
       <MemoryRouter>
         <Header 
           loggedIn={false} 
@@ -18,8 +18,10 @@ describe('Header', () => {
     );
 
     const title = getByText('Spirited Quarantini');
+    const about = queryByText('About');
 
     expect(title).toBeInTheDocument();
+    expect(about).not.toBeInTheDocument();
   });
 
   it('Should display the title, a search bar, and multiple buttons when a user is logged in', () => {
@@ -67,7 +69,7 @@ describe('Header', () => {
     );
 
     const searchInput = getByPlaceholderText('search cocktails...')
-    const searchBtn = getByText('About');
+    const searchBtn = getByText('Search');
 
     fireEvent.change(searchInput);
     fireEvent.click(searchBtn);
