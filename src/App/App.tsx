@@ -41,14 +41,15 @@ const App: React.SFC = () => {
 
 	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
-	// useEffect(() => {updateAllCocktails()}, []);
+	useEffect(() => {
+		updateAllCocktails()
+	}, [allCocktails]);
 
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
       const data: AllCocktailsDetails[] = await getAllCocktails();
-			await setAllCocktails(data);
-			await updateAllCocktails();
+			return setAllCocktails(data);
     } catch (error) {
       setError(error.message);
     }
@@ -64,12 +65,10 @@ const App: React.SFC = () => {
 	};
 
 	const updateAllCocktails = async ():Promise<void> => {
-		debugger;
 		try {
 			const newCocktails = await Promise.all(
 				allCocktails.map(c => getCocktailDetails(c.idDrink))
 			);
-			console.log(newCocktails);
 			setAllCocktails(newCocktails);
 		} catch (error) {
 			setError(error.message);
