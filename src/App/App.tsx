@@ -106,6 +106,7 @@ const App: React.SFC = () => {
 
 		const foundCs = allCocktails.filter(cocktail => {
 			debugger;
+
 			const bundledIngreds = [
 				cocktail.strIngredient1, cocktail.strIngredient2, cocktail.strIngredient3, 
 				cocktail.strIngredient4, cocktail.strIngredient5, cocktail.strIngredient6, 
@@ -113,8 +114,10 @@ const App: React.SFC = () => {
 				cocktail.strIngredient10, cocktail.strIngredient11, cocktail.strIngredient12, 
 				cocktail.strIngredient13, cocktail.strIngredient14, cocktail.strIngredient15
 			];
+
 			let found = [] as Object[];
-			console.log(typeof bundledIngreds[0])
+			console.log(bundledIngreds[0])
+
 			bundledIngreds.forEach(ingred => {
 				if (ingred !== null && ingred !== undefined) {
 					if (ingred.toLowerCase() === keyword.toLowerCase()) {
