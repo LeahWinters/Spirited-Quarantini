@@ -5,21 +5,27 @@ import { render, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { getCocktailDetails } from "../apiCalls";
 import { cocktail } from '../test-data';
+import { mocked } from  'ts-jest/utils'
 jest.mock('../apiCalls');
 
 describe('CocktailDetails', () => {
-	getCocktailDetails.mockResolvedValue(() => {
-		return cocktail
-	});
+	mocked(getCocktailDetails).mockImplementation(() => 
+		Promise.resolve({
+			idDrink: "11007",
+			strDrink: "Margarita",
+			strInstructions: "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+			strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+		})
+	);
 
 	it('Should display the fetched cocktail title', async () => {
 		const { getByText } = render(
 			<MemoryRouter>
-				<CocktailDetails id={'14622'} />
+				<CocktailDetails id={'11007'} />
 			</MemoryRouter>
 		);
 
-		const detailTitle = await waitFor(() => getByText('Arctic Fish'));
+		const detailTitle = await waitFor(() => getByText('Margarita'));
 
 		expect(detailTitle).toBeInTheDocument();
 	});
@@ -39,7 +45,7 @@ describe('CocktailDetails', () => {
 	it('Should display the fetched cocktail instructions', async () => {
 		const { getByText } = render(
 			<MemoryRouter>
-				<CocktailDetails id={'14622'} />
+				<CocktailDetails id={'14622'}, favCockTails:string={''} />
 			</MemoryRouter>
 		);
 
