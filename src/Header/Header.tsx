@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
+import { isParenthesizedExpression } from 'typescript';
 
 interface HeaderProps {
 	loggedIn: boolean;
@@ -20,7 +21,11 @@ const Header: React.SFC<HeaderProps> = props => {
 	}
 
   const buttonsEnabled = searchInput.trim() !== "";
-
+	
+	const search = () => {
+		props.findResults(searchInput);
+		setSearchInput('');
+	}
 
 	return (
 		<header>
@@ -49,7 +54,7 @@ const Header: React.SFC<HeaderProps> = props => {
 						<Link to='/results'>
 							<button 
 								className="header-search-button" 
-								onClick={() => props.findResults(searchInput)}
+								onClick={() => search()}
 								type="button"
 								disabled={!buttonsEnabled}
 							>
