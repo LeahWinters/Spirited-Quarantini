@@ -17,7 +17,7 @@ const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
         src={props.strDrinkThumb} 
         alt={props.strDrink} 
         />
-      <Link to={`/${props.idDrink}/details`}>
+      <Link to={`/cocktails/${props.idDrink}`}>
         <button className="cc-button">
           Make Me
         </button>
