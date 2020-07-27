@@ -1,6 +1,8 @@
 .cocktail-card {
+	background-image: url('https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png');
+	background-repeat: no-repeat;
+	background-size: cover;
 	align-items: center;
-	border: 2px solid grey;
 	display: flex;
 	flex-direction: column;
 	font-family: 'Recursive', sans-serif;
@@ -16,20 +18,22 @@
 .card-title {
   color: white;
 	display: flex;
-	font-size: 18px;
+	font-size: 14px;
 	justify-content: center;
 	margin: 0;
+	width: 200px;
+	text-align: center;
 }
 
 .CC-img {
-	margin: 4% 0;
-	max-width: 65%;
+	margin: 2% 0;
+	max-width: 76%;
 	object-fit: cover;
 }
 
 .cc-button {
 	cursor: pointer;
-	height: 3vh;
-	font-size: 18px;
+	height: 2vh;
+	font-size: 14px;
 	font-family: 'Recursive', sans-serif;
 }

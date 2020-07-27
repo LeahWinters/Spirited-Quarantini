@@ -39,8 +39,6 @@ const App: React.SFC = () => {
 	]);
   const [error, setError] = useState("");
 
-  //fn that will filter searched input
-
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
@@ -61,7 +59,7 @@ const App: React.SFC = () => {
 	};
 
 	useEffect(() => {getCocktail()}, []);
-	useEffect(() => {fetchAllCocktails()}, []);
+	useEffect(() => {fetchAllCocktails()});
 
 	// Functions
 	
@@ -76,7 +74,6 @@ const App: React.SFC = () => {
 				searchResults.push(cocktail);
 			} 
 		});
-		// console.log(searchResults.splice(0, 1));
 		setFilteredResults(searchResults.splice(1));
 	}
   
@@ -105,6 +102,22 @@ const App: React.SFC = () => {
 
       <Switch>
 
+				<Route
+					path="/cocktails/:id"
+					render={({ match }) => {
+						const { id } = match.params;
+						return (
+							<CocktailDetails 
+								id={id} 
+								favCocktails={favCocktails} 
+								setFavCocktails={setFavCocktails}
+								toggleUserInteraction={toggleUserInteraction}
+								madeCocktails={madeCocktails}
+								setMadeCocktails={setMadeCocktails}
+							/>
+						);
+					}}
+				/>
 				<Route 
 					path="/about" 
 					render={() => <About />} 
@@ -139,22 +152,6 @@ const App: React.SFC = () => {
 						/>
 					)} 
 				/>
-        <Route
-          path="/:id/details"
-          render={({ match }) => {
-            const { id } = match.params;
-            return (
-							<CocktailDetails 
-								id={id} 
-								favCocktails={favCocktails} 
-								setFavCocktails={setFavCocktails}
-								toggleUserInteraction={toggleUserInteraction}
-								madeCocktails={madeCocktails}
-								setMadeCocktails={setMadeCocktails}
-							/>
-            );
-          }}
-        />
         <Route
           path="/random_cocktail"
           render={() => (
