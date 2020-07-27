@@ -96,42 +96,44 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
               ))}
             </ul>
           </section>
-          {!isFavorite && (
-            <button
-              type="button"
-              aria-label="add-to-favorites"
-              onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-            >
-              Add to Favorites
-            </button>
-          )}
-          {isFavorite && (
-            <button
-              type="button"
-              aria-label="remove-from-favorites"
-              onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-            >
-              Remove from Favorites
-            </button>
-          )}
-					{!isMade && (
-            <button
-              type="button"
-              aria-label="add-to-made"
-              onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-            >
-              Mark as Made
-            </button>
-          )}
-          {isMade && (
-            <button
-              type="button"
-              aria-label="remove-from-made"
-              onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-            >
-              Remove from Made
-            </button>
-          )}
+					<section className='button-container'>
+						{!isFavorite && (
+							<button
+								type="button"
+								aria-label="add-to-favorites"
+								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
+							>
+								Add to Favorites
+							</button>
+						)}
+						{isFavorite && (
+							<button
+								type="button"
+								aria-label="remove-from-favorites"
+								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
+							>
+								Remove from Favorites
+							</button>
+						)}
+						{!isMade && (
+							<button
+								type="button"
+								aria-label="add-to-made"
+								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
+							>
+								Mark as Made
+							</button>
+						)}
+						{isMade && (
+							<button
+								type="button"
+								aria-label="remove-from-made"
+								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
+							>
+								Remove from Made
+							</button>
+						)}
+					</section>
         </section>
       </section>
     </section>
