@@ -21,17 +21,18 @@
 	justify-content: center;
 	margin: 0;
 	width: 200px;
+	text-align: center;
 }
 
 .CC-img {
 	margin: 2% 0;
-	max-width: 81%;
+	max-width: 75%;
 	object-fit: cover;
 }
 
 .cc-button {
 	cursor: pointer;
-	height: 3vh;
+	height: 2vh;
 	font-size: 14px;
 	font-family: 'Recursive', sans-serif;
 }
