@@ -50,10 +50,7 @@ describe('App', () => {
 		// 	fireEvent.click(submitBtn);
 		// });
 
-		// await waitFor(() => {
-		// 	fireEvent.change(nameInput, {target: {value: 'GG'}});
-		// 	fireEvent.click(submitBtn);
-		// })
+
 		fireEvent.change(nameInput, {target: {value: 'GG'}});
 		fireEvent.click(submitBtn);
 
