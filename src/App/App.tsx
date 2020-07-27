@@ -39,15 +39,16 @@ const App: React.SFC = () => {
 	]);
   const [error, setError] = useState("");
 
-	useEffect(() => {getCocktail()});
+	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
-	useEffect(() => {updateAllCocktails()}, []);
+	// useEffect(() => {updateAllCocktails()}, []);
 
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
       const data: AllCocktailsDetails[] = await getAllCocktails();
-      return setAllCocktails(data);
+			await setAllCocktails(data);
+			await updateAllCocktails();
     } catch (error) {
       setError(error.message);
     }
@@ -56,19 +57,23 @@ const App: React.SFC = () => {
 	const getCocktail = async ():Promise<void> => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
-			setRandomCocktail(data);
+			return setRandomCocktail(data);
 		} catch (error) {
 			setError(error.message);
 		}
 	};
 
 	const updateAllCocktails = async ():Promise<void> => {
-		const newCocktails = await Promise.all(
-			allCocktails.map(async c => await getCocktailDetails(c.idDrink))
-		);
 		debugger;
-		console.log(newCocktails);
-		setAllCocktails(newCocktails);
+		try {
+			const newCocktails = await Promise.all(
+				allCocktails.map(c => getCocktailDetails(c.idDrink))
+			);
+			console.log(newCocktails);
+			setAllCocktails(newCocktails);
+		} catch (error) {
+			setError(error.message);
+		}
 	}
 
 	// Functions
@@ -156,7 +161,6 @@ const App: React.SFC = () => {
 					render={() => (
 						<AllCocktailsPage 
 							givenCocktails={findCocktailObj(madeCocktails)} 
-							//change argument to logged cocktails when complete
 						/>
 					)} 
 				/>
