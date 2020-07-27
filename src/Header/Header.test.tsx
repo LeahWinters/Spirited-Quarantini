@@ -76,7 +76,7 @@ describe('Header', () => {
     // const searchBtn = getByText('Search');
 
     fireEvent.change(searchInput, {target: {value: 'margarita'}});
-    expect(searchInput.value).toEqual('margarita');
+    expect(searchInput).toHaveValue('margarita');
   });
 
   it('User should be able to search cocktails when logged in', () => {
@@ -99,7 +99,6 @@ describe('Header', () => {
     fireEvent.change(searchInput, {target: {value: 'margarita'}});
     fireEvent.click(searchBtn);
     expect(mockSearch).toHaveBeenCalledTimes(1);
-    expect(searchInput.value).toEqual('');
-
+    expect(searchInput).toHaveValue('');
   });
 })
