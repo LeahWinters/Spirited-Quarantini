@@ -3,9 +3,6 @@ import Login from './Login';
 import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-// window.MutationObserver = require("mutation-observer");
-import MutationObserver from '@sheerun/mutationobserver-shim';
-window.MutationObserver = MutationObserver;
 
 describe('Login', () => {
   it("User should see a title, a username input, and two buttons when viewing the login page", () => {
