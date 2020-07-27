@@ -13,11 +13,11 @@
 	justify-content: space-evenly;
 	background-color: black;
 	color: white;
-	font-family: 'Recursive', sans-serif;
-	min-height: 518px;
 	max-height: 518px;
-	min-width: 451px;
+	min-height: 518px;
+	font-family: 'Recursive', sans-serif;
 	max-width: 451px;
+	min-width: 451px;
 	margin: 0 auto;
 	h3 {
 		margin: 0;
@@ -39,7 +39,7 @@
 	bottom: 0;
 	font-family: sans-serif;
 	height: 76vh;
-	opacity: 90%;
+	opacity: 0.9;
 	overflow: scroll;
 	position: absolute;
 	width: 100vw;
