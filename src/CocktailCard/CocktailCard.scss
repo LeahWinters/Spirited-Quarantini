@@ -12,12 +12,13 @@
 	min-height: 290px;
 	max-width: 250px;
 	min-width: 250px;
+	opacity: 1;
 }
 
 .card-title {
   color: white;
 	display: flex;
-	font-size: 18px;
+	font-size: 14px;
 	justify-content: center;
 	margin: 0;
 	width: 200px;
@@ -26,7 +27,7 @@
 
 .CC-img {
 	margin: 2% 0;
-	max-width: 75%;
+	max-width: 76%;
 	object-fit: cover;
 }
 

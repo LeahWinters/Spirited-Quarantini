@@ -68,7 +68,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
       <section className="cocktail-details-card">
         <h3>{cocktailInfo.strDrink}</h3>
         <img
-          className="detail-img"
+          className="details-img"
           src={`${cocktailInfo.strDrinkThumb}`}
           alt={`${cocktailInfo.strDrink}`}
         />
