@@ -99,5 +99,7 @@ describe('Header', () => {
     fireEvent.change(searchInput, {target: {value: 'margarita'}});
     fireEvent.click(searchBtn);
     expect(mockSearch).toHaveBeenCalledTimes(1);
+    expect(searchInput.value).toEqual('');
+
   });
 })
