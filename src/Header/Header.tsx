@@ -31,9 +31,8 @@ const Header: React.SFC<HeaderProps> = props => {
 				<div className='user-header'>
 					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
-						<h3>Welcome, {props.username}</h3>
 					</Link>
-
+					<h3 className='welcome-message'>Welcome, {props.username}</h3>
 					<form className='search-bar'>
 						<input
 							type="text"
