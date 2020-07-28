@@ -22,3 +22,13 @@
   font-size: 22px;
 	width: 55%;
 }
+
+@media only screen and (max-width: 375px) {
+	.cheers-img {
+		width: 50%;
+	}
+
+	.about {
+		font-size: 16px;
+	}
+}
