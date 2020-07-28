@@ -62,7 +62,6 @@ const App: React.SFC = () => {
 	useEffect(() => {fetchAllCocktails()});
 
 	// Functions
-	
 	const findResults = (searchValue: string) => {
 		let searchResults: any = [{
 			strDrink: "",
@@ -98,6 +97,7 @@ const App: React.SFC = () => {
         setLoggedIn={setLoggedIn}
 				setUsername={setUsername}
 				findResults={findResults}
+				username={username}
       />
 
       <Switch>
