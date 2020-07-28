@@ -57,18 +57,18 @@ export const cocktail = {
 export const cocktailInfo = {
 	idDrink: "14622",
 	strDrink: "Arctic Fish",
-	strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg"
+	strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg",
 }
 
 export const cocktailList = [
 	{
 		idDrink: "14622",
 		strDrink: "Arctic Fish",
-		strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg"
+		strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg",
 	},
 	{
-		"strDrink": "A Splash of Nash",
-		"strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rsvtrr1472668201.jpg",
-		"idDrink": "14564"
+		idDrink: "14564",
+		strDrink: "A Splash of Nash",
+		strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/rsvtrr1472668201.jpg",
 	}
 ]
