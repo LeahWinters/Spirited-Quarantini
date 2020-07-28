@@ -76,15 +76,6 @@ const App: React.SFC = () => {
 	}
 
 	// Functions
-	
-	// const findResults = (searchValue: string) => {
-	// 	let searchResults = allCocktails.filter(cocktail => {
-	// 		return cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())
-	// 	});
-
-	// 	setFilteredResults(searchResults);
-	// }
-
 	const findResults = (searchValue: string) => {
 		const byName = searchByName(searchValue);
 		const byIngredient = searchByIngred(searchValue);
@@ -99,26 +90,13 @@ const App: React.SFC = () => {
 	}
 
 	const searchByIngred = (keyword: string) => {
-		const found: Cocktail[] = [];
-		
-		allCocktails.forEach(cocktail => {
-			const bundledIngreds = [
-				cocktail.strIngredient1, cocktail.strIngredient2, cocktail.strIngredient3, 
-				cocktail.strIngredient4, cocktail.strIngredient5, cocktail.strIngredient6, 
-				cocktail.strIngredient7, cocktail.strIngredient8, cocktail.strIngredient9, 
-				cocktail.strIngredient10, cocktail.strIngredient11, cocktail.strIngredient12, 
-				cocktail.strIngredient13, cocktail.strIngredient14, cocktail.strIngredient15
-			]; //use forloop to make array
-			
-			bundledIngreds.forEach((ingred?: string) => {
-				if (ingred) {
-					if (ingred.toLowerCase() === keyword.toLowerCase()) {
-						found.push(cocktail);
-					}
-				}
-			});
-		})
-		return found;
+		return allCocktails.filter((cocktail: Cocktail) => {
+			const values = Object.values(cocktail);
+			let result = values.find((value: string | null) => {
+					if (value) return value.toLowerCase() === keyword.toLowerCase();
+			})
+			if (result) return cocktail;
+		});
 	}
   
 	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
@@ -133,7 +111,7 @@ const App: React.SFC = () => {
 		return givenArray.map((c) => {
 			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
 		}) as AllCocktailsDetails[];
-	};
+	}; //make another api call, use .find() on allCocktails & nonalcoholic drinks
 
   return (
     <main>

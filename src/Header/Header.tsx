@@ -46,7 +46,7 @@ const Header: React.SFC<HeaderProps> = props => {
 							<button 
 								className="header-search-button" 
 								onClick={() => props.findResults(searchInput)}
-								type="button"
+								type="submit"
 							>
 								Search
 							</button>
