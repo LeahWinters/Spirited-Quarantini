@@ -40,7 +40,7 @@ const Header: React.SFC<HeaderProps> = props => {
 					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
 					</Link>
-					<h3 className='welcome-message'>Welcome, {props.username}</h3>
+					<h3 className='welcome-message'>Welcome, {(props.username).charAt(0).toUpperCase() + (props.username).slice(1)}</h3>
 					</section>
 					<form className='search-bar'>
 						<input
