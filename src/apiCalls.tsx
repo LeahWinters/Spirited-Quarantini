@@ -3,7 +3,6 @@ import { AllCocktailsDetails } from "./App/App";
 
 const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
 
-//Add AlcoholicCocktail[] to definitions
 export const getAllCocktails = async (): Promise<AllCocktailsDetails[]> => {
   const response = await fetch(`${rootUrl}/filter.php?a=Alcoholic`);
 
@@ -11,7 +10,7 @@ export const getAllCocktails = async (): Promise<AllCocktailsDetails[]> => {
 		const data = await response.json();
     return data.drinks;
   } else {
-    throw new Error(response.statusText );
+    throw new Error(response.statusText);
   }
 };
 
@@ -20,9 +19,9 @@ export const getRandomCocktail = async ():Promise<Cocktail> => {
   
   if(response.ok) {
     const data = await response.json();
-    return data.drinks[0]
+    return data.drinks[0];
   } else {
-    throw new Error(response.statusText )
+    throw new Error(response.statusText);
   }
 }
   
@@ -31,8 +30,8 @@ export const getCocktailDetails = async (givenID: string) => {
   
   if(response.ok) {
     const data = await response.json();
-    return data.drinks[0]
+    return data.drinks[0];
   } else {
-    throw new Error(response.statusText )
+    throw new Error(response.statusText);
   }
 }

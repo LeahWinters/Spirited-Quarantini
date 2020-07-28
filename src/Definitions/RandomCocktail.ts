@@ -1,6 +1,6 @@
 export interface Cocktail {
-	idDrink?: string;
-	strDrink?: string;
+	idDrink: string;
+	strDrink: string;
 	strDrinkAlternate?: string;
 	strDrinkES?: string;
 	strDrinkDE?: string;
@@ -19,7 +19,7 @@ export interface Cocktail {
 	strInstructionsFR?: string;
 	"strInstructionsZH-HANS"?: string;
 	"strInstructionsZH-HANT"?: string;
-	strDrinkThumb?: string;
+	strDrinkThumb: string;
 	strIngredient1?: string;
 	strIngredient2?: string;
 	strIngredient3?: string;

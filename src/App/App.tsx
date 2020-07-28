@@ -7,7 +7,7 @@ import About from '../About/About';
 import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
-import { getAllCocktails, getRandomCocktail } from "../apiCalls";
+import { getAllCocktails, getRandomCocktail, getCocktailDetails } from "../apiCalls";
 import { Cocktail } from '../Definitions/RandomCocktail'
 import './App.scss';
 
@@ -20,16 +20,18 @@ export interface AllCocktailsDetails {
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
 	const [ loggedIn, setLoggedIn ] = useState(false);
-	const [ allCocktails, setAllCocktails ] = useState<AllCocktailsDetails[]>([
+	const [ allCocktails, setAllCocktails ] = useState<Cocktail[]>([
 		{
 			strDrink: '',
 			strDrinkThumb: '',
 			idDrink: ''
 		}
 	]);
+	const [ allCError, setAllCError ] = useState('');
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
-	const [favCocktails, setFavCocktails] = useState<string[]>([]);
-	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
+	const [randomCError, setRandomCError] = useState('');
+	const [favCocktails, setFavCocktails] = useState<Cocktail[]>([]);
+	const [madeCocktails, setMadeCocktails] = useState<Cocktail[]>([]);
 	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
 		{
 			strDrink: '',
@@ -39,56 +41,75 @@ const App: React.SFC = () => {
 	]);
   const [error, setError] = useState("");
 
+	useEffect(() => {getCocktail()}, []);
+	useEffect(() => {fetchAllCocktails()}, []);
+	useEffect(() => {
+		updateAllCocktails()
+	}, [allCocktails]);
+
   // API Calls
   const fetchAllCocktails = async (): Promise<any> => {
     try {
       const data: AllCocktailsDetails[] = await getAllCocktails();
-      return setAllCocktails(data);
+			return setAllCocktails(data);
     } catch (error) {
-      setError(error.message);
+      setAllCError(error.toString());
     }
   };
 
-	const getCocktail = async ():Promise<any> => {
+	const getCocktail = async ():Promise<void> => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
-			setRandomCocktail(data);
+			return setRandomCocktail(data);
+		} catch (error) {
+			setRandomCError(error.toString());
+		}
+	};
+
+	const updateAllCocktails = async ():Promise<void> => {
+		try {
+			const newCocktails = await Promise.all(
+				allCocktails.map(c => getCocktailDetails(c.idDrink))
+			);
+			setAllCocktails(newCocktails);
 		} catch (error) {
 			setError(error.message);
 		}
-	};
-
-	useEffect(() => {getCocktail()}, []);
-	useEffect(() => {fetchAllCocktails()});
+	}
 
 	// Functions
 	const findResults = (searchValue: string) => {
-		let searchResults: any = [{
-			strDrink: "",
-			strDrinkThumb: "",
-			idDrink: "",
-		}];
-		allCocktails.forEach(cocktail => {
-			if (cocktail.strDrink.toLowerCase().includes(searchValue.toLowerCase())) {
-				searchResults.push(cocktail);
-			} 
+		const byName = searchByName(searchValue);
+		const byIngredient = searchByIngred(searchValue);
+		const searchedResults = byName.concat(byIngredient);
+		setFilteredResults([...searchedResults]);
+	}
+
+	const searchByName = (keyword: string) => {
+		return allCocktails.filter(cocktail => {
+			return cocktail.strDrink.toLowerCase().includes(keyword.toLowerCase())
 		});
-		setFilteredResults(searchResults.splice(1));
+	}
+
+	const searchByIngred = (keyword: string) => {
+		return allCocktails.filter((cocktail: Cocktail) => {
+			const values = Object.values(cocktail);
+			let result = values.find((value: string | null) => {
+					if (value) return value.toLowerCase() === keyword.toLowerCase();
+			})
+			if (result) return cocktail;
+		});
+		// setFilteredResults(searchResults.splice(1));
 	}
   
-	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
-			if (!idList.includes(drinkId)) {
-				setTheState([...idList, drinkId]);
-			} else {
-				setTheState(idList.filter(cocktail => cocktail !== drinkId))
-			}
+	const toggleUserInteraction = async (idList: Cocktail[], drinkId: string, setTheState: Function): Promise<void> => {
+		if (!idList.find(c => c.idDrink === drinkId)) {
+				const foundCocktail = await getCocktailDetails(drinkId);
+				setTheState([...idList, foundCocktail]);
+		} else {
+			setTheState(idList.filter(c => c.idDrink !== drinkId))
 		}
-	
-	const findCocktailObj = (givenArray: string[]) => { 
-		return givenArray.map((c) => {
-			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
-		}) as AllCocktailsDetails[];
-	};
+	}
 
   return (
     <main>
@@ -101,7 +122,6 @@ const App: React.SFC = () => {
       />
 
       <Switch>
-
 				<Route
 					path="/cocktails/:id"
 					render={({ match }) => {
@@ -127,6 +147,7 @@ const App: React.SFC = () => {
           render={() => (
 						<AllCocktailsPage 
 							givenCocktails={allCocktails} 
+							error={allCError}
 						/>
 					)}
         />
@@ -139,7 +160,8 @@ const App: React.SFC = () => {
 					path="/my_cocktails/favorites" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(favCocktails)} 
+							givenCocktails={favCocktails} 
+							error={allCError}
 						/>
 					)} 
 				/>
@@ -147,8 +169,8 @@ const App: React.SFC = () => {
 					path="/my_cocktails/logged" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(madeCocktails)} 
-							//change argument to logged cocktails when complete
+							givenCocktails={madeCocktails} 
+							error={allCError}
 						/>
 					)} 
 				/>
@@ -156,8 +178,8 @@ const App: React.SFC = () => {
           path="/random_cocktail"
           render={() => (
 						<Dashboard 
-							username={username} 
 							randomCocktail={randomCocktail} 
+							error={randomCError}
 						/>
 					)}
         />
@@ -165,7 +187,8 @@ const App: React.SFC = () => {
 					path="/results"
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={filteredResults}
+							givenCocktails={filteredResults} 
+							error={allCError}
 						/>
 					)}
 				/>
