@@ -1,4 +1,11 @@
-## Contributors:
+#Spirited-Quarantini
+
+A Mod 3 group [project](https://frontend.turing.io/projects/module-3/stretch.html). 
+Assigned technology to learn: TypeScript, and group added additional React Hooks challenge
+
+Deployed App: https://spiritedquarantini.netlify.app/ 
+
+### Contributors:
 
 - Alex Sodemann: https://github.com/asodemann18
 - Becca Steinbrecher: https://github.com/b-stein
