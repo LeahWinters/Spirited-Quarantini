@@ -83,3 +83,17 @@ header {
 	min-height: 21px;
 	margin-bottom: 4px;
 }
+
+@media only screen and (max-width: 768px) {
+
+	.navlinks {
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		font-family: 'Recursive', sans-serif;
+		height: 14vh;
+		justify-content: space-evenly;
+		margin-right: 9px;
+		width: 20%;
+	}
+}
