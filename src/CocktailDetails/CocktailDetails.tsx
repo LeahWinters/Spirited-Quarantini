@@ -96,16 +96,16 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
           </section>
 					<section className='button-container'>
 						{!isFavorite && (
-                <img src={require("../assets/heart.svg")} alt="Add to favorites" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
+                <img src={require("../assets/heart.svg")} alt="Add to Favorites" className="icon" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
 						)}
 						{isFavorite && (
-              <img src={require("../assets/heart-filled.svg")} alt="Remove from favorites" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
+              <img src={require("../assets/heart-filled.svg")} alt="Remove from Favorites" className="icon" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
 						)}
 						{!isMade && (
-              <img src={require("../assets/martini-outline.svg")} alt="Mark as made" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
+              <img src={require("../assets/martini-outline.svg")} alt="Mark as Made" className="icon" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
 						)}
 						{isMade && (
-              <img src={require("../assets/martini-filled.svg")} alt="Remove from made" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
+              <img src={require("../assets/martini-filled.svg")} alt="Remove from Made" className="icon" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
 						)}
 					</section>
         </section>

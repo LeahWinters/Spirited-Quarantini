@@ -1,11 +1,12 @@
 import React from "react";
 import CocktailDetails from "./CocktailDetails";
 import "@testing-library/jest-dom";
-import { render, waitFor, getByAltText, fireEvent } from "@testing-library/react";
+import { render, waitFor, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { getCocktailDetails } from "../apiCalls";
-import { cocktail } from "../test-data";
+// import { cocktail } from "../test-data";
 import { mocked } from "ts-jest/utils";
+import { act } from 'react-dom/test-utils';
 jest.mock("../apiCalls");
 
 describe("CocktailDetails", () => {
@@ -128,11 +129,11 @@ describe("CocktailDetails", () => {
 		expect(strMeasure5).toBeInTheDocument();
 	});
 	
-	it("Should be able to click add to favorites button", () => {
+	it("Should be able to click add to favorites button", async () => {
 		const mockToggle = jest.fn();
 		const mockFavorite = jest.fn();
 
-    const { getByLabelText, getByText } = render(
+    const { getByAltText } = render(
       <MemoryRouter>
         <CocktailDetails
           id={"14622"}
@@ -145,19 +146,21 @@ describe("CocktailDetails", () => {
       </MemoryRouter>
 		);
 
-		const favButton = getByText('Add to Favorites')
+		const favButton = await waitFor(() =>getByAltText('Add to Favorites'))
 
-		fireEvent.click(favButton)
+    act(() => {
+			fireEvent.click(favButton);
+		});
 
 		expect(mockToggle).toHaveBeenCalled()
-		expect(getByText("Remove from Favorites")).toBeInTheDocument()
+		expect(getByAltText("Remove from Favorites")).toBeInTheDocument()
 	})
 
-	it("Should be able to click add to Make button", () => {
+	it("Should be able to click add to Make button", async () => {
 		const mockToggle = jest.fn();
 		const mockFavorite = jest.fn();
 
-    const { getByLabelText, getByText } = render(
+    const { getByAltText } = render(
       <MemoryRouter>
         <CocktailDetails
           id={"14622"}
@@ -170,12 +173,15 @@ describe("CocktailDetails", () => {
       </MemoryRouter>
 		);
 
-		const favButton = getByText('Mark as Made')
+		const madeButton = await waitFor(() => getByAltText('Mark as Made'))
 
-		fireEvent.click(favButton)
+    act(() => {
+			fireEvent.click(madeButton);
+		});
+    
 
 		expect(mockToggle).toHaveBeenCalled()
-		expect(getByText("Remove from Made")).toBeInTheDocument()
+		expect(getByAltText("Remove from Made")).toBeInTheDocument()
 	})
 
 });
