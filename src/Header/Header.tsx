@@ -12,7 +12,6 @@ interface HeaderProps {
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-	//state w/ input value
 	const [searchInput, setSearchInput] = useState('');
 	
 	const logoutUser = () => {
@@ -37,10 +36,12 @@ const Header: React.SFC<HeaderProps> = props => {
 
 			{props.loggedIn && 
 				<div className='user-header'>
+					<section>
 					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
 					</Link>
 					<h3 className='welcome-message'>Welcome, {props.username}</h3>
+					</section>
 					<form className='search-bar'>
 						<input
 							type="text"
@@ -77,6 +78,7 @@ const Header: React.SFC<HeaderProps> = props => {
 						<button
 							onClick={logoutUser}
 							className='logout-btn'
+							type='button'
 						>
 							Logout
 						</button>

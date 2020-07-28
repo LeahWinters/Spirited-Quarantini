@@ -62,7 +62,6 @@ const App: React.SFC = () => {
 	useEffect(() => {fetchAllCocktails()});
 
 	// Functions
-	
 	const findResults = (searchValue: string) => {
 		let searchResults: any = [{
 			strDrink: "",

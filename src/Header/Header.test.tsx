@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import '@testing-library/jest-dom';
-import { render, fireEvent, queryAllByPlaceholderText } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Header', () => {
@@ -73,8 +73,6 @@ describe('Header', () => {
     );
 
     const searchInput = getByPlaceholderText('search cocktails...')
-    // const searchBtn = getByText('Search');
-
     fireEvent.change(searchInput, {target: {value: 'margarita'}});
     expect(searchInput).toHaveValue('margarita');
   });
@@ -82,7 +80,7 @@ describe('Header', () => {
   it('User should be able to search cocktails when logged in', () => {
     const mockSearch = jest.fn();
 
-    const { getByText, getByPlaceholderText, debug } = render(
+    const { getByText, getByPlaceholderText } = render(
       <MemoryRouter>
         <Header 
           loggedIn={true} 
@@ -100,5 +98,29 @@ describe('Header', () => {
     fireEvent.click(searchBtn);
     expect(mockSearch).toHaveBeenCalledTimes(1);
     expect(searchInput).toHaveValue('');
+  });
+
+  it('Should log a user out when the logout button is clicked', () => {
+    const mockLogoutUser = jest.fn();
+
+    const { queryByText, getByRole } = render(
+      <MemoryRouter>
+        <Header 
+          loggedIn={true} 
+          setLoggedIn={Function}
+          setUsername={Function}
+          findResults={Function}
+          username={'Alex'}
+        />
+      </MemoryRouter>
+    );
+
+    const logoutBtn = getByRole('button', {name: 'Logout'});
+    fireEvent.click(logoutBtn);
+    // const about = queryByText('About');
+    expect(mockLogoutUser).toHaveBeenCalledWith();
+    // expect(searchInput).toHaveValue('');
+    // expect(about).not.toBeInTheDocument();
+
   });
 })
