@@ -1,7 +1,9 @@
-#Spirited-Quarantini
+# Spirited-Quarantini
 
 A Mod 3 group [project](https://frontend.turing.io/projects/module-3/stretch.html). 
-Assigned technology to learn: TypeScript, and group added additional React Hooks challenge
+Assigned technology to learn: 
+ * TypeScript
+ * group added challenge of React Hooks
 
 Deployed App: https://spiritedquarantini.netlify.app/ 
 
@@ -12,34 +14,25 @@ Deployed App: https://spiritedquarantini.netlify.app/
 - Léah Winters: https://github.com/LeahWinters
 - Melissa VanKempen: https://github.com/Melizzo
 
-## How to View This Application:
+## Setup
 
-## Available Scripts
+### Clone This Repo
 
-In the project directory, you can run:
+That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
 
-### `npm start`
+1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
+1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
+1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
+1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
+1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Then install the library dependencies. Run:
 
-### `npm test`
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
+To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page that displays the "Travel Tracker" login page. 
 
