@@ -76,6 +76,7 @@ const Header: React.SFC<HeaderProps> = props => {
 					</Link>
 					<Link to='/'>
 						<button
+							aria-label='logout'
 							onClick={logoutUser}
 							className='logout-btn'
 							type='button'
