@@ -1,61 +1,68 @@
 .COTD-img {
-	width: 77%;
+  width: 77%;
 }
 
 .cocktail-OTD {
-	background-image: url('https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 15px;
-	justify-content: space-evenly;
-	background-color: black;
-	color: white;
-	max-height: 518px;
-	min-height: 518px;
-	font-family: 'Recursive', sans-serif;
-	max-width: 451px;
-	min-width: 451px;
-	margin: 0 auto;
-	h3 {
-		margin: 0;
-		margin-top: 9px;
-	}
+  background-image: url("https://media-cdn.getbento.com/accounts/b407703cbc06b7de17a1aab05567665c/media/accounts/media/TBBjpsToRMaQp7vLG6Ty_border-image-white-decor.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  justify-content: space-evenly;
+  background-color: black;
+  color: white;
+  max-height: 518px;
+  min-height: 518px;
+  font-family: "Recursive", sans-serif;
+  max-width: 451px;
+  min-width: 451px;
+  margin: 0 auto;
+  h3 {
+    margin: 0;
+    margin-top: 9px;
+  }
 }
 
 .COTD-title {
-	text-align: center;
-	color: white;
-	font-size: 23px;
-	margin-top: 4%;
+  text-align: center;
+  color: white;
+  font-size: 23px;
+  margin-top: 4%;
   margin-bottom: 2%;
-	font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
 }
 
 .cocktail-OTD-wrapper {
-	background-color: black;
-	bottom: 0;
-	font-family: sans-serif;
-	height: 76vh;
-	opacity: 0.9;
-	overflow: scroll;
-	position: absolute;
-	width: 100vw;
+  background-color: black;
+  bottom: 0;
+  font-family: sans-serif;
+  height: 76vh;
+  opacity: 0.9;
+  overflow: scroll;
+  position: absolute;
+  width: 100vw;
 }
 
 .welcome-msg {
-	color: white;
-	font-family: 'Recursive', sans-serif;
-	margin-left: 15px;
+  color: white;
+  font-family: "Recursive", sans-serif;
+  margin-left: 15px;
 }
 
 .details-btn {
-	cursor: pointer;
-	font-family: 'Recursive', sans-serif;
-	margin-bottom: 3px;
-	margin-top: 6px;
-	min-height: 29px;
+  cursor: pointer;
+  font-family: "Recursive", sans-serif;
+  margin-bottom: 3px;
+  margin-top: 6px;
+  min-height: 29px;
   width: 90px;
+}
+
+@media only screen and (max-width: 375px) {
+  .cocktail-OTD {
+    min-height: 388px;
+    min-width: 341px;
+  }
 }

@@ -1,69 +1,46 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Spirited Quarantini
+<br>
 
-## Available Scripts
+A Mod 3 group [project](https://frontend.turing.io/projects/module-3/stretch.html). 
+Assigned technology to learn: 
+ * TypeScript
+ * group added challenge of React Hooks
 
-In the project directory, you can run:
+## Overview
 
-### `npm start`
+Spirited Quarantini is an app using [The Cocktail Database](https://www.thecocktaildb.com/)for a quarantined user. 
+Our user wants to easy instructions and become thier own bartender.
+Our app inspires a user to try new recipes, favoriting or marking a drink as made.  
+A displayed a list of cocktails, or trying the cocktail of the day are featured for additional inspiration.  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Deployed App: https://spiritedquarantini.netlify.app/ 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `npm test`
+## Setup
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Clone This Repo
 
-### `npm run build`
+That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
+1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
+1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
+1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
+1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then install the library dependencies. Run:
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page that displays the "Travel Tracker" login page. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Contributors:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# Spirited-Quarantine
+- Alex Sodemann: https://github.com/asodemann18
+- Becca Steinbrecher: https://github.com/b-stein
+- Léah Winters: https://github.com/LeahWinters
+- Melissa VanKempen: https://github.com/Melizzo
