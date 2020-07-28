@@ -23,12 +23,18 @@ main {
 button {
 	background: none;
 	color: white;
-	border: 1px solid red;
+	border: 1px solid grey;
 	height: 2vh;
 	border-radius: 2px;
 	&:hover {
 		background: red;
 	}
+}
+
+.error-msg {
+	color: red;
+	text-align: center;
+	margin-top: 12%;
 }
 
 a:link{

@@ -1,19 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AllCocktailsDetails } from '../App/App';
 import CocktailCard from '../CocktailCard/CocktailCard';
+import { Cocktail } from '../Definitions/RandomCocktail'
 import './AllCocktailsPage.scss';
 
 export interface AllCocktailsProps {
-	givenCocktails: AllCocktailsDetails[];
+	givenCocktails: AllCocktailsDetails[] | Cocktail[];
+	error: string;
 }
 
 const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
   const [givenCocktails, setGivenCocktails] = useState(props.givenCocktails);
-  const [error, setError] = useState<string>("");
 
-	useEffect(() => {
-		setGivenCocktails(props.givenCocktails)
-	}, [props]);
+	useEffect(() => {setGivenCocktails(props.givenCocktails)}, [props]);
 
   const cocktailCards = Object.values(givenCocktails).map(cocktail => {
     return (
@@ -28,8 +27,11 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 
 	return (
 		<section className="all-cocktails-container">
-      {cocktailCards}
-      {!cocktailCards.length && <h3 className="no-found-cocktails">Sorry! No cocktails found.</h3>}
+			{props.error && 
+				<div className='error-msg'>404: No cocktails found</div>
+			}
+      {!props.error && cocktailCards}
+      {!props.error && !cocktailCards.length && <h3 className="no-found-cocktails">No cocktails saved in this category.</h3>}
 		</section>
 	)
 };
