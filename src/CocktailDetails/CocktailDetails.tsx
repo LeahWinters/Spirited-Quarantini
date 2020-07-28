@@ -3,6 +3,7 @@ import { getCocktailDetails } from "../apiCalls";
 import { Cocktail } from "../Definitions/RandomCocktail";
 import "./CocktailDetails.scss";
 
+
 export interface CocktailDetailsProps {
   id: string;
 	favCocktails: Cocktail[];
@@ -95,40 +96,16 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
           </section>
 					<section className='button-container'>
 						{!isFavorite && (
-							<button
-								type="button"
-								aria-label="add-to-favorites"
-								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-							>
-								Add to Favorites
-							</button>
+                <img src={require("../assets/heart.svg")} alt="Add to favorites" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
 						)}
 						{isFavorite && (
-							<button
-								type="button"
-								aria-label="remove-from-favorites"
-								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-							>
-								Remove from Favorites
-							</button>
+              <img src={require("../assets/heart-filled.svg")} alt="Remove from favorites" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
 						)}
 						{!isMade && (
-							<button
-								type="button"
-								aria-label="add-to-made"
-								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-							>
-								Mark as Made
-							</button>
+              <img src={require("../assets/martini-outline.svg")} alt="Mark as made" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
 						)}
 						{isMade && (
-							<button
-								type="button"
-								aria-label="remove-from-made"
-								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-							>
-								Remove from Made
-							</button>
+              <img src={require("../assets/martini-filled.svg")} alt="Remove from made" onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}/>
 						)}
 					</section>
         </section>
