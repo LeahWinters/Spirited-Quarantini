@@ -1,21 +1,24 @@
 .about-wrapper {
+	align-items: center;
 	background-color: black;
-	color: white;
-	position: absolute;
-	height: 76vh;
 	bottom: 0;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	height: 76vh;
+	justify-content: center;
   opacity: 0.9;
   overflow: scroll;
+	position: absolute;
 	width: 100vw;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
 .cheers-img {
-	background-image: url('https://images.unsplash.com/photo-1558383409-ab7ef8db3e01?ixlib=rb-1.2.1&auto=format&fit=crop&w=1970&q=80');
+	width: 40%;
 }
 
 .about {
-
+	font-family: 'Recursive', sans-serif;
+  font-size: 22px;
+	width: 55%;
 }
