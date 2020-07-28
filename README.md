@@ -1,18 +1,20 @@
-# Spirited-Quarantini
+# Spirited Quarantini
+<br>
 
 A Mod 3 group [project](https://frontend.turing.io/projects/module-3/stretch.html). 
 Assigned technology to learn: 
  * TypeScript
  * group added challenge of React Hooks
 
+## Overview
+
+Spirited Quarantini is an app using [The Cocktail Database](https://www.thecocktaildb.com/)for a quarantined user. 
+Our user wants to easy instructions and become thier own bartender.
+Our app inspires a user to try new recipes, favoriting or marking a drink as made.  
+A displayed a list of cocktails, or trying the cocktail of the day are featured for additional inspiration.  
+
 Deployed App: https://spiritedquarantini.netlify.app/ 
 
-### Contributors:
-
-- Alex Sodemann: https://github.com/asodemann18
-- Becca Steinbrecher: https://github.com/b-stein
-- Léah Winters: https://github.com/LeahWinters
-- Melissa VanKempen: https://github.com/Melizzo
 
 ## Setup
 
@@ -36,3 +38,9 @@ npm install
 
 To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page that displays the "Travel Tracker" login page. 
 
+### Contributors:
+
+- Alex Sodemann: https://github.com/asodemann18
+- Becca Steinbrecher: https://github.com/b-stein
+- Léah Winters: https://github.com/LeahWinters
+- Melissa VanKempen: https://github.com/Melizzo
