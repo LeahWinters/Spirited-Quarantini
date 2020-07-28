@@ -9,11 +9,17 @@ Assigned technology to learn:
 ## Overview
 
 Spirited Quarantini is an app using [The Cocktail Database](https://www.thecocktaildb.com/)for a quarantined user. 
-Our user wants to easy instructions and become thier own bartender.
+Our user wants to easy instructions to become their own bartender.
 Our app inspires a user to try new recipes, favoriting or marking a drink as made.  
 A displayed a list of cocktails, or trying the cocktail of the day are featured for additional inspiration.  
 
 Deployed App: https://spiritedquarantini.netlify.app/ 
+
+
+## App Demo
+
+![Login](https://media.giphy.com/media/dwM6xd0fRfCu8cjJSY/giphy.gif)
+![App Functionality](https://media.giphy.com/media/TgPBFzkLkQ1rkmdHi6/giphy.gif)
 
 
 ## Setup
@@ -37,6 +43,17 @@ npm install
 ```
 
 To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page that displays the "Travel Tracker" login page. 
+
+## Learning Goals
+
+1. Learn TypeScript 
+2. Add additional stretch technology: React Hooks
+3. Testing all files, including sad paths
+4. Solidify React 
+5. Choose free API and utulize it in app
+6. SRP and DRY code
+7. Work remotely to ensure a successful project. 
+
 
 ### Contributors:
 
