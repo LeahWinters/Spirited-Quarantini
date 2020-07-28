@@ -100,14 +100,12 @@ describe('Header', () => {
     expect(searchInput).toHaveValue('');
   });
 
-  it.skip('Should log a user out when the logout button is clicked', () => {
-    const mockLogoutUser = jest.fn();
-
+  it('Should log a user out when the logout button is clicked', () => {
     const mockSetLoggedIn = jest.fn();
     const mockSetUsername = jest.fn();
     const mockFindResults = jest.fn();
 
-    const { getByText } = render(
+    const { getByText, debug } = render(
       <MemoryRouter>
         <Header 
           loggedIn={true} 
@@ -120,9 +118,9 @@ describe('Header', () => {
     );
 
     const logoutBtn = getByText('Logout');
+   
     fireEvent.click(logoutBtn);
-
-    expect(mockLogoutUser).toHaveBeenCalled()
-
+    expect(mockSetLoggedIn).toHaveBeenCalledWith(false)
+    expect(mockSetUsername).toHaveBeenCalledWith("")
   });
 })

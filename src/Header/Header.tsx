@@ -12,7 +12,7 @@ interface HeaderProps {
 const Header: React.SFC<HeaderProps> = props => {
 	const [searchInput, setSearchInput] = useState('');
 	
-	const logoutUser = () => {
+	const logoutUser = ():any => {
 		props.setLoggedIn(false);
 		props.setUsername('')
 	}
