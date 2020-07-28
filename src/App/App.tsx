@@ -7,7 +7,7 @@ import About from '../About/About';
 import AllCocktailsPage from '../AllCocktailsPage/AllCocktailsPage';
 import MyCocktails from '../MyCocktails/MyCocktails';
 import CocktailDetails from '../CocktailDetails/CocktailDetails';
-import { getAllCocktails, getRandomCocktail } from "../apiCalls";
+import { getAllCocktails, getRandomCocktail, getCocktailDetails } from "../apiCalls";
 import { Cocktail } from '../Definitions/RandomCocktail'
 import './App.scss';
 
@@ -30,8 +30,8 @@ const App: React.SFC = () => {
 	const [ allCError, setAllCError ] = useState('');
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
 	const [randomCError, setRandomCError] = useState('');
-	const [favCocktails, setFavCocktails] = useState<string[]>([]);
-	const [madeCocktails, setMadeCocktails] = useState<string[]>([]);
+	const [favCocktails, setFavCocktails] = useState<Cocktail[]>([]);
+	const [madeCocktails, setMadeCocktails] = useState<Cocktail[]>([]);
 	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
 		{
 			strDrink: '',
@@ -79,19 +79,14 @@ const App: React.SFC = () => {
 		setFilteredResults(searchResults.splice(1));
 	}
   
-	const toggleUserInteraction = (idList: string[], drinkId: string, setTheState: Function): any => {
-			if (!idList.includes(drinkId)) {
-				setTheState([...idList, drinkId]);
+	const toggleUserInteraction = async (idList: Cocktail[], drinkId: string, setTheState: Function): Promise<void> => {
+		if (!idList.find(c => c.idDrink === drinkId)) {
+				const foundCocktail = await getCocktailDetails(drinkId);
+				setTheState([...idList, foundCocktail]);
 			} else {
 				setTheState(idList.filter(cocktail => cocktail !== drinkId))
 			}
 		}
-	
-	const findCocktailObj = (givenArray: string[]) => { 
-		return givenArray.map((c) => {
-			return allCocktails.find(cocktail => cocktail.idDrink === c) as Object;
-		}) as AllCocktailsDetails[];
-	};
 
   return (
     <main>
@@ -141,7 +136,7 @@ const App: React.SFC = () => {
 					path="/my_cocktails/favorites" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(favCocktails)} 
+							givenCocktails={favCocktails} 
 							error={allCError}
 						/>
 					)} 
@@ -150,7 +145,7 @@ const App: React.SFC = () => {
 					path="/my_cocktails/logged" 
 					render={() => (
 						<AllCocktailsPage 
-							givenCocktails={findCocktailObj(madeCocktails)} 
+							givenCocktails={madeCocktails} 
 							error={allCError}
 						/>
 					)} 

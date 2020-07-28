@@ -43,7 +43,7 @@ describe('App', () => {
 	});
 
 	it('From the homepage, if Details button is clicked, user should be directed to the CocktailDetails page', async () => {
-		const { getByLabelText, getByText, getByPlaceholderText, debug } = render(<MemoryRouter><App /></MemoryRouter>);
+		const { getByLabelText, getByText, getByPlaceholderText, getAllByText, debug } = render(<MemoryRouter><App /></MemoryRouter>);
 		
 		const nameInput = getByPlaceholderText('username');
 		const submitBtn = getByLabelText('over-21-button');
@@ -53,10 +53,10 @@ describe('App', () => {
 			fireEvent.click(submitBtn);
 		})
 
-		const detailsBtn = await waitFor(() => getByLabelText('details-button'));
+		const detailsBtn = await waitFor(() => getAllByText('Make Me'));
 	
 		act(() => {
-			fireEvent.click(detailsBtn);
+			fireEvent.click(detailsBtn[0]);
 		})
 		debug();
 

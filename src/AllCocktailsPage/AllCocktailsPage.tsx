@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AllCocktailsDetails } from '../App/App';
 import CocktailCard from '../CocktailCard/CocktailCard';
+import { Cocktail } from '../Definitions/RandomCocktail'
 import './AllCocktailsPage.scss';
 
 export interface AllCocktailsProps {
-	givenCocktails: AllCocktailsDetails[];
+	givenCocktails: AllCocktailsDetails[] | Cocktail[];
 	error: string;
 }
 
