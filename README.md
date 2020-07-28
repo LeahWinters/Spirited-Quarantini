@@ -1,9 +1,9 @@
 ## Contributors:
 
-Alex Sodemann: https://github.com/asodemann18
-Becca Steinbrecher: https://github.com/b-stein
-Léah Winters: https://github.com/LeahWinters
-Melissa VanKempen: https://github.com/Melizzo
+- Alex Sodemann: https://github.com/asodemann18
+- Becca Steinbrecher: https://github.com/b-stein
+- Léah Winters: https://github.com/LeahWinters
+- Melissa VanKempen: https://github.com/Melizzo
 
 ## How to View This Application:
 
