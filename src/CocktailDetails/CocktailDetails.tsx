@@ -48,6 +48,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
   };
 
   const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
+		console.log('fn entered', cocktailInfo)
 		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof Cocktail>)
 			.filter((keys) => keys.slice(0, endingIndex) === givenKey);
     return cocktailIngredients.map((i) => cocktailInfo[i] as string);

@@ -15,7 +15,6 @@ const AllCocktailsPage: React.SFC<AllCocktailsProps> = (props) => {
 	useEffect(() => {setGivenCocktails(props.givenCocktails)}, [props]);
 
   const cocktailCards = Object.values(givenCocktails).map((cocktail, i) => {
-		console.log('INDEX', cocktail)
     return (
       <CocktailCard 
         strDrink={cocktail.strDrink}

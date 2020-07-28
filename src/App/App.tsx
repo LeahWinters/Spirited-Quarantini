@@ -40,7 +40,7 @@ const App: React.SFC = () => {
 	]);
 	const [randomCError, setRandomCError] = useState('');
 	const [ allCError, setAllCError ] = useState('');
-  const [error, setError] = useState("");
+  const [ error, setError ] = useState("");
 
 	useEffect(() => {fetchAllCocktails()}, []);
 	useEffect(() => {updateAllCocktails()}, [allCocktails]);
@@ -50,7 +50,6 @@ const App: React.SFC = () => {
   const fetchAllCocktails = async (): Promise<void> => {
     try {
 			const data: AllCocktailsDetails[] = await getAllCocktails();
-			console.log('ran fn')
 			setAllCocktails(data);
     } catch (error) {
       setAllCError(error.toString());
