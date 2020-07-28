@@ -26,8 +26,9 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
 
   const getCocktail = async (): Promise<void> => {
     try {
-      const data: Cocktail = await getCocktailDetails(id);
+			const data: Cocktail = await getCocktailDetails(id);
       setCocktailInfo(removeNulls(data));
+			console.log('COCTAIL INFO', cocktailInfo)
     } catch (error) {
       setError(error.message);
     }
