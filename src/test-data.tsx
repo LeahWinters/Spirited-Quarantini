@@ -9,7 +9,7 @@ export const cocktail = {
 	strDrinkDE: null,
 	strDrinkES: null,
 	strDrinkFR: null,
-	'strDrinkThumb': "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg",
+	strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg",
 	'strDrinkZH-HANS': null,
 	'strDrinkZH-HANT': null,
 	strGlass: "Beer pilsner",
@@ -53,3 +53,22 @@ export const cocktail = {
 	strTags: null,
 	strVideo: null
 };
+
+export const cocktailInfo = {
+	idDrink: "14622",
+	strDrink: "Arctic Fish",
+	strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg"
+}
+
+export const cocktailList = [
+	{
+		idDrink: "14622",
+		strDrink: "Arctic Fish",
+		strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/ttsvwy1472668781.jpg"
+	},
+	{
+		"strDrink": "A Splash of Nash",
+		"strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/rsvtrr1472668201.jpg",
+		"idDrink": "14564"
+	}
+]

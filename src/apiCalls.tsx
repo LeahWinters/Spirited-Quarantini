@@ -10,7 +10,7 @@ export const getAllCocktails = async (): Promise<AllCocktailsDetails[]> => {
 		const data = await response.json();
     return data.drinks;
   } else {
-    throw new Error(response.statusText );
+    throw new Error(response.statusText);
   }
 };
 
@@ -19,9 +19,9 @@ export const getRandomCocktail = async ():Promise<Cocktail> => {
   
   if(response.ok) {
     const data = await response.json();
-    return data.drinks[0]
+    return data.drinks[0];
   } else {
-    throw new Error(response.statusText )
+    throw new Error(response.statusText);
   }
 }
   
@@ -29,7 +29,7 @@ export const getCocktailDetails = async (givenID: string) => {
 	const response = await fetch(`${rootUrl}/lookup.php?i=${parseInt(givenID)}`);
   
   if(response.ok) {
-    let data = await response.json();
+    const data = await response.json();
     return data.drinks[0];
   } else {
     throw new Error(response.statusText);

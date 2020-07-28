@@ -12,10 +12,16 @@ header {
 	display: flex;
 	height: 14vh;
 	min-height: 120px;
-	opacity: 80%;
+	opacity: 0.8;
 	position: absolute;
 	top: 0;
 	width: 100vw;
+}
+
+.welcome-message {
+	font-family: 'Recursive', sans-serif;
+	color: white;
+	margin-left: 15px;
 }
 
 .search-bar {
@@ -36,7 +42,7 @@ header {
 	font-size: 15px;
 	margin: 5px;
 	&:hover {
-		color: grey;
+		color: red;
 		font-style: italic;
 	}
 }

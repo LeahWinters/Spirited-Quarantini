@@ -7,14 +7,15 @@
   font-family: sans-serif;
 	height: 76vh;
   justify-content: center;
-  opacity: 95%;
+  opacity: 0.95;
   overflow: scroll;
 	position: absolute;
   width: 100vw;
 }
 
 .no-found-cocktails {
-  color: white;
-  font-size: 1.5em;
-  margin-top: 8%;
+	color: white;
+	font-size: 1.3em;
+	margin-top: 8%;
+	font-style: italic;
 }

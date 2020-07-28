@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
-
 interface HeaderProps {
 	loggedIn: boolean;
-	setLoggedIn: any;
+	setLoggedIn: Function;
 	setUsername: Function;
 	findResults: Function
+	username: string;
 }
 
 const Header: React.SFC<HeaderProps> = props => {
-	//state w/ input value
 	const [searchInput, setSearchInput] = useState('');
 	
-	const logoutUser = () => {
+	const logoutUser = ():any => {
 		props.setLoggedIn(false);
 		props.setUsername('')
+	}
+
+  const buttonsEnabled = searchInput.trim() !== "";
+	
+	const search = () => {
+		props.findResults(searchInput);
+		setSearchInput('');
 	}
 
 	return (
@@ -28,10 +34,12 @@ const Header: React.SFC<HeaderProps> = props => {
 
 			{props.loggedIn && 
 				<div className='user-header'>
+					<section>
 					<Link to='/cocktails'>
 						<h1 className='app-title'>Spirited Quarantini</h1>
 					</Link>
-
+					<h3 className='welcome-message'>Welcome, {(props.username).charAt(0).toUpperCase() + (props.username).slice(1)}</h3>
+					</section>
 					<form className='search-bar'>
 						<input
 							type="text"
@@ -45,8 +53,9 @@ const Header: React.SFC<HeaderProps> = props => {
 						<Link to='/results'>
 							<button 
 								className="header-search-button" 
-								onClick={() => props.findResults(searchInput)}
-								type="submit"
+								onClick={() => search()}
+								type="button"
+								disabled={!buttonsEnabled}
 							>
 								Search
 							</button>
@@ -65,8 +74,10 @@ const Header: React.SFC<HeaderProps> = props => {
 					</Link>
 					<Link to='/'>
 						<button
+							aria-label='logout'
 							onClick={logoutUser}
 							className='logout-btn'
+							type='button'
 						>
 							Logout
 						</button>

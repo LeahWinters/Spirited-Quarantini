@@ -4,24 +4,22 @@ import './Dashboard.scss';
 import { Cocktail } from '../Definitions/RandomCocktail'
 
 export interface DashboardProps {
-	username: string;
-	randomCocktail: Cocktail
+	randomCocktail: Cocktail;
+	error: string;
 }
 
 const Dashboard: React.SFC<DashboardProps> = (props) => {
-	const [randomCocktail] = useState<Cocktail>(props.randomCocktail);
-	const [error, setError] = useState<string>('');
-
 	return (
 		<section className='cocktail-OTD-wrapper'>
-			<p className='welcome-msg'>Welcome {props.username}!</p>
 			<p className='COTD-title'>Cocktail of the Day</p>
-			{error && <div>{error}</div>}
-			<section className='cocktail-OTD'>
-				<h3>{randomCocktail.strDrink}</h3>
-				<img className='COTD-img' src={`${randomCocktail.strDrinkThumb}`} alt={`${randomCocktail.strDrink}`} /> 
-				<Link to={`/${randomCocktail.idDrink}/details`}><button className='details-btn' aria-label='details-button'>Make Me</button></Link>
-			</section>
+			{props.error && <div className='error-msg'>404: No cocktail found</div>}
+			{!props.error && 
+				<section className='cocktail-OTD'>
+					<h3>{props.randomCocktail.strDrink}</h3>
+					<img className='COTD-img' src={`${props.randomCocktail.strDrinkThumb}`} alt={`${props.randomCocktail.strDrink}`} /> 
+					<Link to={`/cocktails/${props.randomCocktail.idDrink}`}><button className='details-btn' aria-label='details-button'>Make Me</button></Link>
+				</section>
+			}
 		</section>
 	)
 }

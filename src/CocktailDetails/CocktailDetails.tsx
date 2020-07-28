@@ -5,13 +5,11 @@ import "./CocktailDetails.scss";
 
 export interface CocktailDetailsProps {
   id: string;
-  // toggleFavorites: (id: string) => any;
-	favCocktails: string[];
-	// toggleMadeCocktails: (id: string) => any;
-	madeCocktails: string[];
+	favCocktails: Cocktail[];
+	madeCocktails: Cocktail[];
 	setFavCocktails: Function;
 	setMadeCocktails: Function;
-	toggleUserInteraction: (idList: string[], drinkId: string, setTheSate: Function) => any
+	toggleUserInteraction: (idList: Cocktail[], drinkId: string, setTheSate: Function) => any;
 }
 
 const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, madeCocktails, setFavCocktails, setMadeCocktails,toggleUserInteraction }) => {
@@ -22,10 +20,10 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
     strDrinkThumb: "",
   });
   const [error, setError] = useState("");
-  const [isFavorite, setIsFavorite] = useState<boolean>(favCocktails.includes(id));
-	const [isMade, setIsMade] = useState<boolean>(madeCocktails.includes(id))
+  const [isFavorite, setIsFavorite] = useState<boolean>(favCocktails.find(c => c.idDrink === id) ? true : false);
+	const [isMade, setIsMade] = useState<boolean>(madeCocktails.find(c => c.idDrink === id) ? true : false);
 
-  const getCocktail = async (): Promise<any> => {
+  const getCocktail = async (): Promise<void> => {
     try {
       const data: Cocktail = await getCocktailDetails(id);
       setCocktailInfo(removeNulls(data));
@@ -56,9 +54,8 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
   };
 
   useEffect(() => {getCocktail()}, []);
-	//modify lint file?
 	
-	const clickHandler = (setTheState: Function, theState: boolean, idList: string[], updateProps: Function) => {
+	const clickHandler = (setTheState: Function, theState: boolean, idList: Cocktail[], updateProps: Function) => {
 		setTheState(!theState);
     toggleUserInteraction(idList, id, updateProps);
   }
@@ -68,7 +65,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
       <section className="cocktail-details-card">
         <h3>{cocktailInfo.strDrink}</h3>
         <img
-          className="COTD-img"
+          className="details-img"
           src={`${cocktailInfo.strDrinkThumb}`}
           alt={`${cocktailInfo.strDrink}`}
         />
@@ -96,42 +93,44 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
               ))}
             </ul>
           </section>
-          {!isFavorite && (
-            <button
-              type="button"
-              aria-label="add-to-favorites"
-              onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-            >
-              Add to Favorites
-            </button>
-          )}
-          {isFavorite && (
-            <button
-              type="button"
-              aria-label="remove-from-favorites"
-              onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
-            >
-              Remove from Favorites
-            </button>
-          )}
-					{!isMade && (
-            <button
-              type="button"
-              aria-label="add-to-made"
-              onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-            >
-              Mark as Made
-            </button>
-          )}
-          {isMade && (
-            <button
-              type="button"
-              aria-label="remove-from-made"
-              onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
-            >
-              Remove from Made
-            </button>
-          )}
+					<section className='button-container'>
+						{!isFavorite && (
+							<button
+								type="button"
+								aria-label="add-to-favorites"
+								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
+							>
+								Add to Favorites
+							</button>
+						)}
+						{isFavorite && (
+							<button
+								type="button"
+								aria-label="remove-from-favorites"
+								onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}
+							>
+								Remove from Favorites
+							</button>
+						)}
+						{!isMade && (
+							<button
+								type="button"
+								aria-label="add-to-made"
+								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
+							>
+								Mark as Made
+							</button>
+						)}
+						{isMade && (
+							<button
+								type="button"
+								aria-label="remove-from-made"
+								onClick={() => clickHandler(setIsMade, isMade, madeCocktails, setMadeCocktails)}
+							>
+								Remove from Made
+							</button>
+						)}
+					</section>
         </section>
       </section>
     </section>
