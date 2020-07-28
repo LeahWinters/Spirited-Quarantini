@@ -75,3 +75,30 @@ displayNone {
 	padding-left: 3%;
 	width: 250px;
 }
+
+@media only screen and (max-width: 375px) {
+
+	.login-form {
+		width: 310px;
+	}
+
+	.subtitle {
+		color: white;
+		font-family: 'Recursive', sans-serif;
+		font-size: 26px;
+		margin-top: 75px;
+		width: 310px;
+	}
+
+	.login-msg {
+		height: 23%;
+	}
+
+	.submit-login-btn {
+		cursor: pointer;
+		font-family: 'Recursive', sans-serif;
+		font-size: 16px;
+		min-height: 40px;
+	}
+
+}
