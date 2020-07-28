@@ -19,9 +19,9 @@ header {
 }
 
 .welcome-message {
-  font-family: "Recursive", sans-serif;
-  color: white;
-  margin-left: 15px;
+	color: white;
+	font-family: 'Recursive', sans-serif;
+	margin-left: 15px;
 }
 
 .search-bar {
@@ -152,4 +152,56 @@ header {
     margin-bottom: 4px;
     margin-top: 10%;
   }
+}
+
+@media only screen and (max-width: 768px) {
+
+	.navlinks {
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		font-family: 'Recursive', sans-serif;
+		height: 14vh;
+		justify-content: space-evenly;
+		margin-right: 9px;
+		width: 20%;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+
+	.navlinks {
+		align-items: flex-end;
+		display: flex;
+		flex-direction: column;
+		font-family: 'Recursive', sans-serif;
+		height: 14vh;
+		justify-content: space-evenly;
+		margin-right: 9px;
+		width: 20%;
+	}
+
+	.navlink-title {
+		font-size: 19px;
+		margin: 5px;
+		&:hover {
+			color: red;
+			font-style: italic;
+		}
+	}
+
+	.header-search-button {
+		cursor: pointer;
+		font-family: 'Recursive', sans-serif;
+		margin-left: 7px;
+		min-height: 38px;
+	}
+
+	.logout-btn {
+		cursor: pointer;
+		font-family: 'Recursive', sans-serif;
+		font-size: 19px;
+		min-height: 21px;
+		margin-bottom: 4px;
+	}
 }
