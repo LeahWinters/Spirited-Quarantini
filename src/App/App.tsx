@@ -20,43 +20,53 @@ export interface AllCocktailsDetails {
 const App: React.SFC = () => {
 	const [ username, setUsername ] = useState('');
 	const [ loggedIn, setLoggedIn ] = useState(false);
-	const [ allCocktails, setAllCocktails ] = useState<Cocktail[]>([
-		{
-			strDrink: '',
-			strDrinkThumb: '',
-			idDrink: ''
-		}
-	]);
-	const [ allCError, setAllCError ] = useState('');
-	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
-	const [randomCError, setRandomCError] = useState('');
+	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({strDrink: '',
+	strDrinkThumb: '',
+	idDrink: ''});  
 	const [favCocktails, setFavCocktails] = useState<Cocktail[]>([]);
 	const [madeCocktails, setMadeCocktails] = useState<Cocktail[]>([]);
-	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
-		{
-			strDrink: '',
-			strDrinkThumb: '',
-			idDrink: ''
-		}
+	const [ allCocktails, setAllCocktails ] = useState<Cocktail[]>([
+		{strDrink: '',
+		strDrinkThumb: '',
+		idDrink: ''}
 	]);
-  const [error, setError] = useState("");
+	const [ updatedCocktails, setUpdatedCocktails ] = useState<Cocktail[]>([{strDrink: '',
+	strDrinkThumb: '',
+	idDrink: ''}]);
+	const [filteredResults, setFilteredResults] = useState<AllCocktailsDetails[]>([
+		{strDrink: '',
+		strDrinkThumb: '',
+		idDrink: ''}
+	]);
+	const [randomCError, setRandomCError] = useState('');
+	const [ allCError, setAllCError ] = useState('');
+  const [ error, setError ] = useState("");
 
-	useEffect(() => {getCocktail()}, []);
 	useEffect(() => {fetchAllCocktails()}, []);
-	useEffect(() => {
-		updateAllCocktails()
-	}, [allCocktails]);
+	useEffect(() => {updateAllCocktails()}, [allCocktails]);
+	useEffect(() => {getCocktail()}, []);
 
   // API Calls
-  const fetchAllCocktails = async (): Promise<any> => {
+  const fetchAllCocktails = async (): Promise<void> => {
     try {
-      const data: AllCocktailsDetails[] = await getAllCocktails();
-			return setAllCocktails(data);
+			const data: AllCocktailsDetails[] = await getAllCocktails();
+			setAllCocktails(data);
     } catch (error) {
       setAllCError(error.toString());
     }
   };
-
+	
+	const updateAllCocktails = async ():Promise<void> => {
+		try {
+			const newCocktails = await Promise.all(
+				allCocktails.map(c => getCocktailDetails(c.idDrink))
+				);
+				setUpdatedCocktails(newCocktails);
+			} catch (error) {
+				setError(error.message);
+			}
+		}
+		
 	const getCocktail = async ():Promise<void> => {
 		try {
 			const data: Cocktail = await getRandomCocktail();
@@ -65,17 +75,6 @@ const App: React.SFC = () => {
 			setRandomCError(error.toString());
 		}
 	};
-
-	const updateAllCocktails = async ():Promise<void> => {
-		try {
-			const newCocktails = await Promise.all(
-				allCocktails.map(c => getCocktailDetails(c.idDrink))
-			);
-			setAllCocktails(newCocktails);
-		} catch (error) {
-			setError(error.message);
-		}
-	}
 
 	// Functions
 	const findResults = (searchValue: string) => {
@@ -99,7 +98,6 @@ const App: React.SFC = () => {
 			})
 			if (result) return cocktail;
 		});
-		// setFilteredResults(searchResults.splice(1));
 	}
   
 	const toggleUserInteraction = async (idList: Cocktail[], drinkId: string, setTheState: Function): Promise<void> => {
@@ -146,7 +144,7 @@ const App: React.SFC = () => {
           path="/cocktails"
           render={() => (
 						<AllCocktailsPage 
-							givenCocktails={allCocktails} 
+							givenCocktails={updatedCocktails} 
 							error={allCError}
 						/>
 					)}

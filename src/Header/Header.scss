@@ -85,6 +85,10 @@ header {
   margin-bottom: 4px;
 }
 
+.mobile-btn {
+	display: none;
+}
+
 @media only screen and (max-width: 375px) {
   header {
     display: flex;
@@ -155,7 +159,6 @@ header {
 }
 
 @media only screen and (max-width: 768px) {
-
 	.navlinks {
 		align-items: flex-end;
 		display: flex;
@@ -169,7 +172,6 @@ header {
 }
 
 @media only screen and (max-width: 1024px) {
-
 	.navlinks {
 		align-items: flex-end;
 		display: flex;
@@ -204,4 +206,31 @@ header {
 		min-height: 21px;
 		margin-bottom: 4px;
 	}
+}
+
+@media only screen and (max-width: 500px) {
+	.login-form {
+		width: 310px;
+	}
+
+	.subtitle {
+		color: white;
+		font-family: 'Recursive', sans-serif;
+		font-size: 26px;
+		margin-top: 75px;
+		width: 310px;
+	}
+
+	.search-bar {
+		display: none;
+	}
+
+	.navlinks {
+		display: none;
+	}
+
+	// .mobile-btn {
+	// 	display: block;
+	// 	color: white;
+	// }
 }

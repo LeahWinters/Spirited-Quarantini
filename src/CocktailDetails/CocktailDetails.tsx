@@ -26,8 +26,9 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
 
   const getCocktail = async (): Promise<void> => {
     try {
-      const data: Cocktail = await getCocktailDetails(id);
+			const data: Cocktail = await getCocktailDetails(id);
       setCocktailInfo(removeNulls(data));
+			console.log('COCTAIL INFO', cocktailInfo)
     } catch (error) {
       setError(error.message);
     }
@@ -49,6 +50,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
   };
 
   const displayIngredients = (endingIndex: number, givenKey: string): string[] => {
+		console.log('fn entered', cocktailInfo)
 		const cocktailIngredients = (Object.keys(cocktailInfo) as Array<keyof Cocktail>)
 			.filter((keys) => keys.slice(0, endingIndex) === givenKey);
     return cocktailIngredients.map((i) => cocktailInfo[i] as string);
