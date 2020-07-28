@@ -16,26 +16,17 @@ describe("CocktailDetails", () => {
       strInstructions:
         "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
       strDrinkThumb:
-				"https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",		
+        "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
       strIngredient1: "Vodka",
-// strIngredient2
-// "Grape soda"
-// strIngredient3
-// "Orange juice"
-// strIngredient4
-// "Ice"
-// strIngredient5
-// "Candy"
-strMeasure1:"1/3 part "
-// strMeasure2
-// "1/3 part "
-// strMeasure3
-// "1/3 part "
-// strMeasure4
-// "lots "
-// strMeasure5
-// "1 dash "
-
+      strIngredient2: "Grape soda",
+      strIngredient3: "Orange juice",
+      strIngredient4: "Ice",
+      strIngredient5: "Candy",
+      strMeasure1: "1/3 part ",
+      strMeasure2: "1/3 part ",
+      strMeasure3: "1/3 part ",
+      strMeasure4: "lots ",
+      strMeasure5: "1 dash ",
     })
   );
 
@@ -105,7 +96,7 @@ strMeasure1:"1/3 part "
 
   it("Should display the fetched cocktail ingredients matched with their measure", async () => {
     const mockToggle = jest.fn();
-    const { getByText } = render(
+    const { getByText, getAllByText } = render(
       <MemoryRouter>
         <CocktailDetails
           id={"14622"}
@@ -119,17 +110,39 @@ strMeasure1:"1/3 part "
     );
 
     const ingredient1 = await waitFor(() => getByText("Vodka"));
-    const ingredient2 = await waitFor(() => getByText("1/3 part"));
-    // const ingredient2 = await waitFor(() => getByText("Grape soda 1/3 part"));
-    // const ingredient3 = await waitFor(() => getByText("Orange juice 1/3 part"));
-    // const ingredient4 = await waitFor(() => getByText("Ice lots"));
-    // const ingredient5 = await waitFor(() => getByText("Candy 1 dash"));
+    const strMeasure1 = await waitFor(() => getAllByText("1/3 part"));
+    const ingredient2 = await waitFor(() => getByText("Grape soda"));
+    const ingredient3 = await waitFor(() => getByText("Orange juice"));
+    const ingredient4 = await waitFor(() => getByText("Ice"));
+    const strMeasure4 = await waitFor(() => getByText("lots"));
+    const ingredient5 = await waitFor(() => getByText("Candy"));
+    const strMeasure5 = await waitFor(() => getByText("1 dash"));
 
     expect(ingredient1).toBeInTheDocument();
+    expect(strMeasure1.length).toEqual(3);
     expect(ingredient2).toBeInTheDocument();
-    // expect(ingredient2).toBeInTheDocument();
-    // expect(ingredient3).toBeInTheDocument();
-    // expect(ingredient4).toBeInTheDocument();
-    // expect(ingredient5).toBeInTheDocument();
-  });
+    expect(ingredient3).toBeInTheDocument();
+		expect(ingredient4).toBeInTheDocument();
+		expect(strMeasure4).toBeInTheDocument();
+		expect(ingredient5).toBeInTheDocument();
+		expect(strMeasure5).toBeInTheDocument();
+	});
+	
+	it("Should be able to click add to favorites button", () => {
+		const mockToggle = jest.fn();
+    const { getByText, getAllByText } = render(
+      <MemoryRouter>
+        <CocktailDetails
+          id={"14622"}
+          favCocktails={[]}
+          setFavCocktails={Function}
+          toggleUserInteraction={mockToggle}
+          madeCocktails={[]}
+          setMadeCocktails={Function}
+        />
+      </MemoryRouter>
+		);
+		
+	})
+	
 });
