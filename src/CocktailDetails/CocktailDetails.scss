@@ -54,3 +54,10 @@
 .details-img {
 	width: 55%;
 }
+
+@media only screen and (max-width: 375px) {
+	.cocktail-details-card {
+		width: 90vw;
+	}
+	
+}

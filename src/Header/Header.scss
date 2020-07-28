@@ -94,7 +94,7 @@ header {
 
   .user-header {
     align-items: center;
-    flex-direction: column;
+		flex-direction: column;
   }
 
   .app-title {
@@ -120,7 +120,7 @@ header {
     display: flex;
     flex-direction: row;
     flex-flow: row wrap;
-    height: 50%;
+    height: 60%;
     margin-top: 2%;
     width: 100%;
   }
