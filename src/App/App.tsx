@@ -106,10 +106,10 @@ const App: React.SFC = () => {
 		if (!idList.find(c => c.idDrink === drinkId)) {
 				const foundCocktail = await getCocktailDetails(drinkId);
 				setTheState([...idList, foundCocktail]);
-			} else {
-				setTheState(idList.filter(cocktail => cocktail !== drinkId))
-			}
+		} else {
+			setTheState(idList.filter(c => c.idDrink !== drinkId))
 		}
+	}
 
   return (
     <main>
