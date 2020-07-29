@@ -127,7 +127,7 @@ describe('App', () => {
 		expect(detailBtn).toBeInTheDocument();
 	});
 
-	it('From the homepage, if Details button is clicked, user should be directed to the CocktailDetails page', async () => {
+	it.skip('From the homepage, if Details button is clicked, user should be directed to the CocktailDetails page', async () => {
 		const { getByLabelText, getByText, getByPlaceholderText, debug } = render(
 			<MemoryRouter><App /></MemoryRouter>
 		);
