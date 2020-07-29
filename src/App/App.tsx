@@ -27,6 +27,9 @@ const App: React.SFC = () => {
 			idDrink: ''
 		}
 	]);
+	const [ updatedCocktails, setUpdatedCocktails ] = useState<Cocktail[]>([{strDrink: '',
+	strDrinkThumb: '',
+	idDrink: ''}]);
 	const [ allCError, setAllCError ] = useState('');
 	const [randomCocktail, setRandomCocktail] = useState<Cocktail>({idDrink: '', strDrink: '', strInstructions: '', strDrinkThumb: ''});  
 	const [randomCError, setRandomCError] = useState('');
@@ -71,7 +74,7 @@ const App: React.SFC = () => {
 			const newCocktails = await Promise.all(
 				allCocktails.map(c => getCocktailDetails(c.idDrink))
 			);
-			setAllCocktails(newCocktails);
+			setUpdatedCocktails(newCocktails);
 		} catch (error) {
 			setError(error.message);
 		}
@@ -86,13 +89,13 @@ const App: React.SFC = () => {
 	}
 
 	const searchByName = (keyword: string) => {
-		return allCocktails.filter(cocktail => {
+		return updatedCocktails.filter(cocktail => {
 			return cocktail.strDrink.toLowerCase().includes(keyword.toLowerCase())
 		});
 	}
 
 	const searchByIngred = (keyword: string) => {
-		return allCocktails.filter((cocktail: Cocktail) => {
+		return updatedCocktails.filter((cocktail: Cocktail) => {
 			const values = Object.values(cocktail);
 			let result = values.find((value: string | null) => {
 					if (value) return value.toLowerCase() === keyword.toLowerCase();
@@ -145,7 +148,7 @@ const App: React.SFC = () => {
           path="/cocktails"
           render={() => (
 						<AllCocktailsPage 
-							givenCocktails={allCocktails} 
+							givenCocktails={updatedCocktails} 
 							error={allCError}
 						/>
 					)}
