@@ -9,6 +9,7 @@ export interface CocktailsCardProps {
 }
 
 const CocktailCard: React.SFC<CocktailsCardProps> = (props) => {
+
   return (
     <section className="cocktail-card">
       <h3 className='card-title'>{props.strDrink}</h3>

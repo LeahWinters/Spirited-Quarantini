@@ -40,6 +40,7 @@ const Header: React.SFC<HeaderProps> = props => {
 					</Link>
 					<h3 className='welcome-message'>Welcome, {(props.username).charAt(0).toUpperCase() + (props.username).slice(1)}</h3>
 					</section>
+					<div className='mobile-btn'>o</div>
 					<form className='search-bar'>
 						<input
 							type="text"
@@ -61,7 +62,6 @@ const Header: React.SFC<HeaderProps> = props => {
 							</button>
 						</Link>
 					</form>
-
 				<section className='navlinks'>
 					<Link to='/about'>
 						<h3 className='navlink-title'>About</h3>
