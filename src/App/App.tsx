@@ -91,13 +91,15 @@ const App: React.SFC = () => {
 	}
 
 	const searchByIngred = (keyword: string) => {
-		return allCocktails.filter((cocktail: Cocktail) => {
+		debugger;
+		const foundCs = allCocktails.filter((cocktail: Cocktail) => {
 			const values = Object.values(cocktail);
 			let result = values.find((value: string | null) => {
 					if (value) return value.toLowerCase() === keyword.toLowerCase();
 			})
 			if (result) return cocktail;
 		});
+		return foundCs;
 	}
   
 	const toggleUserInteraction = async (idList: Cocktail[], drinkId: string, setTheState: Function): Promise<void> => {

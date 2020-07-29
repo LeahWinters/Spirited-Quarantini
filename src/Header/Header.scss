@@ -22,6 +22,9 @@ header {
 	color: white;
 	font-family: 'Recursive', sans-serif;
 	margin-left: 15px;
+	font-size: 1.0em;
+	font-style: italic;
+	font-weight: lighter;
 }
 
 .search-bar {
@@ -41,7 +44,8 @@ header {
 
 .navlink-title {
   font-size: 15px;
-  margin: 5px;
+	margin: 5px;
+	text-align: end;
   &:hover {
     color: red;
     font-style: italic;
@@ -64,7 +68,7 @@ header {
   border-style: none;
   border: 1px solid grey;
   color: white;
-  font-size: 20px;
+  font-size: .9em;
   font-family: "Courgette", cursive;
   height: 2.5vh;
   min-height: 26px;
@@ -184,7 +188,7 @@ header {
 	}
 
 	.navlink-title {
-		font-size: 19px;
+		font-size: .9em;
 		margin: 5px;
 		&:hover {
 			color: red;
@@ -196,15 +200,16 @@ header {
 		cursor: pointer;
 		font-family: 'Recursive', sans-serif;
 		margin-left: 7px;
-		min-height: 38px;
+    font-size: .9em;
+		min-height: 2.0em;
 	}
 
 	.logout-btn {
 		cursor: pointer;
 		font-family: 'Recursive', sans-serif;
-		font-size: 19px;
-		min-height: 21px;
-		margin-bottom: 4px;
+    font-size: .9em;
+    min-height: 1.5em;
+    margin-bottom: 4px;
 	}
 }
 

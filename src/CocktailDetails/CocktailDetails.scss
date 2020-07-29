@@ -23,6 +23,7 @@
 	margin-left: 90px;
 	margin-right: 80px;
 	text-align: left;
+	width: 77%;
 }
 
 .ingredient-container {
@@ -48,15 +49,22 @@
 
 .button-container {
 	display: flex;
-  justify-content: space-evenly;
+	justify-content: space-evenly;
+	margin-top: 2%;
 }
 
 .icon {
-	height: 50px;
+	height: 2.5em;
 }
 
 .details-img {
 	width: 55%;
+}
+
+.btn-message {
+	text-align: center;
+	font-style: italic;
+	margin-top: 4%;
 }
 
 @media only screen and (max-width: 375px) {

@@ -96,6 +96,7 @@ const CocktailDetails: React.FC<CocktailDetailsProps> = ({ id, favCocktails, mad
               ))}
             </ul>
           </section>
+					<p className='btn-message'>Mark as favorite or tried</p>
 					<section className='button-container'>
 						{!isFavorite && (
                 <img src={require("../assets/heart.svg")} alt="Add to Favorites" className="icon" onClick={() => clickHandler(setIsFavorite, isFavorite, favCocktails, setFavCocktails)}/>
