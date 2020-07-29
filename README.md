@@ -42,7 +42,7 @@ Then install the library dependencies. Run:
 npm install
 ```
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page that displays the "Travel Tracker" login page. 
+To verify that it is setup correctly, run `npm start` in your terminal. The app should start automatically, and you should see a login page to enter your name for Spritied Quarantini.
 
 ## Learning Goals
 
