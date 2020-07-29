@@ -54,7 +54,7 @@ const Header: React.SFC<HeaderProps> = props => {
 							<button 
 								className="header-search-button" 
 								onClick={() => search()}
-								type="button"
+								type="submit"
 								disabled={!buttonsEnabled}
 							>
 								Search

@@ -99,7 +99,6 @@ const App: React.SFC = () => {
 			})
 			if (result) return cocktail;
 		});
-		// setFilteredResults(searchResults.splice(1));
 	}
   
 	const toggleUserInteraction = async (idList: Cocktail[], drinkId: string, setTheState: Function): Promise<void> => {
