@@ -8,10 +8,10 @@ Assigned technology to learn:
 
 ## Overview
 
-Spirited Quarantini is an app using [The Cocktail Database](https://www.thecocktaildb.com/)for a quarantined user. 
-Our user wants to easy instructions to become their own bartender.
+Spirited Quarantini is an app using [The Cocktail Database](https://www.thecocktaildb.com/) for a quarantined user. 
+Our user wants access to easy cocktail recipe instructions to become their own bartender.
 Our app inspires a user to try new recipes, favoriting or marking a drink as made.  
-A displayed a list of cocktails, or trying the cocktail of the day are featured for additional inspiration.  
+They will see a displayed list of cocktails, or trying the cocktail of the day are featured for additional inspiration.  
 
 Deployed App: https://spiritedquarantini.netlify.app/ 
 
