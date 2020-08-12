@@ -9,7 +9,7 @@ import { act } from 'react-dom/test-utils';
 import { mocked } from "ts-jest/utils";
 jest.mock('../apiCalls');
 
-describe.skip('App', () => {
+describe('App', () => {
 	beforeEach(() => {
 		mocked(getAllCocktails).mockImplementation(() =>
 			Promise.resolve([

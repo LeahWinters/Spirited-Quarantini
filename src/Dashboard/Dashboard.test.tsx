@@ -8,7 +8,7 @@ import { cocktailInfo } from '../test-data';
 import { mocked } from "ts-jest/utils";
 jest.mock("../apiCalls");
 
-describe.skip("Dashboard", () => {
+describe("Dashboard", () => {
   mocked(getRandomCocktail).mockImplementation(() =>
 		Promise.resolve({
 			idDrink: "11007",
