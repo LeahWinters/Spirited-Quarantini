@@ -2,7 +2,7 @@ import { Cocktail } from "./Definitions/RandomCocktail";
 import { AllCocktailsDetails } from "./App/App";
 
 const rootUrl = "https://www.thecocktaildb.com/api/json/v1/1";
-
+																										
 export const getAllCocktails = async (): Promise<AllCocktailsDetails[]> => {
   const response = await fetch(`${rootUrl}/filter.php?a=Alcoholic`);
 
