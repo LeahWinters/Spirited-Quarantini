@@ -9,7 +9,7 @@ import { mocked } from "ts-jest/utils";
 import { debug } from "console";
 jest.mock("../apiCalls");
 
-describe("AllCocktailsPage", () => {
+describe.skip("AllCocktailsPage", () => {
 //   mocked(getAllCocktails).mockImplementation(() =>
 //   Promise.resolve( { [{
 //     strDrink: '57 Chevy with a White License Plate',

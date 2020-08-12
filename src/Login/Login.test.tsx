@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-describe('Login', () => {
+describe.skip('Login', () => {
   it("User should see a title, a username input, and two buttons when viewing the login page", () => {
     const { getByText, getByPlaceholderText, getByLabelText } = render(
       <MemoryRouter>

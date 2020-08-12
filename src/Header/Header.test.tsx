@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { render, fireEvent, waitFor, getByLabelText } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-describe('Header', () => {
+describe.skip('Header', () => {
   it('Should only display the title of the application when user is not logged in', () => {
     const { getByText, queryByText, queryByPlaceholderText } = render(
       <MemoryRouter>
